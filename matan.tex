@@ -1,0 +1,108 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T1, T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[russian, english]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+\usepackage{sectsty} % для изменения размера заголовков.
+\sectionfont{\fontsize{15}{15}\selectfont}
+\subsectionfont{\fontsize{13}{15}\selectfont}
+%%\usepackage{setspace} % интервалы между строками.
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Утверждение}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Заголовок
+\author{Власова Елена Александровна}
+\title{Лекции по математическому анализу для 1 курса ФН2, 3}
+\date{2024-2025 год.}
+
+\begin{document} % конец преамбулы, начало документа
+
+\maketitle
+
+\tableofcontents
+
+\part*{Элементарные функции и их пределы}
+
+\section{Введение}
+\subsection{Элементы теории множеств}
+\subsection{Кванторные операции}
+\subsection{Метод математической индукции}
+
+\section{Множество действительных чисел}
+\subsection{Аксиоматика действительных чисел}
+\subsection{Геометрическая интерпретация $\mathbb{R}$}
+\subsection{Числовые промежутки}
+\subsection{Бесконечные числовые промежутки}
+\subsection{Окрестности точки}
+\subsection{Принцип вложенных отрезков (Коши-Кантора)}
+\subsection{Ограниченные и неограниченные числовые множества}
+\subsection{Точные грани числового множества}
+\subsection{Принцип Архимеда}
+
+
+\section{Функции или отображения}
+\subsection{Понятие функции}
+\subsection{Ограниченные и неограниченные числовые множества}
+\subsection{Обратные функции}
+\subsection{Чётные и нечётные функции}
+\subsection{Периодические функции}
+\subsection{Сложная функция (композиция)}
+\subsection{Основные элементарные функции}
+
+\section{Числовые последовательности и их пределы}
+\begin{definition}
+	$f:\mathbb{N}\rightarrow \mathbb{R}$ - числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
+\end{definition}
+
+\subsection{Ограниченные и неограниченные числовые последовательности}
+
+\begin{definition}
+	Числовая последовательность $\{x_n\}_{n=1}^\infty$ называется 
+
+1) ограниченной сверху, если $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\le M$;
+
+2) ограниченной снизу, если \space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\ge M$;
+
+3) ограниченной, если \space\space\space\space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n| \le M$;
+
+4) неограниченной, если \space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n|> M$;
+\end{definition}
+
+\subsection{Предел числовой последовательности}
+\begin{definition}
+	Число $a\in\mathbb{R}$ называется пределом числовой последовательности, если $\forall \varepsilon>0$ существует такой номер $n$, зависящий от $\varepsilon$, что $\forall$ натурального числа $N>n$ верно неравенство $|x_n - a| < \varepsilon$.
+	$$\lim_{n\to\infty} x_n = a$$
+\end{definition}
+
+\subsection{Бесконечные пределы}
+\subsection{Свойства сходящихся последовательностей}
+\subsection{Монотонные числовые последовательности}
+\subsection{Число $e$}
+\subsection{Гиперболические функции}
+\subsection{Предельные точки числового множества}
+\subsection{Предельные точки числовых последовательностей}
+
+
+\end{document} % конец документа
