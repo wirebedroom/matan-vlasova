@@ -23,6 +23,22 @@
 \newtheorem{definition}{Определение}
 \newtheorem{theorem}{Теорема}
 \newtheorem{lemma}{Утверждение}
+\usepackage{textcomp}
+
+% figure support
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+
 
 %% Перенос знаков в формулах (по Львовскому)
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}
@@ -57,12 +73,27 @@
 		\begin{enumerate}
 			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$
 			\item $\forall x \ \exists$ противоположный элемент ``$-x$'', такой, что $x+(-x)=(-x)+x=0$
-			\item Ассоциативность
-			\item Коммутативность
+			\item Ассоциативность. $\forall x,y,z\in \mathbb{R}:(x+y)+z=x+(y+z)$.
+			\item Коммутативность. $\forall x,y\in \mathbb{R}:x+y=y+x$.
 		\end{enumerate}
 	\item На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x,y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
 		\begin{enumerate}
 			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$.
+			\item $\forall x\in \mathbb{R}\backslash\{0\} \ \exists $ обратный элемент ``$x^{-1}$'', такой, что $x\cdot x^{-1}=x^{-1}\cdot x=1$.
+			\item Ассоциативность. $\forall x,y,z\in \mathbb{R}\backslash\{0\}:(x\cdot y)\cdot z=x\cdot (y\cdot z)$.
+			\item Коммутативность. $\forall x,y\in \mathbb{R}\backslash\{0\}:x\cdot y=y\cdot x$.
+		\end{enumerate}
+\end{enumerate}
+	Операция умножения дистрибутивна по отношению к сложению. 
+		$$\forall x,y,z\in \mathbb{R}:(x+y)z=xz+yz$$
+\begin{enumerate}
+\setcounter{enumi}{2}
+	\item Отношения порядка. Для $\mathbb{R}$ определено отношение ``$\le $ '', т.е. $x\le y$.
+		\begin{enumerate}
+			\item $\forall x\in \mathbb{R}:x\le x$.
+			\item $\forall x,y\in \mathbb{R}:(x\le y \land y\le x)\implies x=y$.
+				
+				\ldots
 		\end{enumerate}
 \end{enumerate}
 	
@@ -73,6 +104,10 @@
 \subsection{Бесконечные числовые промежутки}
 \subsection{Окрестности точки}
 \subsection{Принцип вложенных отрезков (Коши-Кантора)}
+\begin{definition}
+	Пусть $\{x_n\}_{n=1}^{\infty}$ --- последовательность некоторых множеств. Если $\forall n\in \mathbb{N}:X_n\supset X_{n+1}$, то эта последовательность называется последовательностью вложенных отрезков.
+\end{definition}
+
 \subsection{Ограниченные и неограниченные числовые множества}
 \subsection{Точные грани числового множества}
 \subsection{Принцип Архимеда}
@@ -89,7 +124,7 @@
 
 \section{Числовые последовательности и их пределы}
 \begin{definition}
-	$f:\mathbb{N}\rightarrow \mathbb{R}$ - числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
+	$f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
 \end{definition}
 
 \subsection{Ограниченные и неограниченные числовые последовательности}
