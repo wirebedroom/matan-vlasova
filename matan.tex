@@ -3,9 +3,9 @@
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в фомулах
-\usepackage[T1, T2A]{fontenc}			% кодировка
+\usepackage[T2A]{fontenc}			% кодировка
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[russian, english]{babel}	% локализация и переносы
+\usepackage[english,russian]{babel}	% локализация и переносы
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
@@ -20,10 +20,6 @@
 
 %% Свои команды
 \DeclareMathOperator{\sgn}{\mathop{sgn}}
-\usepackage{sectsty} % для изменения размера заголовков.
-\sectionfont{\fontsize{15}{15}\selectfont}
-\subsectionfont{\fontsize{13}{15}\selectfont}
-%%\usepackage{setspace} % интервалы между строками.
 \newtheorem{definition}{Определение}
 \newtheorem{theorem}{Теорема}
 \newtheorem{lemma}{Утверждение}
@@ -41,7 +37,9 @@
 
 \maketitle
 
+\newpage
 \tableofcontents
+\newpage
 
 \part*{Элементарные функции и их пределы}
 
@@ -55,12 +53,16 @@
 \begin{definition}
 	Множество $\mathbb{R}$ называется множеством действительных чисел, если элементы этого множества удовлетворяют следующему комплексу условий:
 \begin{enumerate}
-	\item На множестве $\mathbb{R}$ определена операция сложения "+", то есть задано отображение, которое каждой упорядоченной паре $(x,y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
+	\item На множестве $\mathbb{R}$ определена операция сложения ``+'', то есть задано отображение, которое каждой упорядоченной паре $(x,y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
 		\begin{enumerate}
 			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$
-			\item $\forall x\exists$ противоположный элемент "$-x$ ", такой, что $x+(-x)=(-x)+x=0$
+			\item $\forall x \ \exists$ противоположный элемент ``$-x$'', такой, что $x+(-x)=(-x)+x=0$
 			\item Ассоциативность
 			\item Коммутативность
+		\end{enumerate}
+	\item На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x,y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
+		\begin{enumerate}
+			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$.
 		\end{enumerate}
 \end{enumerate}
 	
@@ -117,6 +119,5 @@
 \subsection{Гиперболические функции}
 \subsection{Предельные точки числового множества}
 \subsection{Предельные точки числовых последовательностей}
-
 
 \end{document} % конец документа
