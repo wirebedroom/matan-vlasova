@@ -20,12 +20,20 @@
 
 %% Свои команды
 \DeclareMathOperator{\sgn}{\mathop{sgn}}
+% Теоремы
 \newtheorem{definition}{Определение}
 \newtheorem{theorem}{Теорема}
 \newtheorem{lemma}{Утверждение}
+%\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+%\theoremstyle{named}
+%\newtheorem*{namedtheorem}{Theorem}
+
 \usepackage{textcomp}
 
 % figure support
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric,positioning}
 \usepackage{import}
 \usepackage{pdfpages}
 \usepackage{transparent}
@@ -69,29 +77,29 @@
 \begin{definition}
 	Множество $\mathbb{R}$ называется множеством действительных чисел, если элементы этого множества удовлетворяют следующему комплексу условий:
 \begin{enumerate}
-	\item На множестве $\mathbb{R}$ определена операция сложения ``+'', то есть задано отображение, которое каждой упорядоченной паре $(x,y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
+	\item На множестве $\mathbb{R}$ определена операция сложения ``+'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
 		\begin{enumerate}
-			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$
-			\item $\forall x \ \exists$ противоположный элемент ``$-x$'', такой, что $x+(-x)=(-x)+x=0$
-			\item Ассоциативность. $\forall x,y,z\in \mathbb{R}:(x+y)+z=x+(y+z)$.
-			\item Коммутативность. $\forall x,y\in \mathbb{R}:x+y=y+x$.
+			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$;
+			\item $\forall x \ \exists$ противоположный элемент ``$-x$'', такой, что $x+(-x)=(-x)+x=0$;
+			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}:(x+y)+z=x+(y+z)$;
+			\item Коммутативность. $\forall x, y\in \mathbb{R}:x+y=y+x$.
 		\end{enumerate}
-	\item На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x,y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
+	\item На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x, y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
 		\begin{enumerate}
-			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$.
-			\item $\forall x\in \mathbb{R}\backslash\{0\} \ \exists $ обратный элемент ``$x^{-1}$'', такой, что $x\cdot x^{-1}=x^{-1}\cdot x=1$.
-			\item Ассоциативность. $\forall x,y,z\in \mathbb{R}\backslash\{0\}:(x\cdot y)\cdot z=x\cdot (y\cdot z)$.
-			\item Коммутативность. $\forall x,y\in \mathbb{R}\backslash\{0\}:x\cdot y=y\cdot x$.
+			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$;
+			\item $\forall x\in \mathbb{R}\backslash\{0\} \ \exists $ обратный элемент ``$x^{-1}$'', такой, что $x\cdot x^{-1}=x^{-1}\cdot x=1$;
+			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}\backslash\{0\}:(x\cdot y)\cdot z=x\cdot (y\cdot z)$;
+			\item Коммутативность. $\forall x, y\in \mathbb{R}\backslash\{0\}:x\cdot y=y\cdot x$.
 		\end{enumerate}
 \end{enumerate}
 	Операция умножения дистрибутивна по отношению к сложению. 
-		$$\forall x,y,z\in \mathbb{R}:(x+y)z=xz+yz$$
+		$$\forall x, y, z\in \mathbb{R}:(x+y)z=xz+yz$$
 \begin{enumerate}
 \setcounter{enumi}{2}
-	\item Отношения порядка. Для $\mathbb{R}$ определено отношение ``$\le $ '', т.е. $x\le y$.
+	\item Отношения порядка. Для $\mathbb{R}$ определено отношение ``$\le $ ''.
 		\begin{enumerate}
-			\item $\forall x\in \mathbb{R}:x\le x$.
-			\item $\forall x,y\in \mathbb{R}:(x\le y \land y\le x)\implies x=y$.
+			\item $\forall x\in \mathbb{R}:x\le x$;
+			\item $\forall x, y\in \mathbb{R}:(x\le y \land y\le x)\implies x=y$;
 				
 				\ldots
 		\end{enumerate}
@@ -132,13 +140,12 @@
 \begin{definition}
 	Числовая последовательность $\{x_n\}_{n=1}^\infty$ называется 
 
-1) ограниченной сверху, если $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\le M$;
-
-2) ограниченной снизу, если \space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\ge M$;
-
-3) ограниченной, если \space\space\space\space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n| \le M$;
-
-4) неограниченной, если \space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n|> M$;
+	\begin{enumerate}
+		\item ограниченной сверху, если $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\le M$;
+		\item ограниченной снизу, если \space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}: \ x_n\ge M$;
+		\item ограниченной, если \space\space\space\space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n| \le M$;
+		\item неограниченной, если \space\space\space\space\space\space $\exists M\in \mathbb{R}: \forall n\in \mathbb{N}:|x_n|> M$;
+	\end{enumerate}
 \end{definition}
 
 \subsection{Предел числовой последовательности}
@@ -150,6 +157,56 @@
 \subsection{Бесконечные пределы}
 \subsection{Свойства сходящихся последовательностей}
 \subsection{Монотонные числовые последовательности}
+\begin{definition}
+	Числовая последовательность $\{x_n\}_{n=1}^{\infty}$ называется 
+	\begin{enumerate}
+		\item возрастающей, если \ \ $\forall n\in \mathbb{N}:x_{n}<x_{n+1}$;
+		\item убывающей, если \ \ \ \ \ \ \ $\forall n\in \mathbb{N}:x_{n}>x_{n+1}$;
+		\item неубывающей, если \ \ \ \ $\forall n\in \mathbb{N}:x_{n}\le  x_{n+1}$;
+		\item невозрастающей, если $\forall n\in \mathbb{N}:x_{n}\ge x_{n+1}$
+	\end{enumerate}
+\end{definition}
+Для монотонных числовых последовательностей ограниченность является достаточным условием для сходимости.
+\begin{theorem}[Вейерштрасса о сходимости монотонных числовых последовательностей]
+	Если последовательность не убывает и ограничена сверху, то она является сходящейся.
+	Если последовательность не возрастает и ограничена снизу, то она является сходящейся. В общем, любая монотонная последовательность сходится.
+\end{theorem}
+\begin{proof}
+	Пусть $\{x_n\}_{n=1}^{\infty}$ не убывает и ограничена сверху $\implies\exists M\in \mathbb{R} :\forall n\in \mathbb{N}:x_{n}\le M\implies$ множество значений этой последовательности $\{x_1, x_2, x_3, \ldots, x_{n}, \ldots\}=A$ является ограниченным сверху числовым множеством $\implies\exists \sup A\in \{x_n\}_{n=1}^{\infty}=a$, то есть
+	\begin{enumerate}
+		\item $\forall n\in \mathbb{N}:x_{n}\le a$;
+		\item $\forall \varepsilon>0 \ \exists N=N(\varepsilon)\in \mathbb{N}:x_{N}>a-\varepsilon$.
+	\end{enumerate}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (10,0);	
+		% Числовая прямая
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_n$}; %node[yshift=-1.4mm]
+		% Точки
+		%\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+		\draw (5,0) node[anchor=north] (a) {$a$};
+		\draw (2,0) node[anchor=north] (a-ep) {$a-\varepsilon$};
+		\draw (8,0) node[anchor=north] (a+ep){$a+\varepsilon$};
+		%\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-ep) {$a-\varepsilon$};
+		%\draw[shift={(8,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+ep){$a+\varepsilon$};
+		% Интервалы
+		\draw (2,0) to[out=70,in=110] (5,0);
+		\draw (5,0) to[out=70,in=110] (8,0);
+
+	\end{tikzpicture}
+\end{center}
+Т.к. $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательность $\implies$
+\begin{multline}
+\implies \forall n>N=N(\varepsilon):x_{n}\ge x_N \implies \\
+\implies a-\varepsilon<x_N\le x_{n}\le a<a+\varepsilon\implies \\
+\implies a-\varepsilon<x_{n}<a+\varepsilon \implies |x_{n}-a|<\varepsilon \implies \\
+\implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N}:\forall n>N:|x_{n}-a|<\varepsilon \implies \\
+\implies \exists \lim_{n \to \infty}x_{n} = a\in \mathbb{R} \implies \{x_n\}_{n=1}^{\infty} \text{ сходится.}
+\end{multline}
+Если $\{x_n\}_{n=1}^{\infty}$ -- невозрастающая и ограниченная снизу последовательность, то $\exists \lim_{n \to \infty} x_{n}=\inf A, A = \{x_1, x_2, \ldots, x_{n}, \ldots\}$. Доказательство аналогично.
+\end{proof}
+
 \subsection{Число $e$}
 \subsection{Гиперболические функции}
 \subsection{Предельные точки числового множества}
