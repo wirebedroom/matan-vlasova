@@ -31,6 +31,9 @@
 \usepackage{textcomp}
 
 % figure support
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric,positioning}
 \usepackage{import}
 \usepackage{pdfpages}
 \usepackage{transparent}
@@ -174,8 +177,26 @@
 		\item $\forall n\in \mathbb{N}:x_{n}\le a$;
 		\item $\forall \varepsilon>0 \ \exists N=N(\varepsilon)\in \mathbb{N}:x_{N}>a-\varepsilon$.
 	\end{enumerate}
-Т.к. $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательность $\implies$
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (10,0);	
+		% Числовая прямая
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_n$}; %node[yshift=-1.4mm]
+		% Точки
+		%\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+		\draw (5,0) node[anchor=north] (a) {$a$};
+		\draw (2,0) node[anchor=north] (a-ep) {$a-\varepsilon$};
+		\draw (8,0) node[anchor=north] (a+ep){$a+\varepsilon$};
+		%\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-ep) {$a-\varepsilon$};
+		%\draw[shift={(8,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+ep){$a+\varepsilon$};
+		% Интервалы
+		\draw (2,0) to[out=70,in=110] (5,0);
+		\draw (5,0) to[out=70,in=110] (8,0);
+
+	\end{tikzpicture}
+\end{center}
+Т.к. $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательность $\implies$
 \begin{multline}
 \implies \forall n>N=N(\varepsilon):x_{n}\ge x_N \implies \\
 \implies a-\varepsilon<x_N\le x_{n}\le a<a+\varepsilon\implies \\
