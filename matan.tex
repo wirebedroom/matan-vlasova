@@ -17,27 +17,39 @@
 %% Шрифты
 \usepackage{euscript}	 % Шрифт Евклид
 \usepackage{mathrsfs} % Красивый матшрифт
+%% Акценты
+\usepackage{accents}
 
 %% Свои команды
 \DeclareMathOperator{\sgn}{\mathop{sgn}}
 % Теоремы
-\newtheorem{definition}{Определение}
-\newtheorem{theorem}{Теорема}
-\newtheorem{lemma}{Утверждение}
+\newtheorem{definition}{Определение}[subsection]
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}{Утверждение}[subsection]
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
 %\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
 %\theoremstyle{named}
 %\newtheorem*{namedtheorem}{Theorem}
 
+%% Colors
+\usepackage{xcolor}
+\definecolor{nord9}{RGB}{129,161,193}
+\definecolor{nord8}{RGB}{136,192,208}
+
 \usepackage{textcomp}
 
-% figure support
+%% TikZ
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.geometric,positioning}
+\usetikzlibrary{patterns.meta}
+
+% figure support
 \usepackage{import}
 \usepackage{pdfpages}
 \usepackage{transparent}
-\usepackage{xcolor}
 
 \newcommand{\incfig}[2][1]{%
     \def\svgwidth{#1\columnwidth}
@@ -180,22 +192,22 @@
 
 \begin{center}
 	\begin{tikzpicture}
-		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (10,0);	
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
 		% Числовая прямая
-		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_n$}; %node[yshift=-1.4mm]
+		\filldraw[black] (4.5,0) circle (0.05) node[anchor=south]{$x_N$}; %node[yshift=-1.4mm]
 		% Точки
 		%\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
-		\draw (5,0) node[anchor=north] (a) {$a$};
+		\draw (6,0) node[anchor=north] (a) {$a$};
 		\draw (2,0) node[anchor=north] (a-ep) {$a-\varepsilon$};
-		\draw (8,0) node[anchor=north] (a+ep){$a+\varepsilon$};
+		\draw (10,0) node[anchor=north] (a+ep){$a+\varepsilon$};
 		%\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-ep) {$a-\varepsilon$};
 		%\draw[shift={(8,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+ep){$a+\varepsilon$};
 		% Интервалы
-		\draw (2,0) to[out=70,in=110] (5,0);
-		\draw (5,0) to[out=70,in=110] (8,0);
-
+		\draw (2,0) to[out=70,in=110] (6,0);
+		\draw (6,0) to[out=70,in=110] (10,0);
 	\end{tikzpicture}
 \end{center}
+
 Т.к. $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательность $\implies$
 \begin{multline}
 \implies \forall n>N=N(\varepsilon):x_{n}\ge x_N \implies \\
@@ -204,12 +216,204 @@
 \implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N}:\forall n>N:|x_{n}-a|<\varepsilon \implies \\
 \implies \exists \lim_{n \to \infty}x_{n} = a\in \mathbb{R} \implies \{x_n\}_{n=1}^{\infty} \text{ сходится.}
 \end{multline}
-Если $\{x_n\}_{n=1}^{\infty}$ -- невозрастающая и ограниченная снизу последовательность, то $\exists \lim_{n \to \infty} x_{n}=\inf A, A = \{x_1, x_2, \ldots, x_{n}, \ldots\}$. Доказательство аналогично.
+
+Если $\{x_n\}_{n=1}^{\infty}$ -- невозрастающая и ограниченная снизу последовательность, то 
+\[
+\exists \lim_{n \to \infty} x_{n}=\inf A, A = \{x_1, x_2, \ldots, x_{n}, \ldots\} 
+.\] 
+Доказательство аналогично.
 \end{proof}
 
 \subsection{Число $e$}
+
 \subsection{Гиперболические функции}
 \subsection{Предельные точки числового множества}
+\begin{definition}
+	Точка $a\in \mathbb{R}$ называется предельной точкой множества $X\subset \mathbb{R}$, если любая окрестность $U(a)$ содержит бесконечно много элементов множества $X$.
+\end{definition}
+\begin{remark}
+	Множество $A$ называется бесконечным или содержащим бесконечно много элементов, если при вычитании из $A$ любого его конечного подмножества получается непустое множество.
+\end{remark}
+
+Множество всех предельных точек множества $X$ называется производным множеством для $X$ и обозначается $X'$.
+
+\begin{lemma}
+	Точка $a\in \mathbb{R}$ является предельной для $X\subset \mathbb{R}\iff$ в любой проколотой $\delta$-окрестности точки $a$ содержится хотя бы один элемент множества $X$, т.е.
+	\[
+		\forall \delta>0 \quad \exists x\in X \cap \accentset{\circ}{U}(a)
+	.\]
+\end{lemma}
+\begin{proof}
+	$(\implies)$ Необходимость.
+	
+	$a$ --- предельная для $X\subset \mathbb{R}\implies$ \\ 
+	\indent $\implies$ любая $U(a)$ содержит бесконечно много элементов из $X \implies$ \\ 
+	\indent \indent $\implies \accentset{\circ}{U}(a)$ тоже содержит бесконечно много элементов из $X\implies$ \\ 
+	\indent \indent \indent $\implies$ любая $\accentset{\circ}{U}$ содержит хотя бы один элемент $x\in X$.
+
+	\noindent $(\impliedby)$ Достаточность.
+	\[
+		\forall \delta>0 \quad \exists x\in X \cap \accentset{\circ}{U}(a)
+	.\]
+	Выберем любую $U(a)$. Тогда
+\[
+\exists \delta_1>0 : \accentset{\circ}{U}(a)\subset U(a) \implies \exists x_1\in X : x_1\in \accentset{\circ}{U}_{\delta_1}(a)
+.\] 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
+		% Числовая прямая
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_1$};
+		% Точки
+		\draw (6,0) node[anchor=north] (a)   {$a$};
+		\draw (1,0) node[anchor=north] (b)   {$b$};
+		\draw (11,0) node[anchor=north] (c)   {$c$};
+		\draw (3,0) node[anchor=north] (a-d) {$a-\delta_1$};
+		\draw (9,0) node[anchor=north] (a+d) {$a+\delta_1$};
+		\draw (7,0) node[anchor=north, yshift=3.4cm] (Ua) {$U(a)$};
+		\draw (5,0) node[anchor=north, yshift=1.6cm] (Uo) {$\accentset{\circ}{U}_{\delta_1}(a)$};
+		% Интервалы
+		\draw (1,0) to[out=70,in=110] (11,0);
+		\draw (3,0) to[out=70,in=110] (6,0);
+		\draw (6,0) to[out=70,in=110] (9,0);
+	\end{tikzpicture}
+\end{center}
+Пусть $\delta_2 = \frac{|x_1-a|}{2} > 0$. Тогда
+\[
+	\exists x_2 \in \accentset{\circ}{U}_{\delta_2}(a) : x_2\neq x_1
+.\] 
+
+\begin{center}
+	\begin{tikzpicture}
+		% Числовая прямая
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
+		% Точки
+		\filldraw[black] (2,0) circle (0.05) node[anchor=south]{$x_1$}; 
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_2$}; 
+		\draw (6,0) node[anchor=north] (a)   {$a$};
+		\draw (1,0) node[anchor=north] (a-d) {$a-\delta_1$};
+		\draw (11,0) node[anchor=north] (a+d) {$a+\delta_1$};
+		\draw (3,0) node[anchor=north] (a-d) {$a-\delta_2$};
+		\draw (9,0) node[anchor=north] (a+d) {$a+\delta_2$};
+		\draw (9.5,0) node[anchor=north, yshift=2.1cm] (Uo_1) {$\accentset{\circ}{U}_{\delta_1}(a)$};
+		\draw (9,0) node[anchor=north, yshift=1.25cm] (Uo_2) {$\accentset{\circ}{U}_{\delta_2}(a)$};
+		% Интервалы
+		\draw (1,0) to[out=80,in=100] (6,0);
+		\draw (6,0) to[out=80,in=100] (11,0);
+		\draw (3,0) to[out=70,in=110] (6,0);
+		\draw (6,0) to[out=70,in=110] (9,0);
+	\end{tikzpicture}
+\end{center}
+Пусть $\delta_3 = \frac{|x_2-a|}{2} > 0$. Тогда 
+\[
+	\exists x_3 \in \accentset{\circ}{U}_{\delta_3}(a) : x_3\neq x_2 
+\] 
+и т.д. На шаге $n$:
+\[
+\delta_n = \frac{|x_{n-1}-a|}{2} > 0 \implies \exists x_n \in \accentset{\circ}{U}_{\delta_n}(a) : x_n\neq x_{k}, k =1, 2, \ldots, n-1 
+.\] 
+Таким образом,
+\[
+	\exists \{x_n\}_{n=1}^{\infty}\in U(a) : x_{n}\in X, x_{n}\neq x_k, n\neq k,
+\] 
+а значит, любая окрестность $U(a)$ содержит бесконечно много элементов из $X \implies a$ --- предельная точка.
+\end{proof}
+
+\begin{lemma}
+	Если точка $a\in \mathbb{R}$ является предельной точкой для множества $X\subset \mathbb{R}$, то
+	\[
+	\exists \{x_n\}_{n=1}^{\infty}\subset X : \lim_{n \to \infty} x_n = a
+	.\] 
+\end{lemma}
+
+\begin{proof}
+	$a$ --- предельная точка для $X\subset \mathbb{R} \iff \forall \delta>0 \quad \accentset{\circ}{U}_\delta(a)$ содержит хотя бы одну точку множества $X$ (по утверждению 1).
+	$\newline$
+	Выберем $\{\delta_n\}_{n=1}^{\infty}, \delta_n=\frac{1}{n}>0$, тогда
+	\[
+		\forall n\in \mathbb{N} \quad \exists x_n\in X : x_{n}\in \accentset{\circ}{U}_{\delta_n}(a)
+	,\] 
+	то есть 
+	\[
+	0 < |x_n-a| < \frac{1}{n}
+	.\] 
+Т.к. $\lim_{n \to \infty} \frac{1}{n} = 0$, 
+\[
+	\forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N : \frac{1}{n} < \varepsilon
+,\] 
+а значит,
+\[
+|x_{n}-a| < \frac{1}{n} < \varepsilon \implies \lim_{n \to \infty} x_{n} = a
+.\] 
+\end{proof}
+
+\begin{theorem}[принцип Больцано-Вейерштрасса]
+	Любое ограниченное бесконечное числовое множество имеет хотя бы одну предельную точку.
+\end{theorem}
+\begin{proof}
+	Пусть $X$ --- бесконечное ограниченное множество, то есть $\exists I_1 =[a_1, b_1] : X\subset [a_1, b_1]$.
+	Пусть $c_1=\frac{a_1+b_1}{2}$, т.е. середина отрезка $I_1$.
+	\begin{center}
+		\begin{tikzpicture}
+			%\fill[nord8] (1,0)rectangle(11,1); 
+			%% Числовая прямая x.
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
+			\draw (12,0) node[anchor=north] (x) {$x$};
+			%% a1, b1, c1
+			\filldraw[black] (1,0) circle (0.05) node[anchor=north] (a1) {$a_1$};
+			\filldraw[black] (11,0) circle (0.05) node[anchor=north] (b1) {$b_1$};
+			\draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (c1) {$c_1$};
+			\draw (6,0) node[anchor=north, yshift=1.7cm] (I_1) {$I_1$};
+			%% X and arrow
+			\draw (4,-1) node[anchor=north] (X) {$X$};
+			\draw[->] (X) to[out=135,in=225] (4,0.5);
+			%% Отрезок
+			\draw (1,0) -- ++(0,1) -- ++(10,0) -- ++(0,-1);
+		\end{tikzpicture}
+	\end{center}
+	Так как множество $X$ бесконечное, то либо отрезок $[a_1, c_1]$, либо отрезок $[c_1, b_1]$ содержит бесконечно много элементов множества $X$. Обозначим ту половину отрезка $I_1$, которая содержит бесконечно много элементов множества $X$ через $I_2 = [a_2, b_2], I_2\subset I_1$. Выразим длину отрезка $I_2$:
+\[
+	|I_2| = b_2-a_2 = \frac{b_1-a_1}{2} = \frac{|I_1|}{2}
+.\] 
+На отрезке $I_2$ содержится бесконечно много элементов множества $X$.
+Пусть $c_2=\frac{a_2+b_2}{2}$ --- середина $I_2$, тогда либо $[a_2, c_2]$, либо $[c_2, b_2]$ содержит бесконечно много элементов множества $X$. Обозначим ту половину $I_2$, где бесконечно много элементов множества $X$ через $I_3 = [a_3, b_3]$. Тогда
+\[
+|I_3| = \frac{|I_1|}{2^2}
+\] 
+и т.д. На шаге n: $I_n=[a_n, b_n], c_n = \frac{a_n + b_n}{2}$ --- середина $I_n$, $I_n$ содержит бесконечно много элементов из $X$, тогда либо $[a_n, c_n]$, либо $[c_n, b_n]$ содержит бесконечно много элементов из $X \implies I_{n+1}=[a_{n+1}, b_{n+1}]\subset I_n$ и содержит бесконечно много элементов из $X$. Таким образом, мы получили последовательность вложенных отрезков $\{I_n\}_{n=1}^{\infty} : I_1\supset I_2\supset \ldots\supset I_n\supset I_{n+1}\supset \ldots$
+\begin{multline}
+	|I_n|=\frac{|I_1|}{2^{n-1}} \implies \lim_{n \to \infty} \frac{|I_1|}{2^{n-1}} = 0 \implies \\
+	\implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N : |I_n| < \varepsilon.
+\end{multline}
+По принципу Коши-Кантора $\exists !$ общая точка $c$, т.е. $\forall n\in \mathbb{N} : c\in I_n$.
+Такая $c$ является предельной точкой множества $X$.
+\[
+	\forall U(c) \quad \exists \varepsilon>0 \quad U_\varepsilon(c) \subset U(c) \implies \exists n\in \mathbb{N} : I_n=[a_n, b_n] \subset U_\varepsilon(c)
+\] 
+(например, $|I_n| < \frac{\varepsilon}{2}$).
+
+\begin{center}
+	\begin{tikzpicture}
+		% Числовая прямая
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
+		% Точки
+		\draw[shift={(6,0)},  color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (c)   {$c$};
+		\filldraw[black] (4.5,0) circle (0.05) node[anchor=north] {$a_n$}; 
+		\filldraw[black] (7.5,0) circle (0.05) node[anchor=north] {$b_n$}; 
+		%%\draw[shift={(4.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a_n) {$a$};
+		%%\draw[shift={(7.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (b_n) {$b$};
+		\draw (3,0) node[anchor=north] (a-d) {$c-\varepsilon$};
+		\draw (9,0) node[anchor=north] (a+d) {$c+\varepsilon$};
+		\draw (7,0) node[anchor=north, yshift=3.4cm] (Uc) {$U(c)$};
+		% Интервалы
+		\draw (1,0) to[out=70,in=110] (11,0);
+		\draw (3,0) to[out=70,in=110] (9,0);
+		\draw (4.5,0) -- ++(0,0.7) -- ++(3,0) -- ++(0,-0.7);
+	\end{tikzpicture}
+\end{center}
+Отрезок $I_n$ содержит бесконечно много элементов множества $X$ по построению последовательности $\{x_n\}_{n=1}^{\infty} \implies$ окрестность $U(c)$ содержит бесконечно много элементов из $X \implies c$ --- предельная.
+\end{proof}
+
 \subsection{Предельные точки числовых последовательностей}
 
 \end{document} % конец документа
