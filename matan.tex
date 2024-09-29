@@ -143,9 +143,14 @@
 \subsection{Основные элементарные функции}
 
 \section{Числовые последовательности и их пределы}
+
+
+
 \begin{definition}
 	$f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
 \end{definition}
+
+
 
 \subsection{Ограниченные и неограниченные числовые последовательности}
 
@@ -160,19 +165,26 @@
 	\end{enumerate}
 \end{definition}
 
+
+
 \subsection{Предел числовой последовательности}
 \begin{definition}
 	Число $a\in\mathbb{R}$ называется пределом числовой последовательности, если $\forall \varepsilon>0$ существует такой номер $n$, зависящий от $\varepsilon$, что $\forall$ натурального числа $N>n$ верно неравенство $|x_n - a| < \varepsilon$.
 	$$\lim_{n\to\infty} x_n = a$$
 \end{definition}
 
+
+
 \subsection{Бесконечные пределы}
+
+
+
 \subsection{Свойства сходящихся последовательностей}
 \begin{theorem}[о единственности предела]
 	Любая сходящаяся последовательность имеет только один предел.	
 \end{theorem}
 \begin{proof}
-	"От противного". Предположим, что $\exists \lim_{n \to \infty} x_{n} = a$ и $\exists \lim_{n \to \infty} x_{n} = b$ и $a\neq b$. Пусть для определенности $a<b$.
+	"От противного". Пусть $\{x_n\}_{n=1}^{\infty}$ --- сходящаяся последовательность. Предположим, что $\exists \lim_{n \to \infty} x_{n} = a$ и $\exists \lim_{n \to \infty} x_{n} = b$, причем $a\neq b$. Пусть для определенности $a<b$.
 	\[
 	\lim_{n \to \infty} x_{n} = a \iff \forall \varepsilon>0 \quad \exists N_1=N_1(\varepsilon)\in \mathbb{N} : \forall n>N_1 : |x_{n}-a|<\varepsilon
 	,\] 
@@ -207,8 +219,45 @@
 		\draw[->] (6.8,1.4) to (8.4,0.5);
 	\end{tikzpicture}
 \end{center}
-Выберем $\varepsilon = \frac{b-a}{4} > 0$. Найдем $N_1(\varepsilon), N_2(\varepsilon), N=\max\{N_1, N_2\}$
+Выберем $\varepsilon = \frac{b-a}{4} > 0$. Найдем $N_1(\varepsilon), N_2(\varepsilon), N=\max\{N_1, N_2\}$, тогда
+\[
+	\forall n>N \quad |x_{n}-a| < \frac{b-a}{4}, \quad |x_{n}-b| < \frac{b-a}{4}
+.\] 
+Следовательно,
+\[
+	0 < b-a = |b-a| = |b-x_{n}+x_{n}-a| \le |x_{n}-b|+|x_{n}-a| < \frac{b-a}{2}
+,\] 
+то есть
+\[
+0 < b-a < \frac{b-a}{2}
+.\] 
+Мы пришли к противоречию, следовательно, $a=b \implies \{x_n\}_{n=1}^{\infty}$ имеет единственный предел.
 \end{proof}
+
+\begin{theorem}[об ограниченности сходящейся последовательности]
+	Любая сходящаяся последовательность является ограниченной.	
+\end{theorem}
+\begin{proof}
+	Если $\{x_n\}_{n=1}^{\infty}$ сходится, то 
+	\[
+	\exists \lim_{n \to \infty} = a\in \mathbb{R} \implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N : |x_{n}-a|<\varepsilon
+	\]
+	Пусть $\varepsilon = 1 \implies \exists N=N(1) \quad \forall n>N : |x_{n}-a| < 1$. Следовательно,
+	\[
+	|x_{n}| = |x_{n}-a+a| \le |x_{n}-a|+|a| < 1+|a|
+	.\] 
+	Пусть $M_0=1+|a| \implies \forall n>N : x_{n} < M_0$. 
+	
+	\noindent Пусть $M=\max\{|x_1|, |x_2|, \ldots, |x_{n}|, M_0\}$, тогда $\forall n\in \mathbb{N} : x_{n}\le M\implies \{x_n\}_{n=1}^{\infty}$ является ограниченной.
+\end{proof}
+
+\begin{remark}
+	Ограниченность является необходимым условием сходимости числовой последовательности. В то же время условие ограниченности не является достаточным для сходимости числовой последовательности.
+	Например, $\{(-1)^n\}_{n=1}^{\infty}$ --- ограниченная, но не сходящаяся числовая последовательность.
+\end{remark}
+
+
+
 \subsection{Монотонные числовые последовательности}
 \begin{definition}
 	Числовая последовательность $\{x_n\}_{n=1}^{\infty}$ называется 
@@ -307,7 +356,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	\begin{tikzpicture}
 		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
 		% Числовая прямая
-		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_1$};
+		\filldraw[black] (3.7,0) circle (0.05) node[anchor=south]{$x_1$};
 		% Точки
 		\draw (6,0) node[anchor=north] (a)   {$a$};
 		\draw (1,0) node[anchor=north] (b)   {$b$};
@@ -332,20 +381,20 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 		% Числовая прямая
 		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
 		% Точки
-		\filldraw[black] (2,0) circle (0.05) node[anchor=south]{$x_1$}; 
-		\filldraw[black] (4,0) circle (0.05) node[anchor=south]{$x_2$}; 
+		\filldraw[black] (2.1666,0) circle (0.05) node[anchor=south]{$x_1$}; 
+		\filldraw[black] (5,0) circle (0.05) node[anchor=south]{$x_2$}; 
 		\draw (6,0) node[anchor=north] (a)   {$a$};
 		\draw (1,0) node[anchor=north] (a-d) {$a-\delta_1$};
 		\draw (11,0) node[anchor=north] (a+d) {$a+\delta_1$};
-		\draw (3,0) node[anchor=north] (a-d) {$a-\delta_2$};
-		\draw (9,0) node[anchor=north] (a+d) {$a+\delta_2$};
+		\draw (3.8334,0) node[anchor=north] (a-d) {$a-\delta_2$};
+		\draw (8.1666,0) node[anchor=north] (a+d) {$a+\delta_2$};
 		\draw (9.5,0) node[anchor=north, yshift=2.1cm] (Uo_1) {$\accentset{\circ}{U}_{\delta_1}(a)$};
-		\draw (9,0) node[anchor=north, yshift=1.25cm] (Uo_2) {$\accentset{\circ}{U}_{\delta_2}(a)$};
+		\draw (8.1,0) node[anchor=north, yshift=1.25cm] (Uo_2) {$\accentset{\circ}{U}_{\delta_2}(a)$};
 		% Интервалы
 		\draw (1,0) to[out=80,in=100] (6,0);
 		\draw (6,0) to[out=80,in=100] (11,0);
-		\draw (3,0) to[out=70,in=110] (6,0);
-		\draw (6,0) to[out=70,in=110] (9,0);
+		\draw (3.8334,0) to[out=70,in=110] (6,0);
+		\draw (6,0) to[out=70,in=110] (8.1666,0);
 	\end{tikzpicture}
 \end{center}
 Пусть $\delta_3 = \frac{|x_2-a|}{2} > 0$. Тогда 
