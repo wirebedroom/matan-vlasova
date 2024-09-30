@@ -204,8 +204,8 @@
 		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
 		\draw (12,0) node[anchor=north] (x) {$x$};
 		% Точки
-		\filldraw[black] (3,0) circle (0.05) node[anchor=north] (a) {$a$}; 
-		\filldraw[black] (9,0) circle (0.05) node[anchor=north] (b) {$b$}; 
+		\draw[shift={(3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+		\draw[shift={(9,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (b) {$b$};
 		\draw (1,0) node[anchor=north] (a-e) {$a-\varepsilon$};
 		\draw (5,0) node[anchor=north] (a+e) {$a+\varepsilon$};
 		\draw (7,0) node[anchor=north] (b-e) {$b-\varepsilon$};
@@ -238,7 +238,7 @@
 	Любая сходящаяся последовательность является ограниченной.	
 	\begin{center}
 		\begin{tikzpicture}
-			% Числовая прямая x.
+			% Числовая прямая 
 				\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);        
 			% Точки
 				\filldraw[black] (4,0) circle (0.05) node[anchor=north] (x_1) {$x_1$}; 
@@ -342,7 +342,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \subsection{Гиперболические функции}
 \subsection{Предельные точки числового множества}
 \begin{definition}
-	Точка $a\in \mathbb{R}$ называется предельной точкой множества $X\subset \mathbb{R}$, если любая окрестность $U(a)$ содержит бесконечно много элементов множества $X$.
+	Точка $a\in \mathbb{R}$ называется предельной точкой множества $X\subset \mathbb{R} \iff$ любая окрестность $U(a)$ содержит бесконечно много элементов множества $X$.
 \end{definition}
 \begin{remark}
 	Множество $A$ называется бесконечным или содержащим бесконечно много элементов, если при вычитании из $A$ любого его конечного подмножества получается непустое множество.
@@ -526,6 +526,38 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 Отрезок $I_n$ содержит бесконечно много элементов множества $X$ по построению последовательности $\{I_n\}_{n=1}^{\infty} \implies$ окрестность $U(c)$ содержит бесконечно много элементов из $X \implies c$ --- предельная.
 \end{proof}
 
-\subsection{Предельные точки числовых последовательностей}
 
+
+\subsection{Предельные точки числовых последовательностей}
+\begin{definition}
+	Точка $a\in \mathbb{R}$ называется предельной точкой числовой последовательно $\{x_n\}_{n=1}^{\infty} \iff$ любая окрестность $U(a)$ содержит бесконечно много элементов последовательности $\{x_n\}_{n=1}^{\infty} $.
+\end{definition}
+\begin{remark}
+	Если $a$ --- предельная точка $\{x_n\}_{n=1}^{\infty} $, то любая $U(a)$ содержит какую-либо подпоследовательность $\{x_n\}_{n=1}^{\infty} $.
+\end{remark}
+Пример: $\{x_n\}_{n=1}^{\infty}, x_{n}=(-1)^{n}$. 
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);		
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south] (x_{2n-1}) {$x_{2n-1}$};
+		\filldraw[black] (8,0) circle (0.05) node[anchor=south] (x_{2n}) {$x_{2n}$};
+		\draw 		 (4,0) node[anchor=north] (-1) {$-1$};
+		\draw 		 (8,0) node[anchor=north] (1) {$1$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{theorem}
+	Точка $a\in \mathbb{R}$ является предельной для $\{x_n\}_{n=1}^{\infty} \iff \exists \{x_{n_k}\}_{n=1}^{\infty} : \lim_{n \to \infty} x_{n_k} = a$.
+\end{theorem}
+\begin{proof}
+	Необходимость. $a$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$. Выберем $\{\varepsilon\}_{n=1}^{\infty}, \varepsilon_n = \frac{1}{n}>0$.
+
+	Для $n=1 \ \ U_{\varepsilon_{1}=1}(a)$ содержит $\infty$ много элементов $\implies \exists x_{n_1}\in U_{\varepsilon_1}(a)$, т.е. $|x_{n_1}-a| < 1$.
+
+	Для $n=2 \ \ U_{\varepsilon_{2}=\frac{1}{2}}(a)$ содержит $\infty$ много элементов $\implies \exists n_2>n_1 : x_{n_2}\in U_{\varepsilon_2}(a)$, т.е. $|x_{n_2}-a| < \frac{1}{2}$. 
+
+	Для $n=3 \ \ U_{\varepsilon_{3}=\frac{1}{3}}(a)$ содержит $\infty$ много элементов $\implies \exists n_3>n_2 : x_{n_3}\in U_{\varepsilon_3}(a)$, т.е. $|x_{n_3}-a| < \frac{1}{3}$ и т.д. 
+
+	Для $n=k \ \ U_{\varepsilon_{k}=\frac{1}{k}}(a)$ содержит $\infty$ много элементов $\implies \exists n_k>n_{k-1} : x_{n_k}\in U_{\varepsilon_k}(a)$, т.е. $|x_{n_k}-a| < \frac{1}{k} \implies \{x_{n_k}\}_{n=1}^{\infty}$ является подпоследовательностью последовательности $\{x_n\}_{n=1}^{\infty} \implies \forall k\in \mathbb{N} : |x_{n_k} - a| < \frac{1}{k}$.
+\end{proof}
 \end{document} % конец документа
