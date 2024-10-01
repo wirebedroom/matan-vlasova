@@ -547,10 +547,10 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{center}
 
 \begin{theorem}
-	Точка $a\in \mathbb{R}$ является предельной для $\{x_n\}_{n=1}^{\infty} \iff \exists \{x_{n_k}\}_{n=1}^{\infty} : \lim_{n \to \infty} x_{n_k} = a$.
+	Точка $a\in \mathbb{R}$ является предельной для $\{x_n\}_{n=1}^{\infty} \iff \exists \{x_{n_k}\}_{k=1}^{\infty} : \lim_{k \to \infty} x_{n_k} = a$.
 \end{theorem}
 \begin{proof}
-	Необходимость. $a$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$. Выберем $\{\varepsilon\}_{n=1}^{\infty}, \varepsilon_n = \frac{1}{n}>0$.
+	Докажем необходимость. Пусть $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$. Выберем $\{\varepsilon_n\}_{n=1}^{\infty}, \varepsilon_n = \frac{1}{n}>0$.
 
 	Для $n=1 \ \ U_{\varepsilon_{1}=1}(a)$ содержит $\infty$ много элементов $\implies \exists x_{n_1}\in U_{\varepsilon_1}(a)$, т.е. $|x_{n_1}-a| < 1$.
 
@@ -558,6 +558,18 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 
 	Для $n=3 \ \ U_{\varepsilon_{3}=\frac{1}{3}}(a)$ содержит $\infty$ много элементов $\implies \exists n_3>n_2 : x_{n_3}\in U_{\varepsilon_3}(a)$, т.е. $|x_{n_3}-a| < \frac{1}{3}$ и т.д. 
 
-	Для $n=k \ \ U_{\varepsilon_{k}=\frac{1}{k}}(a)$ содержит $\infty$ много элементов $\implies \exists n_k>n_{k-1} : x_{n_k}\in U_{\varepsilon_k}(a)$, т.е. $|x_{n_k}-a| < \frac{1}{k} \implies \{x_{n_k}\}_{n=1}^{\infty}$ является подпоследовательностью последовательности $\{x_n\}_{n=1}^{\infty} \implies \forall k\in \mathbb{N} : |x_{n_k} - a| < \frac{1}{k}$.
+	Для $n=k \ \ U_{\varepsilon_{k}=\frac{1}{k}}(a)$ содержит $\infty$ много элементов $\implies \exists n_k>n_{k-1} : x_{n_k}\in U_{\varepsilon_k}(a)$, т.е. $|x_{n_k}-a| < \frac{1}{k} \implies \{x_{n_k}\}_{k=1}^{\infty}$ является подпоследовательностью последовательности $\{x_n\}_{n=1}^{\infty} \implies \forall k\in \mathbb{N} : |x_{n_k} - a| < \frac{1}{k}$.
+	\begin{multline}
+	\lim_{k \to \infty} \frac{1}{k} = 0 \implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall k>N : \frac{1}{k} < \varepsilon \implies \\
+	\implies \forall k > N \quad |x_{n_k}-a| < \frac{1}{k} < \varepsilon \implies \exists \lim_{k \to \infty} x_{n_k} = a.
+	\end{multline}
+
+	Докажем достаточность.
+
+	Пусть $\exists \{x_{n_k}\}_{k=1}^{\infty} : \lim_{k \to \infty} x_{n_k} = a$. Выберем любую $U(a)$ и найдем такое $\varepsilon>0$, что $U_\varepsilon(a) \subset  U(a)$:
+	\[
+	\exists N=N_(\varepsilon)\in\mathbb{N} \quad \forall k>N : |x_{n_k}-a|<\varepsilon \implies x_{n_k}\in U_\varepsilon(a)\subset U(a)
+	.\]
+Следовательно, $U(a)$ содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а значит $a$ --- предельная.
 \end{proof}
 \end{document} % конец документа
