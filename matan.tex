@@ -25,7 +25,7 @@
 % Теоремы
 \newtheorem{definition}{Определение}[subsection]
 \newtheorem{theorem}{Теорема}[subsection]
-\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{lemma}{Утверждение}[subsection]
 \theoremstyle{remark}
 \newtheorem*{remark}{Замечание}
@@ -582,6 +582,481 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 
 Докажем единственность предельной точки для $\{x_n\}_{n=1}^{\infty}$ "от противного". Пусть $\exists b\neq a$, $b$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$, тогда $|b-a|\ge \delta>0$. Т.к. $a=\lim_{n \to \infty} x_n$, любая $\varepsilon$-окрестность точки содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а именно все, начиная с номера $N(\varepsilon) + 1$, т.е. $\forall n>n(\varepsilon)$. Вне $U_\varepsilon(a)$ может содержаться не более конечного числа элементов $\{x_n\}_{n=1}^{\infty}$ (возможно $x_n$ с номерами $1, 2, \ldots, N(\varepsilon)$).
 
-Выберем $\varepsilon=\frac{\delta}{4} > 0$.
+Выберем $\varepsilon=\frac{\delta}{4} > 0$. Тогда $\forall n>N(\varepsilon) : x_n \in  U_\varepsilon(a)$. 
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+		\draw[shift={(3.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (b) {$b$};
+		\draw[shift={(8.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+		\draw (2,0) to[out=70,in=110] (5,0);
+		\draw (7,0) to[out=70,in=110] (10,0);
+		\draw            (4,1.5) node[anchor=north] (U_b) {$U_\varepsilon(b)$};
+		\draw            (9,1.5) node[anchor=north] (U_a) {$U_\varepsilon(a)$};
+		\draw (7,-1) node[anchor=north] (x_n) {$x_n, n>N(\varepsilon)$};
+		\draw[->] (x_n) to (8,0.4);
+	\end{tikzpicture}
+\end{center}
+
+Но $U_\varepsilon(a)\cap U_\varepsilon(b) = \varnothing$, что противоречит тому, что $b$ --- предельная точка для $\{x_n\}_{n=1}^{\infty}$, т.е. $U_\varepsilon(b)$ должна содержать бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а туда может попасть не более конечного. Следовательно, $a = b$.
 \end{proof}
+
+\begin{theorem}
+	Любая ограниченная числовая последовательность имеет хотя бы одну предельную точку.
+\end{theorem}
+\begin{proof}
+	$\{x_n\}_{n=1}^{\infty}$ --- ограниченная, $X = \{x_1, x_2, \ldots, x_n, \ldots\} \subset \mathbb{R}$, $X$ --- множество значений числовой последовательность $\{x_n\}_{n=1}^{\infty}$. Т.к. $\{x_n\}_{n=1}^{\infty}$ --- ограниченная числовая последовательность, $X$ --- ограниченное числовое множество.
+	Рассмотрим два случая.
+
+	Первый: $X$ --- бесконечное числовое множество. Тогда $X$ по принципу Больцано-Вейерштрасса имеет хотя бы одну предельную точку $a$, т.е. в любую $U(a)$ попадает бесконечно много элементов множества $X$, а значит и бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$. Следовательно, $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$.
+
+	Второй: $X$ --- конечное числовое множество. Тогда хотя бы один элемент последовательности $\{x_n\}_{n=1}^{\infty}$ повторяется бесконечно много раз, т.е. $\exists$ подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty}$ (постоянная $\forall k\in \mathbb{N}$), $x_{n_k} = a\in  X \implies$ a --- предельная точка $\{x_n\}_{n=1}^{\infty}, \lim_{k \to \infty} x_{n_k} = a$.
+\end{proof}
+
+\begin{theorem}
+	Для того, чтобы точка $a\in \mathbb{R}$ была пределом $\{x_n\}_{n=1}^{\infty}$, т.е. $\lim_{n \to \infty} x_n = a$, необходимо и достаточно, чтобы $\{x_n\}_{n=1}^{\infty}$ была ограниченной и имела единственную предельную точку.
+\end{theorem}
+\begin{proof}
+	Докажем необходимость.
+	$\exists \lim_{n \to \infty} x_n = a \in \mathbb{R} \implies$ $\{x_n\}_{n=1}^{\infty}$ ограниченна (по свойству сходящейся последовательности), а значит, $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку (по теореме 2).
+
+	Докажем достаточность. Пусть $a$ --- единственная предельная точка ограниченной последовательности $\{x_n\}_{n=1}^{\infty}.$. Докажем, что $\lim_{n \to \infty} x_n = a$.
+
+	Т.к. $a$ --- .
+\end{proof}
+
+
+
+\subsection{Фундаментальные последовательности}
+\begin{definition}
+	Последовательность $\{x_n\}_{n=1}^{\infty} \subset  \mathbb{R}$ называется фундаментальной $\iff $
+	\[
+	\forall \varepsilon>0 \quad \exists N=N(\varepsilon) \in  \mathbb{N} \forall n>N, \forall m>N : |x_n-x_m|<\varepsilon
+	.\] 
+\end{definition}
+
+\begin{theorem}
+	Если числовая последовательность $\{x_n\}_{n=1}^{\infty}$ фундаментальна, то она ограниченна.
+\end{theorem}
+\begin{proof}
+	$\{x_n\}_{n=1}^{\infty}$ фундаментальная $\implies\forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N, \forall m>N : |x_n-x_m| < \varepsilon$.
+	Пусть $\varepsilon=1 \implies \exists N=N(1) \implies \forall n>N$ и $m=N+1 : |x_n - x_{N+1}|<1$ \\
+	$\implies \forall n>N : |x_n| = |x_n - x_{N+1} + x_{N+1}| \le  |x_n - x_{N+1}| + |x_{N+1}| < 1 + |x_{N+1}| = M_0 \implies \forall n>N : |x_n| < M_0.$
+	
+	Пусть $M = \max \{|x_1|, |x_2|, \ldots, |x_N|, M_0\} \implies \forall n\in \mathbb{N} : |x_n| \le M \implies \{x_n\}_{n=1}^{\infty}$ ограниченна.
+\end{proof}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);		
+		\filldraw[black] (4,0) circle (0.05) node[anchor=south] (x_{2n-1}) {$x_{2n-1}$};
+		\filldraw[black] (8,0) circle (0.05) node[anchor=south] (x_{2n}) {$x_{2n}$};
+		\draw 		 (4,0) node[anchor=north] (-1) {$-1$};
+		\draw 		 (8,0) node[anchor=north] (1) {$1$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{theorem}[Критерий Коши сходимости числовой последовательности]
+	Числовая последовательность $\{x_n\}_{n=1}^{\infty}$ сходится тогда и только тогда, когда она фундаментальна.	
+\end{theorem}
+\begin{proof}
+	Докажем необходимость.
+
+	По условию $\{x_n\}_{n=1}^{\infty}$ сходится $\implies \exists \lim_{n \to \infty} x_n = a \in  \mathbb{R}$, тогда 
+	\[
+		\forall \varepsilon>0 \quad \exists N=N_(\varepsilon)\in \mathbb{N} \quad \forall n>N, \forall m>N : |x_{n} - a| <\frac{\varepsilon}{2}; |x_{m}-a|<\frac{\varepsilon}{2}
+	.\]
+
+	Рассмотрим $|x_{n}-x_{m} = | x_{n} - a + a - x_{m}| \le  |x_{n}-a| + |a-x_{m}| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$
+
+	\[
+	\forall  n>N, \forall m>N \quad (N=N(\varepsilon)\in \mathbb{N}) : |x_{n}-x_{m}|<\varepsilon \implies \{x_n\}_{n=1}^{\infty}
+	.\] 
+	Следовательно, $\{x_n\}_{n=1}^{\infty}$ фундаментальна.
+
+	Докажем достаточность.
+
+	По условию $\{x_n\}_{n=1}^{\infty}$ фундаментальна $\implies$ ограниченна $\implies \exists $ хотя бы одна предельная точка. Докажем, что эта предельная точка единственна "от противного". Предположим, что $\exists $ две предельные точки  последовательности $\{x_n\}_{n=1}^{\infty} : b$ и $b_1, b\neq b_1$. По определению предельной точки $\forall \varepsilon>0 \quad U_\varepsilon(b)$ и $U_\varepsilon(b_1)$  содержит бесконечно много членов последовательности $\{x_n\}_{n=1}^{\infty}$.
+
+	$\{x_n\}_{n=1}^{\infty}$ фундаментальна $\implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n,m>N : |x_n - x_{m}| < \varepsilon$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+		\draw[shift={(3.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (b_1) {$b_1$};
+		\draw[shift={(8.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (b) {$b$};
+		\draw (2,0) to[out=70,in=110] (5,0);
+		\draw (7,0) to[out=70,in=110] (10,0);
+		\draw            (4,1.5) node[anchor=north] (U_b) {$U_\varepsilon(b_1)$};
+		\draw            (9,1.5) node[anchor=north] (U_a) {$U_\varepsilon(b)$};
+		\draw (7,-1) node[anchor=north] (x_n) {$\{x_n\} $};
+		\draw[->] (x_n) to (8,0.4);
+		\draw[->] (x_n) to (4,0.4);
+	\end{tikzpicture}
+\end{center}
+
+Т.к. $b_1 \neq  b \implies \varepsilon = \frac{|b_1-b}{6} > 0.$ Для выбранного $\varepsilon$ найдем соответствующий номер $N=N(\varepsilon)$
+\[
+\forall n, m >N : |x_{n} - x_{m}| < \frac{|b_1-b|}{6}
+.\] 
+
+Т.к. в $U_\varepsilon(b)$ и $U_\varepsilon(b_1)$ попадает бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, то
+\[
+	\exists  n_1>N, x_{n_1} \in  U_\varepsilon(b) \text{и} \exists m_1>N : x_{m_1} \in U_\varepsilon(b_1)
+.\] 
+\[
+	0 < |b-b_1| = |b-x_{n_1} + x_{n_1} - x_{m_1} + x_{m_1} - b_1| \le |x_{n_1} - b| + |x_{n_1} - x_{m_1}| + |x_{m_1} - b_1| <3\varepsilon = \frac{3|b-b_1|}{6} = \frac{|b-b_1}{2}
+.\] 
+\[
+0 < |b-b_1| < \frac{|b-b_1|}{2}
+.\] 
+Противоречие, следовательно, $b=b_1$, а значит, $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку $\implies$ $\{x_n\}_{n=1}^{\infty}$ сходится (по теореме 4 о предельной точке последовательности).
+\end{proof}
+
+Пример: $\{x_n\}_{n=1}^{\infty}$, $x_{n} = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n}$. Существует ли $\lim_{n \to \infty} x_n \in  \mathbb{R}$?
+
+$\forall n \in  \mathbb{N} \quad m = 2n > n$
+\[
+	|x_{n} - x_{2n}| = |x_{2n} - x_{n}| = |1 + \frac{1}{2} + \ldots + \frac{1}{2n} - 1 - \frac{1}{2} -\ldots - \frac{1}{n}| =
+\] 
+\[
+= \frac{1}{n+1} + \frac{1}{n+2} + .. + \frac{1}{2n} > \frac{1}{2n} + \frac{1}{2n} + \ldots + \frac{1}{2n} = \frac{1}{2}
+.\] 
+Следовательно, $\{x_n\}_{n=1}^{\infty}$ не является фундаментальной.
+\[
+	\exists \varepsilon=\frac{1}{2} \quad \forall N\in  \mathbb{N} \exists n>N \exists m=2n>N : |x_{n}-x_{2n}| > \frac{1}{2}
+.\] 
+Значит, не существует конечный $\lim_{n \to \infty} x_n$, т.е. последовательность не является сходящейся.
+
+
+\begin{definition}
+	Число $b$ или $+\infty(-\infty)$ называют частичным пределом числовой последовательности $\{x_n\}_{n=1}^{\infty}$ $\iff$
+	\[
+		\exists  \{x_n\}_{n=1}^{\infty} : \lim_{k \to \infty} x_{n_k} = b (+-\infty).
+	.\] 
+\end{definition}
+	Если частичный предел есть конечное число, то это число является предельной точкой $\{x_n\}_{n=1}^{\infty}$.
+
+	$(-1)^{n}$ - $+-1$ - частичные пределы.
+	Наибольший частичный предел (может быть $+-\infty)$ называют верхним пределом числовой последовательности и обозначают $\overline{\lim_{n \to \infty} x_n}$.
+	Наименьший частичный предел (может быть $+-\infty)$ называют нижним пределом числовой последовательности и обозначают $\underline{\lim_{n \to \infty} x_n}$.
+	\[
+		\underline{\lim_{n \to \infty} x_n} \le \overline{\lim_{n \to \infty} x_n}
+	.\] 
+
+Пример: $\{(-1)^{n}n\}_{n=1}^{\infty} = x_n$. $\underline{\lim_{n \to \infty} x_n} = +\infty$. $\underline{\lim_{n \to \infty} x_n} = -\infty$.
+
+\begin{theorem}
+	Последовательность $\{x_n\}_{n=1}^{\infty}$ сходится $\iff$
+	\[
+		\overline{\lim_{n \to \infty} x_n} = \underline{\lim_{n \to \infty} x_n} 
+	.\] 
+	и является конечным числом.
+\end{theorem}
+
+\subsection{Пределы функций. Определение предела по Коши}
+*: $a; a+0; a-0; \infty; +\infty; -\infty$
+**: $b; \infty; +\infty; -\infty$
+
+Пусть функция $f(x)$ определена в некоторой проколотой окрестности *.
+\begin{definition}
+	\[
+	\lim_{x \to *} f(x) = ** \iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in  \accentset{\circ}{U}(*)  \implies f(x) \in  U_\varepsilon(**)
+	.\] 
+\end{definition}
+
+	\[
+	a \in \accentset{\circ}{U}_delta(a)
+	.\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+			\draw (1,0) to[out=70,in=110] (6,0);
+			\draw (6,0) to[out=70,in=110] (11,0);
+		\end{tikzpicture}
+	\end{center}
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(a+0)
+	.\] 
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(a-0)
+	.\] 
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(\infty)
+	.\] 
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(+\infty)
+	.\] 
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(-\infty)
+	.\] 
+
+	\[
+	a \in \accentset{\circ}{U}_\delta(-a)
+	.\] 
+
+	$\lim_{n \to a} f(x) = b \iff$
+	\[
+	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}: 0< |x-a| < \delta
+	.\] 
+	Следовательно, $|f(x)-b|<\varepsilon$ 
+
+	$x \approx a$ с точностью $<\delta=\delta(\varepsilon) \implies f(x)\approx b$ с точностью $<\varepsilon$.
+
+	Рассмотрим $\lim_{x \to \infty} f(x) = b \iff$
+	\[
+	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \mathbb{R} : x > \delta
+	.\] 
+	Следовательно, $|f(x) - b < \varepsilon$.
+
+	Рассмотрим $\lim_{x \to \infty} f(x) = b \iff$
+	\[
+	\forall \varepsilon > 0 \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : x < -\delta
+	.\] 
+	Следовательно, $|f(x) - b| < \varepsilon$
+	Пример: $\lim_{x \to -\infty} \arctan{x} = - \frac{\pi}{2}$
+
+	Если $* = a; \infty$, то $\lim_{x \to *} f(x)$ называют двусторонним пределом.
+	Если $* = a+0; a-0; +\infty; -\infty$, то $\lim_{x \to *} f(x)$ называют односторонним пределом.
+	Если $** = b$ (конечные числа), то $\lim_{x \to *} f(x) = b$ называют конечным пределом.
+	Если $** = \infty; +\infty; -\infty$
+
+\begin{theorem}[о связи двустороннего предела с односторонними]
+	\[
+		\lim_{x \to a} f(x) = b \iff \exists \lim_{x \to a+0} f(x) = b \text{ и } \exists \lim_{x \to a-0} f(x) = b
+	.\]
+\end{theorem}
+\begin{proof}
+	Докажем необходимость.
+
+	По условию $\exists  \lim_{x \to a} f(x) = b \implies $
+	\[
+	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : 0 < |x-a| < \delta \implies
+	.\] 
+	\[
+	\implies |f(x) - b| < \varepsilon
+	.\] 
+Тогда
+\[
+0 < |x-a| < \delta \iff x \in (a-\delta, a) \cup (a; a + \delta) \implies
+.\] 
+\[
+\begin{cases}
+	\forall x \in  \mathbb{R} : a < x < a+\delta, \\
+	\forall x \in  \mathbb{R} : a-\delta < x < a.
+\end{cases}
+\]
+$\implies $
+
+Докажем достаточность.
+$\lim_{x \to a+0} f(x) = b \iff \forall \varepsilon>0 \quad \exists \delta_1 = \delta_1(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a < x < a+\delta_1 \implies |f(x) - b| < \varepsilon$
+$\lim_{x \to a-0} f(x) = b \iff \forall \varepsilon>0 \quad \exists \delta_2 = \delta_2(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a -\delta_2 < x < a \implies |f(x) - b| < \varepsilon$
+
+Пусть $\delta = \min \{\delta_1, \delta_2\} > 0$. Тогда $\accentset{\circ}{U}_\delta(a)\subset  $
+\end{proof}
+
+\begin{remark}
+	\begin{enumerate}
+		\item \[
+		\lim_{x \to a} f(x) = \infty \iff \lim_{x \to a+0} f(x) = \infty
+		.\] 
+	\end{enumerate}
+\end{remark}
+
+\begin{definition}[Определение предела по Гейне]
+	Пусть $f(x)$ определена в некоторой $\accentset{\circ}{U}(*) $
+
+	$\lim_{x \to *} f(x) = ** \iff$
+	\[
+	\forall \{x_n\}_{n=1}^{\infty}
+	.\] 
+\end{definition}
+
+\begin{theorem}[об эквивалентности определений предела по Коши и Гейне]
+	Определения предела по Коши и по Гейне эквивалентны.
+\end{theorem}
+Пример:
+$\lim_{x \to 0} \sin{\frac{1}{x}}$ не определен.
+
+\[
+	x_n = \frac{1}{\pi n} \quad \lim_{n \to \infty} x_n = 0 \quad \lim_{n \to \infty} \sin{x_n} = \lim_{n \to \infty} \sin{\pi n} = 0
+.\] 
+\[
+	y_n = \frac{1}{\frac{\pi}{2} + 2\pi n} \quad \lim_{n \to \infty} y_n = 0 \quad \lim_{n \to \infty} \sin{y_n} = \lim_{n \to \infty} \sin{\frac{\pi}{2} + 2\pi n} = 1
+.\] 
+$0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
+
+\begin{theorem}[о единственности предела функции]
+	Если $\exists \lim_{x \to *} f(x) = b \in  \mathbb{R}$, то этот предел единственный (при $x \to *$)
+\end{theorem}
+\begin{proof}
+	$\exists  \lim_{x \to *} f(x) = b \in \mathbb{R} \implies$ по определению предела по Гейне для любой $\{x_n\}_{n=1}^{\infty}, x_n \neq  *, \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x_n) = b$. Числовая последовательность $\{f(x_n)\}_{n=1}^{\infty}$ сходится $\implies$ имеет только один предел $b \implies \exists $ и единственнен $\lim_{x \to *} f(x) = b$
+\end{proof}
+
+\begin{definition}
+	Функция $f(x)$ называется локально ограниченной при  $x \to *$ (в точке $*$ или в окрестности $*$ ) $\iff \exists \accentset{\circ}{U}(*), \exists M>0$, что $f(x)$ определена в  $\accentset{\circ}{U}(*) $ и $\forall $
+\end{definition}
+
+\begin{theorem}[о локальной ограниченности функции, имеющей конечный предел]
+	Пусть $\exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограниченна при $x\to *$.
+\end{theorem}
+\begin{proof}
+	\[
+	\lim_{x \to *} f(x)=b \iff \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon \implies
+	.\] 
+	\[
+	\implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| = |f(x) -b + b| \le  |f(x) -b| + |b| < \varepsilon + |b| = M
+	.\] 
+	Выберем любой $\varepsilon>0$, например, $\varepsilon=1$. Найдем соответствующую $\delta>0 \implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| < 1 + |b| = M \implies f(x) $ локально ограниченна при $x \to *$.
+\end{proof}
+
+\subsection{Бесконечно малые функции}
+\begin{definition}
+	Функцию $\alpha(x)$ называется бесконечно малой (б.м.) при $x \to  *\iff \lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon $
+\end{definition}
+Пример: $y = 2^{\frac{1}{x}}$
+\[
+	x\to 0+0 \quad \lim_{x \to 0+0} 2^{\frac{1}{x}} = [2^{+\infty}] = +\infty
+.\]
+\[
+	x\to 0-0 \quad \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{бесконечно малая при} x \to 0-0
+.\]
+
+\begin{theorem}[о связи функции, ее предеела и бесконечно малой]
+\[
+\lim_{x \to *} f(x) = b \iff f(x) = b + \alpha(x) \text{, где }\alpha(x) \text{- бесконечная малая при }x\to *
+.\] 	
+\end{theorem}
+\begin{proof}
+	Докажем необходимость.
+	По условию 
+
+	Докажем достаточность. Пусть $f(x) = b + \alpha(x)$,  $\alpha(x)$ --- бесконечно малая при  $x \to  * \implies$.
+	\[
+		\implies \alpha(x) = f(x) - b \to  0 \text{ при } x\to *
+	.\] 
+	\[\forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon 
+	.\]
+\end{proof}
+
+\subsection{Свойства бесконечно малых функций}
+\begin{theorem}
+	Пусть $\alpha(x)$ и  $\beta(x)$ - бесконечно малые при  $x\to *$. Тогда $\alpha(x) + \beta(x)$ --- бесконечно малые при  $x\to *$.
+\end{theorem}
+\begin{proof}
+	$\alpha(x)$ и  $\beta(x)$ бесконечно малые при  $x\to *$ 
+	\[
+		\lim_{x \to *} \alpha(x) \implies \forall \varepsilon> 0 \quad \exists \delta_1=\delta_1(\varepsilon)>0 \quad \forall x\in \accentset {\circ}{U}_{\delta_1}(*) \implies |\alpha(x)| < \frac{\varepsilon}{2}	
+	.\] 
+	\[
+		\lim_{x \to *} \alpha(x) \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\beta(x)| < \frac{\varepsilon}{2}	
+	.\] 
+
+	Пусть $\delta = \min \{\delta_1, \delta_2\} $, если $*: a; a + 0; a - 0$ и  $\delta=\max \{\delta_1, \delta_2\} $, если $*: \infty;, +\infty, -\infty$.
+	\[
+		\implies \accentset{\circ}{U}_\delta(*) = \accentset{\circ}{U}_{\delta_1}(*) \cap \accentset{\circ}{U}_{\delta_2}(*) \implies
+	.\] 
+	\[
+	\implies \forall 
+	.\] 
+	
+\end{proof}
+
+\begin{corollary}
+Сумма конечного числа бесконечно малой при $x\to *$ есть бесконечно малая при $x \to  *$.
+\end{corollary}
+
+\begin{theorem}[произведение бесконечно малой на ограниченнную]
+	Пусть $\alpha$ - бесконечно малая при $x \to *$, $f(x)$ локально ограниченна при  $x\to *$. Тогда $\alpha(x)\cdot f(x)$ есть бесконечно малая при $x\to *$.
+\end{theorem}
+	\begin{proof}
+		$f(x)$ --- локально ограниченна при $x\to * \implies \exists \accentset{\circ}{U}_{\delta_1}(*) \quad \exists M>0 \quad \forall x \in  \accentset{\circ}{U}_{\delta_1}(*) : |f(x)| < M;$
+		$\alpha(x)$ --- бесконечно малая при $x \to  * \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\alpha(x)| < \frac{\varepsilon}{M} \implies$
+		$\implies \accentset{\circ}{U}_\delta=\accentset{\circ}{U}_{\delta_1}(*)\cap \accentset{\circ}{U}_{\delta_2}(*)$
+
+	\end{proof}
+\[
+	\lim_{x \to 0} x \sin{\frac{1}{x}} = 
+.\] 
+\[
+	\lim_{x \to 0} x^2 \arctan{\frac{1}{x^{100}}} = 0
+.\] 
+
+\begin{theorem}[о произведении двух бесконечно малых]
+	Пусть $\alpha(x)$, $\beta(x)$ --- бесконечно малые при $x \to *$. Тогда $\alpha(x)\beta(x)$ --- бесконечно малая при $x \to *$
+\end{theorem}
+\begin{proof}
+	$\beta(x)$ --- бесконечно малая при $x \to  * \implies \lim_{x \to *} \beta(x) = 0 \implies $ по теореме о локальной ограниченной функции, имеющей конечный предел $\implies \beta(x)$ локально ограниченна при $x\to * \implies \alpha(x)\cdot \beta(x)$ --- произведение бесконечно малой на локально ограниченную при $x\to * \implies$ по теореме 2 $\alpha\cdot \beta$ --- бесконечно малые при.
+\end{proof}
+
+\begin{corollary}
+	Произведение конечного числа бесконечно малых при $x \to  *$ есть бесконечно малая при $x \to *$.
+\end{corollary}
+
+\subsection{Арифметические операции с функциями, имеющими пределы}
+
+\begin{theorem}
+	Пусть $\exists \lim_{x \to *} f(x) = A \in  \mathbb{R}, \lim_{x \to *} g(x) = B\in  \mathbb{R}$
+	Тогда
+	\begin{enumerate}
+		\item $\exists \lim_{x \to *} (f(x) \pm g(x)) = A\pm B$
+		\item $\exists \lim_{x \to *} (f(x) g(x)) = AB$ 
+		\item $B \neq 0 \implies \exists  \lim_{x \to *} \frac{f(x)}{g(x)} = \frac{A}{B}$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	$\exists  \lim_{x \to *} f(x) = A; \exists  \lim_{x \to *} g(x) = B \implies$ по теореме о связи функции, ее предела и бесконечно малой $\implies f(x) = A + \alpha(x), g(x) = B + \beta(x)$, где $\alpha(x), \beta(x)$ --- бесконечно малые при $x\to *$.
+	
+	\begin{enumerate}
+		\item $f(x)\pm g(x) = (A + \alpha(x)) \pm (B+ \beta(x)) = A \pm B +\alpha(x) \pm \beta(x) = A \pm B + \gamma(x)$, где $\gamma(x)$ -- бесконечно малая при  $x \to * \implies$
+		\item $f(x) \cdot  g(x) = (A + \alpha(x))(B+\beta(x))= AB+B\alpha(x)+A\beta(x) + \alpha(x)\beta(x) = AB + \gamma(x) \implies$ по теореме о связи предела функции, ее предела и бесконечно малой $\implies \lim_{x \to *} f(x)g(x) = AB$
+		\item $\frac{f(x)}{g(x)} = \frac{A+\alpha(x)}{B+\beta(x)} = \frac{A}{B} + \frac{A+\alpha(x)}{B + \beta(x)} - AB$
+			\[
+			\gamma(x) = \frac{AB+B\alpha(x)-AB-A\beta(x)}{B(B+\beta(x)} = \frac{B\alpha(x)-A\beta(x)}{B} \cdot \frac{1}{B+\beta(x)}
+			.\] 
+			$\frac{B\alpha(x)-A\beta(x)}{B}$ --- бесконечно малая при $x \to  *$ по свойствам бесконечно малых.
+			
+			Докажем, что $\phi(x)= \frac{1}{B+\beta(x)}$ локально ограниченна при $x \to *$.
+			$\beta(x)$ --- бесокнечно малая при $x \to * \implies \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_\delta(*) \implies |\beta(x)| < \varepsilon$.
+			Выберем $\varepsilon= \frac{|B|}{2}>0$, найдем соответствующее $\delta=\delta(\varepsilon)>0 \implies \forall  x \in  \accentset{\circ}{U}_\delta(*) : |\beta(x)| < \frac{|B|}{2}$ 
+			\[
+			\implies |B+\beta(x)| \ge  |B| - |\beta(x)| > |B| - \frac{|B|}{2} = \frac{|B|}{2} \implies
+			.\] 
+			\[
+			\implies \forall x \in  \accentset{\circ}{U}_\delta(*) : |B + \beta(x)| > \frac{|B|}{2} >0 \implies
+			.\] 
+			\[
+			\frac{1}{B+\beta(x)<\frac{2}{|B|}} \implies 
+			.\]
+			$\implies\phi(x) = \frac{1}{B+\beta(x)}$ локально ограниченна при  $x \to  *$
+			$\gamma(x)$ --- произведение бесконечно малой на локально ограниченную при $x \to  *\implies$ по свойству бесконечно малой является бесконечно малой при $x \to *$.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}[о знакопостоянстве функции, имеющей ненулевой предел]
+	Пусть $\exists  \lim_{x \to *} f(x) = b \neq 0$. Тогда $\exists \accentset{\circ}{U}_\delta(*) \quad \forall x \in \accentset{\circ}{U}_\delta(*) : |f(x)| > \frac{|b|}{2}$ 
+	Кроме того, если $b>0$, то  $\forall x \in \accentset{\circ}{U}_\delta(*) : f(x) > \frac{b}{2} \implies f(x) > 0$, т.е. имеет тот же знак, что и предел;
+	если $b<0$, то $\forall x \in  \accentset{\circ}{U}_\delta(*) : f(x) < \frac{b}{2} \implies f(x) <0$, т.е. имеет тот же знак, что и предел.
+\end{theorem}
+
+\begin{proof}
+	\[
+	\forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon
+	.\] 
+	Или $b - \varepsilon < f(x) < b + \varepsilon$.
+	Выберем $\varepsilon = \frac{|b|}{2} > 0$, найдем соответствующий $\delta = \delta(\varepsilon) > 0 \implies$
+	\[
+	\forall x \in  \accentset{\circ}{U}_\delta(*) : |f(x)| = |b + f(x) - b| \ge  |b| - |f(x) - b| > |b| - \frac{|b|}{2}
+	.\] 
+	\[
+	\implies |f(x)| > \frac{|b|}{2}
+	.\] 
+Пусть $b > 0$, тогда $\varepsilon = \frac{|b|}{2} = \frac{b}{2} > 0 \implies \forall x \in  \accentset{\circ}{U}_\delta(*) \quad f(x) > b - \varepsilon = b - \frac{b}{2} = \frac{b}{2} > 0$
+\end{proof}
+
+
 \end{document} % конец документа
