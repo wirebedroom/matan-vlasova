@@ -44,6 +44,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.geometric,positioning}
+\usepackage{pgfplots}
 %\usetikzlibrary{patterns.meta}
 
 % figure support
@@ -752,78 +753,171 @@ $\forall n \in  \mathbb{N} \quad m = 2n > n$
 	и является конечным числом.
 \end{theorem}
 
-\subsection{Пределы функций. Определение предела по Коши}
-*: $a; a+0; a-0; \infty; +\infty; -\infty$
-**: $b; \infty; +\infty; -\infty$
 
-Пусть функция $f(x)$ определена в некоторой проколотой окрестности *.
-\begin{definition}
+
+
+
+\section{Пределы функций} 
+\subsection{Определение предела по Коши}
+Будем пользоваться следующими обозначениями:
+
+$* \ : \quad a; \quad a+0; \quad a-0; \quad \infty; \quad +\infty; \quad -\infty$
+ 
+$** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
+
+\noindent Пусть функция $f(x)$ определена в некоторой проколотой окрестности $*$.
+\begin{definition}[предела по Коши] $\lim_{x \to *} f(x) = ** \iff$
 	\[
-	\lim_{x \to *} f(x) = ** \iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in  \accentset{\circ}{U}(*)  \implies f(x) \in  U_\varepsilon(**)
+	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in  \accentset{\circ}{U}_\delta(*)  \implies f(x) \in  U_\varepsilon(**)
 	.\] 
 \end{definition}
 
+	\begin{tabular}{| c | l |}
+		\hline
+		$*$ & $x\in \accentset{\circ}{U}_\delta(*)$ \\
+		\hline
+		$a$     & $x \in \mathbb{R} : 0 < |x-a| < \delta$ \\
+		\hline
+		$a + 0$ & $x \in \mathbb{R} : 0 < x < a + \delta$ \\
+		\hline
+		$a - 0$ & $x \in \mathbb{R} : a-\delta < x < a $ \\
+		\hline
+		$\infty$ & $x \in \mathbb{R} : |x| > \delta$ \\
+		\hline
+		$+\infty$ & $x \in \mathbb{R} : x  > \delta$ \\
+		\hline
+		$-\infty$ & $x \in \mathbb{R} : x < -\delta$ \\
+		\hline
+	\end{tabular}
+	\quad \quad
+	\begin{tabular}{| c | l |}
+			\hline
+		$**$ & $f(x)\in U_\varepsilon(**)$ \\
+			\hline
+		$b$     & $|f(x)-b| < \varepsilon$ \\
+			\hline
+		$\infty$ & $|f(x)|>\varepsilon$ \\
+			\hline
+		$+\infty$ & $f(x)>\varepsilon$ \\
+			\hline
+		$-\infty$ & $f(x)<-\varepsilon$ \\
+			\hline
+	\end{tabular}
+\\[12pt]
 	\[
-	a \in \accentset{\circ}{U}_delta(a)
-	.\] 
+	x \in \accentset{\circ}{U}_\delta(a)
+	\] 
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
-			\draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
-			\draw (1,0) to[out=70,in=110] (6,0);
-			\draw (6,0) to[out=70,in=110] (11,0);
+			\draw (3,0) to[out=70,in=110] (6,0);
+			\draw (6,0) to[out=70,in=110] (9,0);
+			\draw (6,0) node[anchor=north] (a) {$a$};
+			\draw (3,0) node[anchor=north] (a-delta) {$a-\delta$};
+			\draw (9,0) node[anchor=north] (a+d) {$a+\delta$};
+			\node[circle,draw=black,fill=white,inner sep=0pt,minimum size=3.5pt] (a) at (6,0) {};
 		\end{tikzpicture}
 	\end{center}
 
 	\[
-	a \in \accentset{\circ}{U}_\delta(a+0)
-	.\] 
+	x \in \accentset{\circ}{U}_\delta(a+0)
+	\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw (6,0) to[out=70,in=110] (9,0);
+			\draw (6,0) node[anchor=north] (a) {$a$};
+			\draw (9,0) node[anchor=north] (a+d) {$a+\delta$};
+			\draw[black, fill=white] (6,0) circle (0.05) node[anchor=north] (a) {$a$};
+		\end{tikzpicture}
+	\end{center}
 
 	\[
-	a \in \accentset{\circ}{U}_\delta(a-0)
-	.\] 
+	x \in \accentset{\circ}{U}_\delta(a-0)
+	\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw (3,0) to[out=70,in=110] (6,0);
+			\draw (3,0) node[anchor=north] (a-delta) {$a-\delta$};
+			\node[circle,draw=black,fill=white,inner sep=0pt,minimum size=3.5pt] (a) at (6,0) {};
+		\end{tikzpicture}
+	\end{center}
 
 	\[
-	a \in \accentset{\circ}{U}_\delta(\infty)
-	.\] 
-
+	x \in \accentset{\circ}{U}_\delta(\infty)
+	\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw (0,1.7) to[out=0,in=110] (5,0);
+			\draw (7,0) to[out=70,in=180] (12,1.7);
+			\draw[black, fill=white] (5,0) circle (0.05) node[anchor=north] (-d) {$-\delta$};
+			\draw[black, fill=white] (7,0) circle (0.05) node[anchor=north] (d) {$\delta$};
+		\end{tikzpicture}
+	\end{center}
 	\[
-	a \in \accentset{\circ}{U}_\delta(+\infty)
-	.\] 
-
+	x \in \accentset{\circ}{U}_\delta(+\infty)
+	\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw (7,0) to[out=70,in=180] (12,1.7);
+			\draw[black, fill=white] (7,0) circle (0.05) node[anchor=north] (d) {$\delta$};
+		\end{tikzpicture}
+	\end{center}
 	\[
-	a \in \accentset{\circ}{U}_\delta(-\infty)
-	.\] 
+	x \in \accentset{\circ}{U}_\delta(-\infty)
+	\] 
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
+			\draw (0,1.7) to[out=0,in=110] (5,0);
+			\draw[black, fill=white] (5,0) circle (0.05) node[anchor=north] (-d) {$-\delta$};
+		\end{tikzpicture}
+	\end{center}
 
-	\[
-	a \in \accentset{\circ}{U}_\delta(-a)
-	.\] 
-
-	$\lim_{n \to a} f(x) = b \iff$
-	\[
-	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}: 0< |x-a| < \delta
-	.\] 
-	Следовательно, $|f(x)-b|<\varepsilon$ 
+	\begin{multline}
+	\lim_{x \to a} f(x) = b \iff \\
+	\iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}: 0< |x-a| < \delta \implies \\
+	\implies |f(x)-b|<\varepsilon.
+	\end{multline}
+	% Не пойдет. 
+	\begin{center}
+		\begin{tikzpicture}
+			% Декартова плоскость.
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (1,4) -- (11,4);	
+			\draw (11,4) node[anchor=north] (x) {$x$};
+			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (6,0) -- (6,8);	
+			\draw (6,8) node[anchor=west] (y) {$y$};
+			%\draw plot [smooth] coordinates {(6,4) (7,4.6) (8,6) (9,7.8) };
+			%\draw[shift={(8,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+			%\draw[shift={(7.3,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-d) {$a-\delta$};
+			%\draw[shift={(8.7,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+d) {$a+\delta$};
+		\end{tikzpicture}
+	\end{center}
 
 	$x \approx a$ с точностью $<\delta=\delta(\varepsilon) \implies f(x)\approx b$ с точностью $<\varepsilon$.
 
-	Рассмотрим $\lim_{x \to \infty} f(x) = b \iff$
-	\[
-	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \mathbb{R} : x > \delta
-	.\] 
-	Следовательно, $|f(x) - b < \varepsilon$.
+	\begin{multline}
+		\lim_{x \to +\infty} f(x) = b \iff \\
+		\iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \mathbb{R} : x > \delta \implies \\
+		\implies |f(x) - b|< \varepsilon.
+	\end{multline}
+	Пример: $\lim_{x \to +\infty} \arctg{x} = \frac{\pi}{2}$.
 
-	Рассмотрим $\lim_{x \to \infty} f(x) = b \iff$
-	\[
-	\forall \varepsilon > 0 \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : x < -\delta
-	.\] 
-	Следовательно, $|f(x) - b| < \varepsilon$
-	Пример: $\lim_{x \to -\infty} \arctan{x} = - \frac{\pi}{2}$
+	\begin{multline}
+		\lim_{x \to -\infty} f(x) = b \iff \\
+		\iff \forall \varepsilon > 0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x\in \mathbb{R} : x < -\delta \implies \\
+	\implies |f(x) - b| < \varepsilon.
+	\end{multline}
+	Пример: $\lim_{x \to -\infty} \arctg{x} = - \frac{\pi}{2}$.
+\\[12pt]
 
-	Если $* = a; \infty$, то $\lim_{x \to *} f(x)$ называют двусторонним пределом.
-	Если $* = a+0; a-0; +\infty; -\infty$, то $\lim_{x \to *} f(x)$ называют односторонним пределом.
-	Если $** = b$ (конечные числа), то $\lim_{x \to *} f(x) = b$ называют конечным пределом.
-	Если $** = \infty; +\infty; -\infty$
+	Если $* = a; \ \infty$, то $\lim_{x \to *} f(x)$ называется двусторонним пределом.
+	Если $* = a+0; \ a-0;\ +\infty;\ -\infty$, то $\lim_{x \to *} f(x)$ называется односторонним пределом.
+	Если $** = b$ (конечное число), то $\lim_{x \to *} f(x) = b$ называют конечным пределом.
+	Если $** = \infty;\ +\infty;\ -\infty$, то $\lim_{x \to *} f(x)$ называют бесконечным.
 
 \begin{theorem}[о связи двустороннего предела с односторонними]
 	\[
