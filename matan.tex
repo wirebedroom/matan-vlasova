@@ -35,8 +35,14 @@
 
 %% Colors
 \usepackage{xcolor}
-\definecolor{nord9}{RGB}{129,161,193}
 \definecolor{nord8}{RGB}{136,192,208}
+\definecolor{nord9}{RGB}{129,161,193}
+\definecolor{nord10}{RGB}{94,129,172}
+\definecolor{nord11}{RGB}{191,97,106}
+\definecolor{nord12}{RGB}{208,135,112}
+\definecolor{nord13}{RGB}{235,203,139}
+\definecolor{nord14}{RGB}{163,190,140}
+\definecolor{nord15}{RGB}{180,142,173}
 
 \usepackage{textcomp}
 
@@ -778,7 +784,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\hline
 		$a$     & $x \in \mathbb{R} : 0 < |x-a| < \delta$ \\
 		\hline
-		$a + 0$ & $x \in \mathbb{R} : 0 < x < a + \delta$ \\
+		$a + 0$ & $x \in \mathbb{R} : a < x < a + \delta$ \\
 		\hline
 		$a - 0$ & $x \in \mathbb{R} : a-\delta < x < a $ \\
 		\hline
@@ -890,7 +896,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		  \draw[->] (0,0) -- (8,0) node[right] {$x$};
 		  \draw[->] (0,0) -- (0,8) node[above] {$y$};
 		  %\draw plot (\x,{0.03*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
-		  \draw plot (\x,{0.2*(\x)^2}) node[right] {$f(x) = \frac{x^2}{5}$};
+		  \draw[thick, color=red] plot (\x,{0.2*(\x)^2}) node[right] {$f(x)$}; %= \frac{x^2}{5}$};
 		  %\draw[shift={(3.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
 		  \draw[dashed] (3.5,0) -- (3.5,2.45);
 		  \draw[dashed] (3.5,2.45) -- (0,2.45) node[left] {$b$};
@@ -1037,7 +1043,7 @@ $0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
 	x\to 0-0 \quad \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{бесконечно малая при} x \to 0-0
 .\]
 
-\begin{theorem}[о связи функции, ее предеела и бесконечно малой]
+\begin{theorem}[о связи функции, ее предела и бесконечно малой]
 \[
 \lim_{x \to *} f(x) = b \iff f(x) = b + \alpha(x) \text{, где }\alpha(x) \text{- бесконечная малая при }x\to *
 .\] 	
