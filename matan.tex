@@ -815,7 +815,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw (6,0) node[anchor=north] (a) {$a$};
 			\draw (3,0) node[anchor=north] (a-delta) {$a-\delta$};
 			\draw (9,0) node[anchor=north] (a+d) {$a+\delta$};
-			\node[circle,draw=black,fill=white,inner sep=0pt,minimum size=3.5pt] (a) at (6,0) {};
+			\draw[black, fill=white] (6,0) circle (0.07) node[anchor=north] (a) {$a$};
 		\end{tikzpicture}
 	\end{center}
 
@@ -828,7 +828,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw (6,0) to[out=70,in=110] (9,0);
 			\draw (6,0) node[anchor=north] (a) {$a$};
 			\draw (9,0) node[anchor=north] (a+d) {$a+\delta$};
-			\draw[black, fill=white] (6,0) circle (0.05) node[anchor=north] (a) {$a$};
+			\draw[black, fill=white] (6,0) circle (0.07) node[anchor=north] (a) {$a$};
 		\end{tikzpicture}
 	\end{center}
 
@@ -840,7 +840,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
 			\draw (3,0) to[out=70,in=110] (6,0);
 			\draw (3,0) node[anchor=north] (a-delta) {$a-\delta$};
-			\node[circle,draw=black,fill=white,inner sep=0pt,minimum size=3.5pt] (a) at (6,0) {};
+			\draw[black, fill=white] (6,0) circle (0.07) node[anchor=north] (a) {$a$};
 		\end{tikzpicture}
 	\end{center}
 
@@ -852,8 +852,8 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
 			\draw (0,1.7) to[out=0,in=110] (5,0);
 			\draw (7,0) to[out=70,in=180] (12,1.7);
-			\draw[black, fill=white] (5,0) circle (0.05) node[anchor=north] (-d) {$-\delta$};
-			\draw[black, fill=white] (7,0) circle (0.05) node[anchor=north] (d) {$\delta$};
+			\draw[black, fill=white] (5,0) circle (0.07) node[anchor=north] (-d) {$-\delta$};
+			\draw[black, fill=white] (7,0) circle (0.07) node[anchor=north] (d) {$\delta$};
 		\end{tikzpicture}
 	\end{center}
 	\[
@@ -863,7 +863,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
 			\draw (7,0) to[out=70,in=180] (12,1.7);
-			\draw[black, fill=white] (7,0) circle (0.05) node[anchor=north] (d) {$\delta$};
+			\draw[black, fill=white] (7,0) circle (0.07) node[anchor=north] (d) {$\delta$};
 		\end{tikzpicture}
 	\end{center}
 	\[
@@ -873,7 +873,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
 			\draw (0,1.7) to[out=0,in=110] (5,0);
-			\draw[black, fill=white] (5,0) circle (0.05) node[anchor=north] (-d) {$-\delta$};
+			\draw[black, fill=white] (5,0) circle (0.07) node[anchor=north] (-d) {$-\delta$};
 		\end{tikzpicture}
 	\end{center}
 
@@ -882,21 +882,38 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	\iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}: 0< |x-a| < \delta \implies \\
 	\implies |f(x)-b|<\varepsilon.
 	\end{multline}
-	% Не пойдет. 
+
 	\begin{center}
-		\begin{tikzpicture}
-			% Декартова плоскость.
-			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (1,4) -- (11,4);	
-			\draw (11,4) node[anchor=north] (x) {$x$};
-			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (6,0) -- (6,8);	
-			\draw (6,8) node[anchor=west] (y) {$y$};
-			%\draw plot [smooth] coordinates {(6,4) (7,4.6) (8,6) (9,7.8) };
-			%\draw[shift={(8,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
-			%\draw[shift={(7.3,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-d) {$a-\delta$};
-			%\draw[shift={(8.7,4)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+d) {$a+\delta$};
+		\begin{tikzpicture}[domain=0:6]
+		  %\draw[very thin,color=gray] (0,0) grid (8,8);
+
+		  \draw[->] (0,0) -- (8,0) node[right] {$x$};
+		  \draw[->] (0,0) -- (0,8) node[above] {$y$};
+		  %\draw plot (\x,{0.03*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
+		  \draw plot (\x,{0.2*(\x)^2}) node[right] {$f(x) = \frac{x^2}{5}$};
+		  %\draw[shift={(3.5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+		  \draw[dashed] (3.5,0) -- (3.5,2.45);
+		  \draw[dashed] (3.5,2.45) -- (0,2.45) node[left] {$b$};
+		  \draw[black, fill=white] (3.5,0) circle (0.07) node[anchor=north] (a) {$a$};
+
+		  %\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+d) {$a+\delta$};
+		  \draw[dashed] (5,0) -- (5,5);
+		  \draw[dashed] (5,5) -- (0,5) node[left] {$b+\varepsilon$};;
+		  \draw[black, fill=white] (5,0) circle (0.07) node[anchor=north] (a+d) {$a+\delta$};
+
+		  %\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-d) {$a-\delta$};
+		  \draw[dashed] (2,0) -- (2,0.82);
+		  \draw[dashed] (2,0.82) -- (0,0.82) node[left] {$b-\varepsilon$};
+		  \draw[black, fill=white] (2,0) circle (0.07) node[anchor=north] (a-d) {$a-\delta$};
+
+	   	  \draw (3,0) node[anchor=north] {$x$};
+		  \draw (3,0) -- (3,1.8) ;
+		  \draw[->] (3,1.8) -- (0,1.8); 
+
+		  \draw (0,0.82) to[out=130,in=230] (0,5);
+		  \draw (-0.7,3) node[left] (U) {$U_\varepsilon(b)$};
 		\end{tikzpicture}
 	\end{center}
-
 	$x \approx a$ с точностью $<\delta=\delta(\varepsilon) \implies f(x)\approx b$ с точностью $<\varepsilon$.
 
 	\begin{multline}
