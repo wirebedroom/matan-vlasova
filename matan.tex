@@ -638,7 +638,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \begin{definition}
 	Последовательность $\{x_n\}_{n=1}^{\infty} \subset  \mathbb{R}$ называется фундаментальной $\iff $
 	\[
-	\forall \varepsilon>0 \quad \exists N=N(\varepsilon) \in  \mathbb{N} \forall n>N, \forall m>N : |x_n-x_m|<\varepsilon
+	\forall \varepsilon>0 \quad \exists N=N(\varepsilon) \in  \mathbb{N} \quad \forall n>N, \forall m>N : |x_n-x_m|<\varepsilon
 	.\] 
 \end{definition}
 
@@ -646,11 +646,18 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	Если числовая последовательность $\{x_n\}_{n=1}^{\infty}$ фундаментальна, то она ограниченна.
 \end{theorem}
 \begin{proof}
-	$\{x_n\}_{n=1}^{\infty}$ фундаментальная $\implies\forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N, \forall m>N : |x_n-x_m| < \varepsilon$.
-	Пусть $\varepsilon=1 \implies \exists N=N(1) \implies \forall n>N$ и $m=N+1 : |x_n - x_{N+1}|<1$ \\
-	$\implies \forall n>N : |x_n| = |x_n - x_{N+1} + x_{N+1}| \le  |x_n - x_{N+1}| + |x_{N+1}| < 1 + |x_{N+1}| = M_0 \implies \forall n>N : |x_n| < M_0.$
-	
-	Пусть $M = \max \{|x_1|, |x_2|, \ldots, |x_N|, M_0\} \implies \forall n\in \mathbb{N} : |x_n| \le M \implies \{x_n\}_{n=1}^{\infty}$ ограниченна.
+	$\{x_n\}_{n=1}^{\infty}$ фундаментальная $\implies$
+	\[
+	\forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N, \forall m>N : |x_n-x_m| < \varepsilon
+	.\] 
+	Пусть $\varepsilon=1$, тогда
+	\begin{multline}
+	\exists N=N(1) \implies \forall n>N, m=N+1 : |x_n - x_{N+1}|<1 \implies \\
+	\implies \forall n>N : |x_n| = |x_n - x_{N+1} + x_{N+1}| \le \\
+	\le |x_n - x_{N+1}| + |x_{N+1}| < 1 + |x_{N+1}| = M_0 \implies \\
+	\implies \forall n>N : |x_n| < M_0.
+	\end{multline}
+	Пусть $M = \max \{|x_1|, |x_2|, \ldots, |x_N|, M_0\}$, тогда $\forall n\in \mathbb{N} : |x_n| \le M \implies \{x_n\}_{n=1}^{\infty}$ ограниченна.
 \end{proof}
 \begin{center}
 	\begin{tikzpicture}
@@ -709,9 +716,12 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \[
 	\exists  n_1>N, x_{n_1} \in  U_\varepsilon(b) \text{и} \exists m_1>N : x_{m_1} \in U_\varepsilon(b_1)
 .\] 
-\[
-	0 < |b-b_1| = |b-x_{n_1} + x_{n_1} - x_{m_1} + x_{m_1} - b_1| \le |x_{n_1} - b| + |x_{n_1} - x_{m_1}| + |x_{m_1} - b_1| <3\varepsilon = \frac{3|b-b_1|}{6} = \frac{|b-b_1}{2}
-.\] 
+\begin{multline}
+	0 < |b-b_1| = |b-x_{n_1} + x_{n_1} - x_{m_1} + x_{m_1} - b_1| \le \\
+	\le |x_{n_1} - b| + |x_{n_1} - x_{m_1}| + |x_{m_1} - b_1| <3\varepsilon = \\
+	= \frac{3|b-b_1|}{6} = \frac{|b-b_1}{2}.
+\end{multline}
+ 
 \[
 0 < |b-b_1| < \frac{|b-b_1|}{2}
 .\] 
@@ -944,53 +954,62 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \begin{theorem}[о связи двустороннего предела с односторонними]
 	\[
-		\lim_{x \to a} f(x) = b \iff \exists \lim_{x \to a+0} f(x) = b \text{ и } \exists \lim_{x \to a-0} f(x) = b
+		\exists \lim_{x \to a} f(x) = b \iff \exists \lim_{x \to a+0} f(x) = b \text{ и } \exists \lim_{x \to a-0} f(x) = b
 	.\]
 \end{theorem}
 \begin{proof}
-	Докажем необходимость.
-
-	По условию $\exists  \lim_{x \to a} f(x) = b \implies $
+	Докажем необходимость. Распишем определение двустороннего предела по Коши.
+	\begin{multline}
+		\exists  \lim_{x \to a} f(x) = b \implies \\
+		\implies \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : 0 < |x-a| < \delta \implies \\
+		\implies |f(x) - b| < \varepsilon.
+	\end{multline}	
+	Рассмотрим неравенство $0 < |x-a| < \delta$.
+	\begin{multline}
+		0 < |x-a| < \delta \iff x \in (a-\delta, a) \cup (a; a + \delta) \implies \\
+		\implies \begin{cases}
+			\forall x \in  \mathbb{R} : a < x < a+\delta \implies |f(x)-b|<\varepsilon, \\
+			\forall x \in  \mathbb{R} : a-\delta < x < a \implies |f(x)-b|<\varepsilon.
+		\end{cases} \implies \\
+		\implies \begin{cases}
+			\exists \lim_{x \to a+0} f(x) = b, \\
+			\exists \lim_{x \to a-0} f(x) = b.
+		\end{cases}
+	\end{multline}
+	Докажем достаточность. Распишем определения односторонних пределов по Коши.
+	\begin{multline}
+		\lim_{x \to a+0} f(x) = b \iff \\
+		\iff \forall \varepsilon>0 \quad \exists \delta_1 = \delta_1(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a < x < a+\delta_1 \implies \\
+		\implies |f(x) - b| < \varepsilon.
+	\end{multline}
+	\begin{multline}
+		\lim_{x \to a-0} f(x) = b \iff \\
+		\iff \forall \varepsilon>0 \quad \exists \delta_2 = \delta_2(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a -\delta_2 < x < a \implies \\
+		\implies |f(x) - b| < \varepsilon.
+	\end{multline}
+	Пусть $\delta = \min \{\delta_1, \delta_2\} > 0$. Тогда $\accentset{\circ}{U}_\delta(a)\subset (\accentset{\circ}{U}_{\delta_1}(a)\cap \accentset{\circ}{U}_{\delta_2}(a)) \implies$
 	\[
-	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : 0 < |x-a| < \delta \implies
-	.\] 
-	\[
-	\implies |f(x) - b| < \varepsilon
-	.\] 
-Тогда
-\[
-0 < |x-a| < \delta \iff x \in (a-\delta, a) \cup (a; a + \delta) \implies
-.\] 
-\[
-\begin{cases}
-	\forall x \in  \mathbb{R} : a < x < a+\delta, \\
-	\forall x \in  \mathbb{R} : a-\delta < x < a.
-\end{cases}
-\]
-$\implies $
-
-Докажем достаточность.
-$\lim_{x \to a+0} f(x) = b \iff \forall \varepsilon>0 \quad \exists \delta_1 = \delta_1(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a < x < a+\delta_1 \implies |f(x) - b| < \varepsilon$
-$\lim_{x \to a-0} f(x) = b \iff \forall \varepsilon>0 \quad \exists \delta_2 = \delta_2(\varepsilon)>0 \quad \forall x\in \mathbb{R} : a -\delta_2 < x < a \implies |f(x) - b| < \varepsilon$
-
-Пусть $\delta = \min \{\delta_1, \delta_2\} > 0$. Тогда $\accentset{\circ}{U}_\delta(a)\subset  $
+		\implies (\forall x\in \mathbb{R} : 0 < |x-a| < \delta \implies |f(x)-b| < \varepsilon) \implies \exists \lim_{x \to a} f(x) = b
+	.\]
 \end{proof}
 
-\begin{remark}
-	\begin{enumerate}
-		\item \[
-		\lim_{x \to a} f(x) = \infty \iff \lim_{x \to a+0} f(x) = \infty
+\begin{remark}[1]
+		\[
+		\lim_{x \to a} f(x) = \infty \iff \lim_{x \to a+0} f(x) = \infty, \lim_{x \to a-0} f(x) = \infty
 		.\] 
-	\end{enumerate}
+\end{remark}
+\begin{remark}[2]
+	\[
+		\lim_{x \to \infty} f(x) = \infty \iff \lim_{x \to +\infty} f(x) = b \ (\infty), \lim_{x \to -\infty} f(x) = b \ (\infty)
+	.\] 
 \end{remark}
 
 \begin{definition}[Определение предела по Гейне]
-	Пусть $f(x)$ определена в некоторой $\accentset{\circ}{U}(*) $
-
-	$\lim_{x \to *} f(x) = ** \iff$
+	Пусть $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$.
 	\[
-	\forall \{x_n\}_{n=1}^{\infty}
-	.\] 
+	\lim_{x \to *} f(x) = ** \iff \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) : \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x) = **
+	\]
+Примечание: $x_n \neq * \ \forall n\in \mathbb{N}$.
 \end{definition}
 
 \begin{theorem}[об эквивалентности определений предела по Коши и Гейне]
