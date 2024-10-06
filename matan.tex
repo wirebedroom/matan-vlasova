@@ -96,10 +96,10 @@
 \begin{definition}
 	Множество $\mathbb{R}$ называется множеством действительных чисел, если элементы этого множества удовлетворяют следующему комплексу условий:
 \begin{enumerate}
-	\item На множестве $\mathbb{R}$ определена операция сложения ``+'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
+	\item На $\mathbb{R}$ определена операция сложения  ``$+$'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
 		\begin{enumerate}
 			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$;
-			\item $\forall x \ \exists$ противоположный элемент ``$-x$'', такой, что $x+(-x)=(-x)+x=0$;
+			\item $\forall x \ \exists$ противоположный элемент $-x$, такой, что $x+(-x)=(-x)+x=0$;
 			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}:(x+y)+z=x+(y+z)$;
 			\item Коммутативность. $\forall x, y\in \mathbb{R}:x+y=y+x$.
 		\end{enumerate}
@@ -129,7 +129,35 @@
 \subsection{Геометрическая интерпретация $\mathbb{R}$}
 \subsection{Числовые промежутки}
 \subsection{Бесконечные числовые промежутки}
+
+
+
 \subsection{Окрестности точки}
+\begin{definition}
+	Окрестностью точки $a \in \mathbb{R}$ называется любой интервал, содержащий точку $a$ и обозначается $U(a)$.
+\end{definition}
+
+Пусть $\varepsilon$ --- некоторое положительное число.
+\begin{definition}
+	$\varepsilon$-окрестностью точки $a\in \mathbb{R}$ называется интервал $(a-\varepsilon;a+\varepsilon)$ и обозначается $U_\varepsilon(a)$.
+	\[
+	c\in U_\varepsilon(a) \iff |a-c| < \varepsilon
+	.\] 
+\end{definition}
+
+\begin{definition}
+	Проколотой $\varepsilon$-окрестностью точки $a\in \mathbb{R}$ называется множество $(a-\varepsilon;a)\cup (a; a+\varepsilon) = U_\varepsilon(a)\ \backslash \{a\}$ и обозначается $\accentset{\circ}{U}_\varepsilon(a)$.
+\end{definition}
+
+\begin{definition}
+	Окрестностью бесконечности называют любое множество вида $(-\infty; a)\cup (b; +\infty).$
+\end{definition}
+\begin{definition}
+	$\varepsilon$-окрестностью бесконечности называют множество $(-\infty; -\varepsilon)\cup (\varepsilon; +\infty)$.
+
+	Примечание: $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
+\end{definition}
+
 \subsection{Принцип вложенных отрезков (Коши-Кантора)}
 \begin{definition}
 	Пусть $\{x_n\}_{n=1}^{\infty}$ --- последовательность некоторых множеств. Если $\forall n\in \mathbb{N}:X_n\supset X_{n+1}$, то эта последовательность называется последовательностью вложенных отрезков.
@@ -179,9 +207,20 @@
 	Число $a\in\mathbb{R}$ называется пределом числовой последовательности, если $\forall \varepsilon>0$ существует такой номер $n$, зависящий от $\varepsilon$, что $\forall$ натурального числа $N>n$ верно неравенство $|x_n - a| < \varepsilon$.
 	$$\lim_{n\to\infty} x_n = a$$
 \end{definition}
+\noindent Пример:
+\[
+\lim_{n \to \infty} \frac{1}{n} = 0 \iff \forall \varepsilon>0 \exists N=N(\varepsilon) \in \mathbb{N} \quad \forall n>N : \frac{1}{n} < \varepsilon
+.\] 
+$\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $N(\varepsilon) = [\frac{1}{\varepsilon}]$. Тогда $\forall n>[\frac{1}{\varepsilon}] : \frac{1}{n} < \varepsilon.$
 
 
+\begin{definition}
+	Если $\{x_n\}_{n=1}^{\infty}$ имеет конечный предел $a$, то эта последовательность называется сходящейся, в противном случае --- расходящейся.
+\end{definition}
 
+\begin{definition}
+	Если $\lim_{n \to \infty} x_n = 0$, то последовательность $\{x_n\}_{n=1}^{\infty}$ называется бесконечно малой (б.м.).
+\end{definition}
 \subsection{Бесконечные пределы}
 
 
@@ -191,7 +230,7 @@
 	Любая сходящаяся последовательность имеет только один предел.	
 \end{theorem}
 \begin{proof}
-	"От противного". Пусть $\{x_n\}_{n=1}^{\infty}$ --- сходящаяся последовательность. Предположим, что $\exists \lim_{n \to \infty} x_{n} = a$ и $\exists \lim_{n \to \infty} x_{n} = b$, причем $a\neq b$. Пусть для определенности $a<b$.
+	``От противного''. Пусть $\{x_n\}_{n=1}^{\infty}$ --- сходящаяся последовательность. Предположим, что $\exists \lim_{n \to \infty} x_{n} = a$ и $\exists \lim_{n \to \infty} x_{n} = b$, причем $a\neq b$. Пусть для определенности $a<b$.
 	\[
 	\lim_{n \to \infty} x_{n} = a \iff \forall \varepsilon>0 \quad \exists N_1=N_1(\varepsilon)\in \mathbb{N} : \forall n>N_1 : |x_{n}-a|<\varepsilon
 	,\] 
@@ -577,7 +616,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	\[
 	\exists N=N_(\varepsilon)\in\mathbb{N} \quad \forall k>N : |x_{n_k}-a|<\varepsilon \implies x_{n_k}\in U_\varepsilon(a)\subset U(a)
 	.\]
-Следовательно, $U(a)$ содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а значит $a$ --- предельная.
+Следовательно, $U(a)$ содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а значит, $a$ --- предельная.
 \end{proof}
 
 \begin{theorem}
@@ -587,7 +626,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \begin{proof}
 	$a$ --- предельная, если $\lim_{n \to \infty} x_n = a$ (по теореме 1).
 
-Докажем единственность предельной точки для $\{x_n\}_{n=1}^{\infty}$ "от противного". Пусть $\exists b\neq a$, $b$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$, тогда $|b-a|\ge \delta>0$. Т.к. $a=\lim_{n \to \infty} x_n$, любая $\varepsilon$-окрестность точки содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а именно все, начиная с номера $N(\varepsilon) + 1$, т.е. $\forall n>n(\varepsilon)$. Вне $U_\varepsilon(a)$ может содержаться не более конечного числа элементов $\{x_n\}_{n=1}^{\infty}$ (возможно $x_n$ с номерами $1, 2, \ldots, N(\varepsilon)$).
+Докажем единственность предельной точки для $\{x_n\}_{n=1}^{\infty}$ ``от противного''. Пусть $\exists b\neq a$, $b$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$, тогда $|b-a|\ge \delta>0$. Т.к. $a=\lim_{n \to \infty} x_n$, любая $\varepsilon$-окрестность точки содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а именно все, начиная с номера $N(\varepsilon) + 1$, т.е. $\forall n>n(\varepsilon)$. Вне $U_\varepsilon(a)$ может содержаться не более конечного числа элементов $\{x_n\}_{n=1}^{\infty}$ (возможно $x_n$ с номерами $1, 2, \ldots, N(\varepsilon)$).
 
 Выберем $\varepsilon=\frac{\delta}{4} > 0$. Тогда $\forall n>N(\varepsilon) : x_n \in  U_\varepsilon(a)$. 
 
@@ -615,7 +654,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	$\{x_n\}_{n=1}^{\infty}$ --- ограниченная, $X = \{x_1, x_2, \ldots, x_n, \ldots\} \subset \mathbb{R}$, $X$ --- множество значений числовой последовательность $\{x_n\}_{n=1}^{\infty}$. Т.к. $\{x_n\}_{n=1}^{\infty}$ --- ограниченная числовая последовательность, $X$ --- ограниченное числовое множество.
 	Рассмотрим два случая.
 
-	Первый: $X$ --- бесконечное числовое множество. Тогда $X$ по принципу Больцано-Вейерштрасса имеет хотя бы одну предельную точку $a$, т.е. в любую $U(a)$ попадает бесконечно много элементов множества $X$, а значит и бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$. Следовательно, $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$.
+	Первый: $X$ --- бесконечное числовое множество. Тогда $X$ по принципу Больцано-Вейерштрасса имеет хотя бы одну предельную точку $a$, т.е. в любую $U(a)$ попадает бесконечно много элементов множества $X$, а значит, и бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$. Следовательно, $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$.
 
 	Второй: $X$ --- конечное числовое множество. Тогда хотя бы один элемент последовательности $\{x_n\}_{n=1}^{\infty}$ повторяется бесконечно много раз, т.е. $\exists$ подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty}$ (постоянная $\forall k\in \mathbb{N}$), $x_{n_k} = a\in  X \implies$ a --- предельная точка $\{x_n\}_{n=1}^{\infty}, \lim_{k \to \infty} x_{n_k} = a$.
 \end{proof}
@@ -689,7 +728,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 
 	Докажем достаточность.
 
-	По условию $\{x_n\}_{n=1}^{\infty}$ фундаментальна $\implies$ ограниченна $\implies \exists $ хотя бы одна предельная точка. Докажем, что эта предельная точка единственна "от противного". Предположим, что $\exists $ две предельные точки  последовательности $\{x_n\}_{n=1}^{\infty} : b$ и $b_1, b\neq b_1$. По определению предельной точки $\forall \varepsilon>0 \quad U_\varepsilon(b)$ и $U_\varepsilon(b_1)$  содержит бесконечно много членов последовательности $\{x_n\}_{n=1}^{\infty}$.
+	По условию $\{x_n\}_{n=1}^{\infty}$ фундаментальна $\implies$ ограниченна $\implies \exists $ хотя бы одна предельная точка. Докажем, что эта предельная точка единственна ``от противного''. Предположим, что $\exists $ две предельные точки  последовательности $\{x_n\}_{n=1}^{\infty} : b$ и $b_1, b\neq b_1$. По определению предельной точки $\forall \varepsilon>0 \quad U_\varepsilon(b)$ и $U_\varepsilon(b_1)$  содержит бесконечно много членов последовательности $\{x_n\}_{n=1}^{\infty}$.
 
 	$\{x_n\}_{n=1}^{\infty}$ фундаментальна $\implies \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n,m>N : |x_n - x_{m}| < \varepsilon$.
 \begin{center}
@@ -1007,9 +1046,9 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \begin{definition}[Определение предела по Гейне]
 	Пусть $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$.
 	\[
-	\lim_{x \to *} f(x) = ** \iff \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) : \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x) = **
+	\lim_{x \to *} f(x) = ** \iff \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) : \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x) = **,
 	\]
-Примечание: $x_n \neq * \ \forall n\in \mathbb{N}$.
+где $x_n \neq * \ \forall n\in \mathbb{N}$.
 \end{definition}
 
 \begin{theorem}[об эквивалентности определений предела по Коши и Гейне]
@@ -1027,10 +1066,14 @@ $\lim_{x \to 0} \sin{\frac{1}{x}}$ не определен.
 $0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
 
 \begin{theorem}[о единственности предела функции]
-	Если $\exists \lim_{x \to *} f(x) = b \in  \mathbb{R}$, то этот предел единственный (при $x \to *$)
+	Если $\exists \lim_{x \to *} f(x) = b \in  \mathbb{R}$, то этот предел единственный (при $x \to *$).
 \end{theorem}
 \begin{proof}
-	$\exists  \lim_{x \to *} f(x) = b \in \mathbb{R} \implies$ по определению предела по Гейне для любой $\{x_n\}_{n=1}^{\infty}, x_n \neq  *, \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x_n) = b$. Числовая последовательность $\{f(x_n)\}_{n=1}^{\infty}$ сходится $\implies$ имеет только один предел $b \implies \exists $ и единственнен $\lim_{x \to *} f(x) = b$
+	Воспользуемся определением предела по Гейне.
+	\[
+	\exists  \lim_{x \to *} f(x) = b \in \mathbb{R} \implies \forall \{x_n\}_{n=1}^{\infty}, x_n \neq  *, \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x_n) = b
+	.\] 
+	 Числовая последовательность $\{f(x_n)\}_{n=1}^{\infty}$ сходится, следовательно, имеет единственный предел $b$ (по теореме о единственности предела последовательности). 
 \end{proof}
 
 \begin{definition}
@@ -1052,7 +1095,10 @@ $0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
 
 \subsection{Бесконечно малые функции}
 \begin{definition}
-	Функцию $\alpha(x)$ называется бесконечно малой (б.м.) при $x \to  *\iff \lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon $
+	Функцию $\alpha(x)$ называют бесконечно малой (б.м.) при $x \to  *$ тогда и только тогда, когда 
+	\[
+	\lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon
+	.\] 
 \end{definition}
 Пример: $y = 2^{\frac{1}{x}}$
 \[
