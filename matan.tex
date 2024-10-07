@@ -91,6 +91,9 @@
 \subsection{Кванторные операции}
 \subsection{Метод математической индукции}
 
+
+
+\newpage
 \section{Множество действительных чисел}
 \subsection{Аксиоматика действительных чисел}
 \begin{definition}
@@ -168,6 +171,7 @@
 \subsection{Принцип Архимеда}
 
 
+\newpage
 \section{Функции или отображения}
 \subsection{Понятие функции}
 \subsection{Ограниченные и неограниченные числовые множества}
@@ -177,6 +181,9 @@
 \subsection{Сложная функция (композиция)}
 \subsection{Основные элементарные функции}
 
+
+
+\newpage
 \section{Числовые последовательности и их пределы}
 
 
@@ -659,16 +666,20 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	Второй: $X$ --- конечное числовое множество. Тогда хотя бы один элемент последовательности $\{x_n\}_{n=1}^{\infty}$ повторяется бесконечно много раз, т.е. $\exists$ подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty}$ (постоянная $\forall k\in \mathbb{N}$), $x_{n_k} = a\in  X \implies$ a --- предельная точка $\{x_n\}_{n=1}^{\infty}, \lim_{k \to \infty} x_{n_k} = a$.
 \end{proof}
 
-\begin{theorem}
-	Для того, чтобы точка $a\in \mathbb{R}$ была пределом $\{x_n\}_{n=1}^{\infty}$, т.е. $\lim_{n \to \infty} x_n = a$, необходимо и достаточно, чтобы $\{x_n\}_{n=1}^{\infty}$ была ограниченной и имела единственную предельную точку.
+\begin{theorem}[критерий сходимости числовой последовательности]
+	Для того, чтобы точка $a\in \mathbb{R}$ была пределом $\{x_n\}_{n=1}^{\infty}$, необходимо и достаточно, чтобы $\{x_n\}_{n=1}^{\infty}$ была ограниченной и имела единственную предельную точку.
 \end{theorem}
 \begin{proof}
 	Докажем необходимость.
-	$\exists \lim_{n \to \infty} x_n = a \in \mathbb{R} \implies$ $\{x_n\}_{n=1}^{\infty}$ ограниченна (по свойству сходящейся последовательности), а значит, $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку (по теореме 2).
+	$\exists \lim_{n \to \infty} x_n = a \in \mathbb{R} \implies$ $\{x_n\}_{n=1}^{\infty}$ ограничена (по свойству сходящейся последовательности), а значит, $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку (по теореме 2).
+	
+	Докажем достаточность. Пусть $a$ --- единственная предельная точка ограниченной последовательности $\{x_n\}_{n=1}^{\infty}$. Докажем, что $\lim_{n \to \infty} x_n = a$.
 
-	Докажем достаточность. Пусть $a$ --- единственная предельная точка ограниченной последовательности $\{x_n\}_{n=1}^{\infty}.$. Докажем, что $\lim_{n \to \infty} x_n = a$.
-
-	Т.к. $a$ --- .
+	Будем доказывать ``от противного''. Предположим, что $\{x_n\}_{n=1}^{\infty}$ не имеет предела. Тогда
+	\[
+	\forall b\in \mathbb{R} \quad \exists \varepsilon>0 \quad N\in \mathbb{N} \quad \exists n>N : |x_n - b| \ge \varepsilon
+	,\] 
+	а значит, вне $U_\varepsilon(a)$ лежит бесконечное множество элементов $\{x_n\}_{n=1}^{\infty}$. Тогда существует $\{x_{n_k}\}_{k=1}^{\infty} : |x_{n_k} - a| \ge \varepsilon$, т.е. $x_{n_k}\not\in U_\varepsilon(a)$. Следовательно, $\{x_{n_k}\}_{k=1}^{\infty}$ --- ограниченная последовательность, лежащая вне $U_\varepsilon(a)$. У этой последовательности есть предельная точка $b$ (по теореме 3). $U_\varepsilon(a)$ не содержит ни одного элемента $\{x_{n_k}\}_{k=1}^{\infty} \implies b\neq a$, что противоречит условию. Тогда $\lim_{n \to \infty} x_n = a$.
 \end{proof}
 
 
@@ -811,7 +822,7 @@ $\forall n \in  \mathbb{N} \quad m = 2n > n$
 
 
 
-
+\newpage
 \section{Пределы функций} 
 \subsection{Определение предела по Коши}
 Будем пользоваться следующими обозначениями:
@@ -1063,10 +1074,10 @@ $\lim_{x \to 0} \sin{\frac{1}{x}}$ не определен.
 \[
 	y_n = \frac{1}{\frac{\pi}{2} + 2\pi n} \quad \lim_{n \to \infty} y_n = 0 \quad \lim_{n \to \infty} \sin{y_n} = \lim_{n \to \infty} \sin{\frac{\pi}{2} + 2\pi n} = 1
 .\] 
-$0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
+$0 \neq 1 \implies \lim_{x \to 0} f(x)$ не существует.
 
 \begin{theorem}[о единственности предела функции]
-	Если $\exists \lim_{x \to *} f(x) = b \in  \mathbb{R}$, то этот предел единственный (при $x \to *$).
+	Если существует $\lim_{x \to *} f(x) = b \in  \mathbb{R}$, то этот предел единственный (при $x \to *$).
 \end{theorem}
 \begin{proof}
 	Воспользуемся определением предела по Гейне.
@@ -1077,53 +1088,64 @@ $0 \neq 1 \implies$ не существует $\lim_{x \to 0} f(x)$
 \end{proof}
 
 \begin{definition}
-	Функция $f(x)$ называется локально ограниченной при  $x \to *$ (в точке $*$ или в окрестности $*$ ) $\iff \exists \accentset{\circ}{U}(*), \exists M>0$, что $f(x)$ определена в  $\accentset{\circ}{U}(*) $ и $\forall $
+	Функция $f(x)$ называется локально ограниченной при  $x \to *$ (в точке $*$ или в окрестности $*$ ), если существуют такие $\accentset{\circ}{U}(*)$ и $M>0$, что $f(x)$ определена в  $\accentset{\circ}{U}(*) $ и $\forall x\in \accentset{\circ}{U}(*) : |f(x)| \le  M$. \\
+Замечание: Если функция $f$ локально ограничена при $x \to *$, то в точке $*$ такая функция может быть как определена, так и не определена.
 \end{definition}
+
 
 \begin{theorem}[о локальной ограниченности функции, имеющей конечный предел]
 	Пусть $\exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограниченна при $x\to *$.
 \end{theorem}
 \begin{proof}
-	\[
-	\lim_{x \to *} f(x)=b \iff \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon \implies
-	.\] 
-	\[
-	\implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| = |f(x) -b + b| \le  |f(x) -b| + |b| < \varepsilon + |b| = M
-	.\] 
-	Выберем любой $\varepsilon>0$, например, $\varepsilon=1$. Найдем соответствующую $\delta>0 \implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| < 1 + |b| = M \implies f(x) $ локально ограниченна при $x \to *$.
+	По определению предела функции по Коши,
+	\begin{multline}
+	\lim_{x \to *} f(x)=b \iff \\
+	\iff \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon \implies \\
+	\implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| = |f(x) -b + b| \le  |f(x) -b| + |b| < \varepsilon + |b| = M.
+	\end{multline}
+	Выберем любой $\varepsilon>0$, например, $\varepsilon=1$. Для соответствующей ему $\delta>0$ будет верно, что $\forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| < 1 + |b| = M$, а значит, $f(x)$ локально ограниченна при $x \to *$.
 \end{proof}
 
 \subsection{Бесконечно малые функции}
-\begin{definition}
-	Функцию $\alpha(x)$ называют бесконечно малой (б.м.) при $x \to  *$ тогда и только тогда, когда 
-	\[
-	\lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon
-	.\] 
-\end{definition}
-Пример: $y = 2^{\frac{1}{x}}$
-\[
-	x\to 0+0 \quad \lim_{x \to 0+0} 2^{\frac{1}{x}} = [2^{+\infty}] = +\infty
-.\]
-\[
-	x\to 0-0 \quad \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{бесконечно малая при} x \to 0-0
-.\]
-
-\begin{theorem}[о связи функции, ее предела и бесконечно малой]
-\[
-\lim_{x \to *} f(x) = b \iff f(x) = b + \alpha(x) \text{, где }\alpha(x) \text{- бесконечная малая при }x\to *
-.\] 	
-\end{theorem}
-\begin{proof}
-	Докажем необходимость.
-	По условию 
-
-	Докажем достаточность. Пусть $f(x) = b + \alpha(x)$,  $\alpha(x)$ --- бесконечно малая при  $x \to  * \implies$.
-	\[
-		\implies \alpha(x) = f(x) - b \to  0 \text{ при } x\to *
-	.\] 
-	\[\forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon 
-	.\]
-\end{proof}
+  \begin{definition}
+  	Функцию $\alpha(x)$ называют бесконечно малой (б.м.) при $x \to  *$ тогда и только тогда, когда 
+  	\[
+  	  \lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon
+  	.\] 
+  \end{definition}
+  \noindent Пример: Рассмотрим функцию $y = 2^{\frac{1}{x}}$. Если $x\to 0+0$, то
+  \[
+    \lim_{x \to 0+0} 2^{\frac{1}{x}} = [2^{+\infty}] = +\infty
+  .\]
+  Если же $x\to 0-0$, то
+  \[
+    \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{ бесконечно малая при } x \to 0-0
+  .\]
+  
+  \begin{theorem}[о связи функции, ее предела и бесконечно малой]
+  \begin{multline}
+  \lim_{x \to *} f(x) = b \iff \\
+  \iff f(x) = b + \alpha(x) \text{, где }\alpha(x) \text{ --- бесконечная малая при }x\to *.
+  \end{multline}
+  \end{theorem}
+  \begin{proof}
+    Докажем необходимость.
+    \begin{multline}
+      \exists \lim_{x \to *} f(x) = b \iff \\
+      \iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x) - b| < \varepsilon.
+    \end{multline}
+    Положим $\alpha(x)=f(x)-b$, тогда $\forall x\in \accentset{\circ}{U}_\delta(*) : |\alpha(x)|<\varepsilon \implies$ \\
+    $\implies \lim_{x \to *} \alpha(x) = 0 \implies \alpha(x)$ --- бесконечно малая при $x\to * \implies \\
+    \implies f(x) = b + \alpha(x)$ при $x\to *$.
+    
+    Докажем достаточность. Пусть $f(x) = b + \alpha(x)$,  $\alpha(x)$ --- бесконечно малая при  $x \to  * \implies$, тогда $\alpha(x) = f(x) - b \to  0 \text{ при } x\to *$. По определению бесконечно малой,
+    \begin{multline}
+      \lim_{x \to *} \alpha(x) = 0 \iff \\
+      \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon \implies \\
+      \implies \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \accentset{\circ}{U}_\delta(*) \implies |f(x)-b| < \varepsilon \implies \\
+      \implies \exists \lim_{x \to *} f(x) = b.
+    \end{multline}
+  \end{proof}
 
 \subsection{Свойства бесконечно малых функций}
 \begin{theorem}
