@@ -329,6 +329,19 @@ $\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $
 	Например, $\{(-1)^n\}_{n=1}^{\infty}$ --- ограниченная, но не сходящаяся числовая последовательность.
 \end{remark}
 
+\begin{theorem}[об арифметических операциях со сходящимися последовательностями]
+	Пусть $\exists \lim_{n \to \infty} x_n = a \in \mathbb{R}, \exists \lim_{n \to \infty} y_n = b \in \mathbb{R}$. Тогда 
+	\[
+	\exists \lim_{n \to \infty} (x_n \pm y_n) = a \pm b;
+	\]  
+	\[
+	\exists \lim_{n \to \infty} (x_n \cdot y_n) = ab;
+	\] 
+	если $y_n\neq 0 \ \forall n\in \mathbb{N}, b\neq 0$, то 
+	\[
+		\exists \lim_{n \to \infty} \frac{x_{n}}{y_n}=\frac{a}{b}
+	.\] 
+\end{theorem}
 
 
 \subsection{Монотонные числовые последовательности}
@@ -391,6 +404,35 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{proof}
 
 \subsection{Число $e$}
+\begin{theorem}
+	Числовая последовательность $\{(1+\frac{1}{n})^{n}\}_{n=1}^{\infty}$ является сходящейся, т.е. $\exists \lim_{n \to \infty} (1+\frac{1}{n})^{n} = e$.
+\end{theorem}
+\begin{proof}
+	$x_{n}=(1+\frac{1}{n})^{n}, n\in \mathbb{N}$. Рассмотрим последовательность  $\{y_n\}_{n=1}^{\infty}, y_{n} = (1+\frac{1}{n})^{n+1}$. Докажем,  что $\{y_n\}_{n=1}^{\infty}$ ограничена снизу. Т.к. $\forall n\in \mathbb{N} : (1+\frac{1}{n})^{n+1}>0 \implies \{y_n\}_{n=1}^{\infty}$ ограничена снизу. Теперь докажем, что $\{y_{n}\}_{n=1}^{\infty}$ убывает.
+	\begin{multline}
+		\forall n\ge 2 \quad \frac{y_{n-1}}{y_{n}} = \frac{(1+\frac{1}{n-1})^{n}}{(1+\frac{1}{n})^{n+1}} = \frac{(1+\frac{1}{n-1})}{(1+\frac{1}{n})^{n}(1+\frac{1}{n})}=\left(\frac{\frac{n}{n-1}}{\frac{n+1}{n}}\right)^{n} \cdot \frac{n}{n+1} = \\
+		= \left(\frac{n^2}{n^2-1}\right)^{n} \cdot \frac{n}{n+1} = \left(1 + \frac{1}{n^2-1}\right)^{n} \cdot \frac{n}{n+1}.
+	\end{multline}
+	Воспользуемся неравенством $\forall n\in \mathbb{N} : (1+x)^{n} \ge 1+nx, x\ge 0$, известным как неравенство Бернулли.
+	\begin{multline}
+		\left(1 + \frac{1}{n^2-1}\right)^{n} \cdot \frac{n}{n+1} \ge \left(1+ \frac{n}{n^2-1}\right) \cdot  \frac{n}{n+1} > \left(1 + \frac{n}{n^2}\right) \cdot \frac{n}{n+1} = \\
+		= \frac{n+1}{n} \cdot \frac{n}{n+1} = 1.
+	\end{multline}
+	Таким образом, $\forall n\ge 2 \quad \frac{y_{n-1}}{y_{n}} > 1 \implies y_{n-1} > y_{n} \implies \{y_n\}_{n=1}^{\infty}$ убывает. $\{y_n\}_{n=1}^{\infty}$ убывает и ограничена снизу $\implies$ по теореме Вейерштрасса $\exists \lim_{n \to \infty} y_n = e \in \mathbb{R}$. Вернемся к $x_n $:
+	\[
+		x_n = \left(1+\frac{1}{n}\right)^{n} = \frac{\left(1 + \frac{1}{n}\right)^{n+1}}{\left(1 + \frac{1}{n}\right)} = \frac{y_n}{\left(1 + \frac{1}{n}\right)} 
+	,\] 
+	\begin{multline}
+	\lim_{n \to \infty} x_n = \lim_{n \to \infty} \left(1+\frac{1}{n}\right)^{n} = \lim_{n \to \infty} \frac{y_n}{\left(1 + \frac{1}{n}\right)} = \frac{e}{1 + 0} = e \implies \\
+	\implies \exists \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^{n} = e.
+	\end{multline}
+	
+\end{proof}
+
+\begin{remark}
+	$x_n = (1 + \frac{1}{n})^{n}$ --- возрастающая последовательность и ограничена сверху: $2<x_n<3$; $e$ --- иррациональное число, т.е. $e\in \mathbb{R}\backslash\mathbb{Q}$; $e \approx 2,718281828459045$.
+	
+\end{remark}
 
 \subsection{Гиперболические функции}
 \subsection{Предельные точки числового множества}
