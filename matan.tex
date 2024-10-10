@@ -867,7 +867,7 @@ $* \ : \quad a; \quad a+0; \quad a-0; \quad \infty; \quad +\infty; \quad -\infty
 $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \noindent Пусть функция $f(x)$ определена в некоторой проколотой окрестности $*$.
-\begin{definition}[предела по Коши] $\lim_{x \to *} f(x) = ** \iff$
+\begin{definition}[предела функции по Коши] $\lim_{x \to *} f(x) = **$ тогда и только тогда, когда
 	\[
 	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in  \accentset{\circ}{U}_\delta(*)  \implies f(x) \in  U_\varepsilon(**)
 	.\] 
@@ -1306,5 +1306,124 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 Пусть $b > 0$, тогда $\varepsilon = \frac{|b|}{2} = \frac{b}{2} > 0 \implies \forall x \in  \accentset{\circ}{U}_\delta(*) \quad f(x) > b - \varepsilon = b - \frac{b}{2} = \frac{b}{2} > 0$
 \end{proof}
 
+\begin{theorem}[о предельном переходе в неравенстве]
+	Если существуют два предела $\lim_{x \to *} f(x) = b_1$, $\lim_{x \to *} g(x) = b_2$ и окрестность $\accentset{\circ}{U}(*)$, такая, что для любого $x$ из этой окрестности выполняется неравенство $f(x) \le g(x)$, то $b_1\le b_2$.
+\end{theorem}
+\begin{proof}
+	Пусть существуют $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$. Т.к. пределы конечны, по теореме об арифметических операциях с функциями, имеющими пределы, для разности $\phi(x) = g(x) - f(x)$ существует предел $\lim_{x \to *} \phi(x) = b_2-b_1$.
 
+	Будем доказывать ``от противного''. Предположим, что $b_1>b_2$. Из этого следует, что $b_2-b_1<0$, тогда по теореме о знакопостоянстве функции, имеющей ненулевой предел, существует такая проколотая окрестность $\accentset{\circ}{U}_1(*)$, что $\forall x \in  \accentset{\circ}{U}_1(*) : \phi(x) = g(x) - f(x) < \frac{b_2-b_1}{2} < 0$. Таким образом, $g(x) < f(x)$, а тогда $\forall x \in  \accentset{\circ}{U}(*) \cap \accentset{\circ}{U}_1(*)$ выполняются сразу два неравенства: $f(x) \le  g(x)$ и $g(x) < f(x)$, что является противоречием. Значит, $b_1\le b_2$.
+\end{proof}
+
+\begin{remark}
+	Если существует окрестность $\accentset{\circ}{U}(*)$, такая, что $\forall x \in  \accentset{\circ}{U}(*)$ верно неравенство $f(x) < g(x)$, то для пределов $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$ выполняется $b_1\le b_2$.
+\end{remark}
+
+\begin{theorem}[о пределе промежуточной функции или лемма о двух милиционерах]
+	Если слева и справа от правонарушителя находится по милиционеру, каждый из которых держит его и идет в отделение милиции, то правонарушитель тоже придет в отделение милиции. Или, говоря простым языком, если существует $\lim_{x \to *} f(x) = b$, $\lim_{x \to *} g(x) = b$ и окрестность $\accentset{\circ}{U}(*)$, такая, что $\forall x\in \accentset{\circ}{U}(*)$ выполняется неравенство $f(x) \le \phi(x) \le g(x)$, то существует $\lim_{x \to *} \phi(x) = b$.
+\end{theorem}
+\begin{proof}
+	Пусть существуют $\lim_{x \to *} f(x) = b$ и $\lim_{x \to *} g(x) = b$. Распишем эти пределы по определению Коши:
+	\begin{multline}
+		\exists \lim_{x \to *} f(x) = b \iff \\
+		\iff \forall \varepsilon>0 \quad \exists \delta_1 = \delta_1(\varepsilon) > 0 \quad \forall x\in \accentset{\circ}{U}_{\delta_1}(*) \implies b-\varepsilon < f(x) < b + \varepsilon,
+	\end{multline}
+	\begin{multline}
+		\exists \lim_{x \to *} g(x) = b \iff \\
+		\iff \forall \varepsilon>0 \quad \exists \delta_2 = \delta_2(\varepsilon) > 0 \quad \forall x\in \accentset{\circ}{U}_{\delta_2}(*) \implies b-\varepsilon < g(x) < b + \varepsilon.
+	\end{multline}
+
+	Пусть $\delta>0$ таково, что $\accentset{\circ}{U}_\delta(*) \subset \accentset{\circ}{U}(*)\cap \accentset{\circ}{U}_{\delta_1}(*) \cap \accentset{\circ}{U}_{\delta_2}(*)$. Тогда $\forall x \in \accentset{\circ}{U}_\delta(*)$ выполняются неравенства
+	$f(x) \le \phi(x) \le g(x)$, $b-\varepsilon < f(x)$ и $g(x) < b + \varepsilon$.
+	Записав их вместе, получим, что
+	\[
+	b - \varepsilon < f(x) \le \phi(x) \le g(x) < b + \varepsilon \implies \exists \lim_{x \to *} \phi(x) = b
+	.\] 
+\end{proof}
+
+\begin{theorem}[о пределе сложной функции]
+	Если существуют пределы $\lim_{x \to *} f(x) = A$ и $\lim_{y \to A} g(y) = B$, в некоторой окрестности $\accentset{\circ}{U}(*)$ $f(x)\neq A$, и в этой окрестности определена сложная функция $g(f(x))$, то существует $\lim_{x \to *} g(f(x)) = B$.
+\end{theorem}
+Обратим внимание на то, как осуществляется замена:
+\[
+	(y=f(x), x\to *, y \to A) \implies \lim_{y \to A} g(y) = B
+.\] 
+\begin{proof}
+	По определению предела по Гейне \\
+	
+	$\displaystyle \exists \lim_{x \to *} f(x) = A \implies $
+	\begin{equation}\label{Delta}
+			\implies \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) : (\lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x_n) = A), \tag{$\Delta$} 
+	\end{equation}
+
+	$\displaystyle \exists \lim_{y \to A} g(y) = B \implies$
+	\begin{equation}\label{DeltaDelta}
+			 \implies \forall \{y_n\}_{n=1}^{\infty}, y_{n}\neq A : (\lim_{n \to \infty} y_n = A \implies \lim_{n \to \infty} g(y_{n}) = B). \tag{$\Delta\Delta$} 
+	\end{equation}
+
+	Выберем любую $\{x_n\}_{n=1}^{\infty} : x_{n} \in  \accentset{\circ}{U}(*)$, тогда по \eqref{Delta} из того, что $\lim_{n \to \infty} x_n = *$, следует, что $\lim_{n \to \infty} f(x_{n}) = A$. Обозначим $y_{n}=f(x_{n})$, по условию теоремы $y_{n}\neq A$, причем $\lim_{n \to \infty} y_{n} = \lim_{n \to \infty} f(x_{n}) = A$. Тогда по \eqref{DeltaDelta} существует $\lim_{n \to \infty} g(y_{n}) = \lim_{n \to \infty} g(f(x_{n})) = B$. Следовательно, по определению предела по Гейне, существует $\lim_{x \to *} g(f(x)) = B$.
+\end{proof}
+\begin{remark}
+	Условие $f(x)\neq A$ в окрестности $\accentset{\circ}{U}(*)$ является существенным. При отсутствии этого условия теорема перестает быть верной.		
+\end{remark}
+\begin{exmp}
+	\[
+	f(x) = \begin{cases}
+		x, x\neq \frac{1}{n}, n \in \mathbb{N} \\
+		0, x = \frac{1}{n}, n \in \mathbb{N}.
+	\end{cases}
+	.\] 
+\end{exmp}	
+
+
+
+\subsection{Бесконечно большие функции}
+\begin{definition}
+	Функция $f(x)$ называется бесконечно большой (б.б.) при $x\to *$ тогда и только тогда, когда $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$ и $\lim_{x \to *} f(x) = \infty$, т.е.
+	\[
+	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}(*) : |f(x)| > \varepsilon
+	.\] 
+\end{definition}
+\begin{exmp}
+	Рассмотрим функцию $y=\frac{1}{x}$. $\lim_{x \to 0} y = \infty$, следовательно, $y$ --- бесконечно большая при $x\to 0$.
+\end{exmp}
+
+\begin{theorem}[о связи бесконечно большой с бесконечно малой]\ 
+	\begin{enumerate}
+		\item Если $f(x)$ --- бесконечно большая при $x\to *$, то $\frac{1}{f(x)}$ является бесконечно малой при $x\to *$.
+		\item Если $\alpha(x)$ --- бесконечно малая при $x \to *$ и существует такая проколотая окрестность $\accentset{\circ}{U}(*)$, что $\forall x \in  \accentset{\circ}{U}(*) : \alpha(x) \neq 0$, то $\frac{1}{\alpha(x)}$ --- бесконечно большая при $x\to *$.
+	\end{enumerate}		
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+
+\begin{remark}
+	
+\end{remark}
+
+
+
+\subsection{Первый замечательный предел}
+\begin{theorem}
+	\[
+	\lim_{x \to 0} \frac{\sin x}{x} = 1
+	.\] 
+\end{theorem}
+\begin{lemma}
+	Если $f(x)$ --- элементарная функция, $a \in D_{(f)}$ --- область определения $f$, то существует $\lim_{x \to a} f(x) = f(a)$.
+\end{lemma}
+\begin{corollary}
+	\[
+	\lim_{x \to \infty} \frac{\tg x}{x} = 1
+	.\] 
+	
+\end{corollary}
+
+\subsection{Второй замечательный предел}
+\begin{theorem}
+	\[
+		\lim_{x \to \infty} \left(\frac{1}{x} + 1 \right)^{x} = [1^{\infty}] = e
+	.\] 
+\end{theorem}
 \end{document} % конец документа
