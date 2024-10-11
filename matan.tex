@@ -1307,7 +1307,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{proof}
 
 \begin{theorem}[о предельном переходе в неравенстве]
-	Если существуют два предела $\lim_{x \to *} f(x) = b_1$, $\lim_{x \to *} g(x) = b_2$ и окрестность $\accentset{\circ}{U}(*)$, такая, что для любого $x$ из этой окрестности выполняется неравенство $f(x) \le g(x)$, то $b_1\le b_2$.
+	Если существуют два предела $\lim_{x \to *} f(x) = b_1$, $\lim_{x \to *} g(x) = b_2$ и проколотая окрестность $\accentset{\circ}{U}(*)$, такая, что для любого $x$ из этой окрестности выполняется неравенство $f(x) \le g(x)$, то $b_1\le b_2$.
 \end{theorem}
 \begin{proof}
 	Пусть существуют $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$. Т.к. пределы конечны, по теореме об арифметических операциях с функциями, имеющими пределы, для разности $\phi(x) = g(x) - f(x)$ существует предел $\lim_{x \to *} \phi(x) = b_2-b_1$.
@@ -1316,11 +1316,11 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{proof}
 
 \begin{remark}
-	Если существует окрестность $\accentset{\circ}{U}(*)$, такая, что $\forall x \in  \accentset{\circ}{U}(*)$ верно неравенство $f(x) < g(x)$, то для пределов $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$ выполняется $b_1\le b_2$.
+	Если существует $\accentset{\circ}{U}(*)$, такая, что $\forall x \in  \accentset{\circ}{U}(*)$ верно неравенство $f(x) < g(x)$, то для пределов $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$ выполняется $b_1\le b_2$.
 \end{remark}
 
 \begin{theorem}[о пределе промежуточной функции или лемма о двух милиционерах]
-	Если слева и справа от правонарушителя находится по милиционеру, каждый из которых держит его и идет в отделение милиции, то правонарушитель тоже придет в отделение милиции. Или, говоря простым языком, если существует $\lim_{x \to *} f(x) = b$, $\lim_{x \to *} g(x) = b$ и окрестность $\accentset{\circ}{U}(*)$, такая, что $\forall x\in \accentset{\circ}{U}(*)$ выполняется неравенство $f(x) \le \phi(x) \le g(x)$, то существует $\lim_{x \to *} \phi(x) = b$.
+	Если слева и справа от правонарушителя находится по милиционеру, каждый из которых держит его и идет в отделение милиции, то правонарушитель тоже придет в отделение милиции. Или, говоря простым языком, если существует $\lim_{x \to *} f(x) = b$, $\lim_{x \to *} g(x) = b$ и $\accentset{\circ}{U}(*)$, такая, что $\forall x\in \accentset{\circ}{U}(*)$ выполняется неравенство $f(x) \le \phi(x) \le g(x)$, то существует $\lim_{x \to *} \phi(x) = b$.
 \end{theorem}
 \begin{proof}
 	Пусть существуют $\lim_{x \to *} f(x) = b$ и $\lim_{x \to *} g(x) = b$. Распишем эти пределы по определению Коши:
@@ -1364,22 +1364,70 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	Выберем любую $\{x_n\}_{n=1}^{\infty} : x_{n} \in  \accentset{\circ}{U}(*)$, тогда по \eqref{Delta} из того, что $\lim_{n \to \infty} x_n = *$, следует, что $\lim_{n \to \infty} f(x_{n}) = A$. Обозначим $y_{n}=f(x_{n})$, по условию теоремы $y_{n}\neq A$, причем $\lim_{n \to \infty} y_{n} = \lim_{n \to \infty} f(x_{n}) = A$. Тогда по \eqref{DeltaDelta} существует $\lim_{n \to \infty} g(y_{n}) = \lim_{n \to \infty} g(f(x_{n})) = B$. Следовательно, по определению предела по Гейне, существует $\lim_{x \to *} g(f(x)) = B$.
 \end{proof}
 \begin{remark}
-	Условие $f(x)\neq A$ в окрестности $\accentset{\circ}{U}(*)$ является существенным. При отсутствии этого условия теорема перестает быть верной.		
+	Условие $f(x)\neq A$ в окрестности $\accentset{\circ}{U}(*)$ является существенным. Если это условие отсутствует, то теорема может не выполниться.
 \end{remark}
 \begin{exmp}
 	\[
 	f(x) = \begin{cases}
-		x, x\neq \frac{1}{n}, n \in \mathbb{N} \\
-		0, x = \frac{1}{n}, n \in \mathbb{N}.
+	    x, x\neq \frac{1}{n}, n \in \mathbb{N}, \\
+	    0, x = \frac{1}{n}, n \in \mathbb{N}.
 	\end{cases}
+	g(y) = \begin{cases}
+		2, y \neq 0, \\
+		5, y = 0.
+	\end{cases}
+	\] 
+	\begin{tikzpicture}[domain=0:3]
+	    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+	    \filldraw[black] (2,0) circle (0.05) node[anchor=north] (1) {$1$};
+	    \filldraw[black] (1,0) circle (0.05) node[anchor=north] (1/2) {$\frac{1}{2}$};
+	    \filldraw[black] (0.666,0) circle (0.05) node[anchor=north] (1/3) {$\frac{1}{3}$};
+	    \filldraw[black] (0.5,0) circle (0.07);
+	    \filldraw[black] (0.4,0) circle (0.07);
+	    \filldraw[black] (0.333,0) circle (0.07);
+	    \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+	    \draw[thick] plot (\x,\x) node[right] {$f(x)$}; %= \frac{x^2}{5}$};
+	    \draw[black, fill=white] (1,1) circle (0.07);
+	    \draw[black, fill=white] (2,2) circle (0.07); 
+	    \draw[black, fill=white] (0.666,0.666) circle (0.07);
+	    \draw[black, fill=white] (0.5,0.5) circle (0.07);
+	    \draw[black, fill=white] (0.4,0.4) circle (0.07);
+	    \draw[black, fill=white] (0.333,0.333) circle (0.07);
+	\end{tikzpicture}
+	\begin{tikzpicture}[domain=-3:3]
+	    \draw[->] (-3,0) -- (3,0) node[right] {$y$};
+	    \draw[->] (0,-3) -- (0,3) node[above] {$g(y)$};
+	    \draw[thick] plot (\x,1) node[right] {$g(y)$}; %= \frac{x^2}{5}$};
+	    \draw (0,1.25) node[left] (2) {$2$};
+	    \filldraw[black] (0,2.5) circle (0.05) node[left] (5) {$5$};
+	    \draw[black, fill=white] (0,1) circle (0.07);
+	\end{tikzpicture}
+
+	$\lim_{x \to 0} f(x) = 0$. $x = 0$ в любой точке $x = \frac{1}{n}$, следовательно, в любой $\accentset{\circ}{U}(0)$ есть точки, где $f(x) = 0$.
+
+	Рассмотрим последовательность $\{x_n\}_{n=1}^{\infty} = \{\frac{1}{n}\}$. 
+	\[
+		\lim_{n \to \infty} x_n = 0 \implies \lim_{n \to \infty} f(x_n) = 0 \implies \lim_{n \to \color{red}0} g(f(x_n)) = \lim_{n \to \color{red}0} g(0) = 5
 	.\] 
+Рассмотрим последовательность $\{\tilde{x_{n}}\}_{n=1}^{\infty} = \{e^{-n}\} $. 
+\[
+	\lim_{n \to \infty} \tilde{x_{n}} = 0, \ e\not\in \mathbb{N} \implies \lim_{n \to \infty} g(f(\tilde{x_{n}})) = \lim_{n \to \infty} g(e^{-n}) = 2
+.\] 
+Подведем итог:
+\[
+\begin{cases}
+	\lim_{n \to \infty} x_n = \lim_{n \to \infty} \tilde{x_n}, \\
+	\lim_{n \to \color{red}0} g(f(x_{n})) \neq \lim_{n \to \infty} g(f(\tilde{x_{n}})).
+\end{cases}
+\implies \not\exists \lim_{x \to 0} g(f(x))
+.\] 
 \end{exmp}	
 
 
 
 \subsection{Бесконечно большие функции}
 \begin{definition}
-	Функция $f(x)$ называется бесконечно большой (б.б.) при $x\to *$ тогда и только тогда, когда $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$ и $\lim_{x \to *} f(x) = \infty$, т.е.
+	Функция $f(x)$ называется бесконечно большой (б.б.) при $x\to *$ тогда и только тогда, когда $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$ и ее предел при $x\to *$ равен бесконечности, т.е.
 	\[
 	\forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}(*) : |f(x)| > \varepsilon
 	.\] 
@@ -1391,15 +1439,21 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \begin{theorem}[о связи бесконечно большой с бесконечно малой]\ 
 	\begin{enumerate}
 		\item Если $f(x)$ --- бесконечно большая при $x\to *$, то $\frac{1}{f(x)}$ является бесконечно малой при $x\to *$.
-		\item Если $\alpha(x)$ --- бесконечно малая при $x \to *$ и существует такая проколотая окрестность $\accentset{\circ}{U}(*)$, что $\forall x \in  \accentset{\circ}{U}(*) : \alpha(x) \neq 0$, то $\frac{1}{\alpha(x)}$ --- бесконечно большая при $x\to *$.
+		\item Если $\alpha(x)$ --- бесконечно малая при $x \to *$ и существует такая проколотая окрестность $\accentset{\circ}{U}(*)$, что $\forall x \in  \accentset{\circ}{U}(*) : \alpha(x) \neq 0$, то $\frac{1}{\alpha(x)}$ является бесконечно большой при $x\to *$.
 	\end{enumerate}		
 \end{theorem}
-\begin{proof}
-	
+\begin{proof}\
+	\begin{enumerate}
+		\item $f(x)$ --- бесконечно большая при $x \to *$, тогда для любого $\varepsilon_1$ >0 найдется $\delta=\delta(\varepsilon)>0$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\varepsilon_1$.
+                Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}$ и $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})$. Тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\frac{1}{\varepsilon}$, или, что то же, $\frac{1}{|f(x)|} < \varepsilon$. Положим $\alpha(x) = \frac{1}{f(x)}$, тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ верно, что $|\alpha(x)| < \varepsilon$, из чего следует, что предел $\alpha(x)$ при $x\to *$ равен нулю. Таким образом, $\alpha(x)$ --- бесконечно малая при $x\to *$.
+	\item Пусть $\alpha(x)$ --- бесконечно малая при $x\to *$ и для любого $x$ из $\accentset{\circ}{U}(*)$ верно, что $\alpha(x)\neq 0$. Предел $\alpha(x)$ при $x\to *$ равен нулю, т.е. для любого $\varepsilon_1>0$ найдется $\delta>0$, зависящая от $\varepsilon$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)\subset \accentset{\circ}{U}(*)$ выполняется неравенство $|\alpha(x)|<\varepsilon_1$. Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}>0$ и соответствующую $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})>0$. %todo: закончить.
+	\end{enumerate}	
 \end{proof}
 
 \begin{remark}
+	Рассмотрим функцию $y=x\sin \frac{1}{x}$ при $x\to 0$. $\sin \frac{1}{x}$ --- ограниченная, $x$ --- бесконечная малая, следовательно, $y = \alpha(x)$ --- бесконечно малая.
 	
+	Теперь рассмотрим функцию $f(x) = \frac{1}{x \sin x}$. В любой $\accentset{\circ}{U}(0)$ есть хотя бы один $x$, следовательно, $\alpha(x)$ равна нулю, а значит, $f(x)$ не существует.
 \end{remark}
 
 
@@ -1411,7 +1465,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	.\] 
 \end{theorem}
 \begin{lemma}
-	Если $f(x)$ --- элементарная функция, $a \in D_{(f)}$ --- область определения $f$, то существует $\lim_{x \to a} f(x) = f(a)$.
+	Если $f(x)$ --- элементарная функция, $a \in D_{(f)}$ --- область определения $f$, то существует предел $f(x)$, равный $f(a)$ при $x\to a$.
 \end{lemma}
 \begin{corollary}
 	\[
