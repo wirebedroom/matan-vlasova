@@ -22,6 +22,18 @@
 
 %% Свои команды
 \DeclareMathOperator{\sgn}{\mathop{sgn}}
+%% Цитаты
+\let\oldquote\quote
+\let\endoldquote\endquote
+\renewenvironment{quote}[2][]
+  {\if\relax\detokenize{#1}\relax
+     \def\quoteauthor{#2}%
+   \else
+     \def\quoteauthor{#2~---~#1}%
+   \fi
+   \oldquote}
+  {\par\nobreak\smallskip\hfill(\quoteauthor)%
+   \endoldquote\addvspace{\bigskipamount}}
 % Теоремы
 \newtheorem{definition}{Определение}[section]
 \newtheorem{theorem}{Теорема}[section]
@@ -90,10 +102,72 @@
 
 \section{Введение}
 \subsection{Элементы теории множеств}
+\begin{quote}{Г. Кантор}
+	``Множество есть многое, мыслимое как единое.''
+\end{quote}
+Множество --- то же, что и класс, семейство, совокупность, набор; может состоять из любых различимых объектов; однозначно определяется набором составляющих его объектов.
+
+Важные обозначения:
+\begin{itemize}
+	\item $A, B, C$ --- множества;
+	\item $a\in A$ --- элемент $a$ принадлежит множеству $A$;
+	\item $a \not\in A$ --- элемент $a$ не принадлежит множеству $A$;
+	\item $A\subset B$ --- $A$ является подмножеством множества $B$, т.е. любой элемент множества $A$ будет являться элементом множества $B$;
+	\item $\varnothing$ --- пустое множество или множество, не содержащее элементов;
+	\item Если $x$ --- объект, $P$ --- свойство, $P(x)$ --- обозначение того, что $x$ обладает свойством $P$, то через $\{x : P(x)\}$ или $\{x \ | \ P(x)\} $ обозначают все множество объектов, обладающих свойством $P$.
+\end{itemize}
+
+Пять основных операций над множествами:
+\begin{enumerate}
+	\item $A \cup B = C \iff C = \{c \in C : c \in A \text{ или } c\in B\}$;
+	\item $A \cap B = C \iff C = \{c \in C : c\in A \text{ и } c\in B\}$;
+	\item $A\backslash B = C \iff C = \{c\in C : c\in A \text{ и } c \not\in B\}$;
+	\item $\overline{A} = X\backslash A$. Говорят, что $\overline{A}$ --- дополнение $A$ до $X$;
+	\item Декартово произведение множеств.
+		\[
+		X \times Y = \{(x, y) : x \in X, y \in Y\} 
+		,\] 
+		\[
+			X_1 \times X_2 \times \ldots \times X_n = \{(x_1, x_2, \ldots, x_{n}) : x_k \in X_k, k \in 1, \ldots, n \}
+		.\] 
+\end{enumerate}
 \subsection{Кванторные операции}
+
+Высказывание, содержащее переменную, называется предикатом и обозначается $P(x)$. Отрицание $P(x)$ обозначается $\overline{P}(x)$.
+
+\begin{itemize}
+	\item $\forall $ --- квантор общности. $\forall x \in X : P(x)$ --- ``для любого элемента $x$ из множества $X$ выполняется высказывание $P(x)$''.
+	\item $\exists $ --- квантор существования. $\exists x \in X : P(x)$ --- ``существует элемент $x$ из множества $X$, для которого выполняется высказывание $P(x)$.
+	\item $\exists !$ --- квантор существования и единственности. $\exists x \in X : P(x)$ --- ``существует единственный элемент $x$ из множества $X$, для которого выполняется высказывание $P(x)$. Например, $\exists ! x \in \mathbb{R} : \log_2 x = 1$.
+\end{itemize}
+
+Следующая выкладка иллюстрирует правило построения отрицаний высказываний, содержащих кванторы.
+\[
+Q = \forall x \in X : P(x), \quad \overline{Q} = \exists x \in X : \overline{P}(x)
+,\] 
+\[
+R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(x)
+,\] 
 \subsection{Метод математической индукции}
+Пусть $A(n)$ --- некоторое высказывание. Докажем, что $\forall n\in \mathbb{N} : A(n)$.
+\begin{enumerate}
+	\item Проверяем истинность $A(n)$ при $n=1$ (или $n=n_1$, где $n_1$ --- число, с которого целесообразно начать).
+	\item Полагаем, что $A(n)$ верно для некоторого $n\in \mathbb{N}$.
+	\item Доказываем, что $A(n+1)$ верно, используя 2). $A(1) \implies A(2) \implies \ldots \implies A(n) \implies A(n+1)$ 
+\end{enumerate}
 
-
+Докажем по индукции неравенство Бернулли:
+\[
+\forall n \in  \mathbb{N} : (1+x)^{n} \ge  1 + nx, x > 0
+.\] 
+\begin{enumerate}
+	\item Проверим верность для $n = 1$. Неравенство $1 + x \ge  1 + x$ верно.
+	\item Пусть $(1+x)^{n} \ge  1 + nx$ для некоторого $n \in \mathbb{N}$.
+	\item \begin{multline}
+		(1+x)^{n+1} = (1+x)^{n}(1+x) \ge (1+nx)(1+x) = \\
+		= 1 + nx + x + nx^2 \ge 1 + nx + 1 \implies (1+x)^{n+1} \ge  1 + (n+1)x. 	
+		\end{multline}
+\end{enumerate}
 
 \newpage
 \section{Множество действительных чисел}
@@ -1469,9 +1543,27 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{lemma}
 \begin{corollary}
 	\[
-	\lim_{x \to \infty} \frac{\tg x}{x} = 1
+	\lim_{x \to 0} \frac{\tg(x)}{x} = \lim_{x \to 0} \left(\frac{\sin x}{x} \cdot \frac{1}{\cos x} \right) = 1 * 1 = 1
 	.\] 
-	
+\end{corollary}
+\begin{corollary}
+	\begin{multline}
+		\lim_{x \to 0} \frac{\arcsin x}{x} = \\
+	 = |\text{Замена } y = \arcsin x, x = \sin y, x\to 0 \implies y\to 0| = \\
+	 = \lim_{y \to 0} \frac{y}{\sin y} = \lim_{y \to 0} \left(\frac{\sin y}{y}\right)^{-1} = 1.
+	\end{multline}
+\end{corollary}
+\begin{corollary}
+	\begin{multline}
+		\lim_{x \to 0} \frac{\arctg x}{x} = \\
+		= |\text{Замена } y = \arctg x, x = \tg y, x\to 0 \implies y\to 0| = \\
+		= \lim_{y \to 0} \frac{y}{\tg y} = \left(\lim_{y \to 0} \frac{\tg y}{y}\right)^{-1} = 1.
+	\end{multline}
+\end{corollary}
+\begin{corollary}
+	\[
+		\lim_{x \to 0} \frac{1-\cos x}{x^2 / 2} = \lim_{x \to 0} \frac{2\sin^2 \frac{x}{2}}{x^2 / 2} = \lim_{x \to 0} \left(\frac{\sin \frac{x}{2}}{x / 2}\right)^2 = 1
+	.\] 
 \end{corollary}
 
 \subsection{Второй замечательный предел}
