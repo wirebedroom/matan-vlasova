@@ -156,7 +156,8 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 	\item Доказываем, что $A(n+1)$ верно, используя 2). $A(1) \implies A(2) \implies \ldots \implies A(n) \implies A(n+1)$ 
 \end{enumerate}
 
-Докажем по индукции неравенство Бернулли:
+\begin{exmp}
+	Докажем по индукции неравенство Бернулли:
 \[
 \forall n \in  \mathbb{N} : (1+x)^{n} \ge  1 + nx, x > 0
 .\] 
@@ -169,39 +170,40 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 		\end{multline}
 \end{enumerate}
 
+\end{exmp}
 \newpage
 \section{Множество действительных чисел}
 \subsection{Аксиоматика действительных чисел}
 \begin{definition}
 	Множество $\mathbb{R}$ называется множеством действительных чисел, если элементы этого множества удовлетворяют следующему комплексу условий:
-\begin{enumerate}
-	\item На $\mathbb{R}$ определена операция сложения  ``$+$'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
+%\begin{enumerate}
+	\subsubsection*{Аксиомы сложения}
+	На $\mathbb{R}$ определена операция сложения  ``$+$'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
 		\begin{enumerate}
 			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$;
 			\item $\forall x \ \exists$ противоположный элемент $-x$, такой, что $x+(-x)=(-x)+x=0$;
 			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}:(x+y)+z=x+(y+z)$;
 			\item Коммутативность. $\forall x, y\in \mathbb{R}:x+y=y+x$.
 		\end{enumerate}
-	\item На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x, y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
+	\subsubsection*{Аксиомы умножения}
+	На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x, y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
 		\begin{enumerate}
 			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$;
 			\item $\forall x\in \mathbb{R}\backslash\{0\} \ \exists $ обратный элемент ``$x^{-1}$'', такой, что $x\cdot x^{-1}=x^{-1}\cdot x=1$;
 			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}\backslash\{0\}:(x\cdot y)\cdot z=x\cdot (y\cdot z)$;
 			\item Коммутативность. $\forall x, y\in \mathbb{R}\backslash\{0\}:x\cdot y=y\cdot x$.
 		\end{enumerate}
-\end{enumerate}
-	Операция умножения дистрибутивна по отношению к сложению. 
+%\end{enumerate}
+	\subsubsection*{Связь сложения и умножения}
+	Операция умножения дистрибутивна по отношению к операции сложения.
 		$$\forall x, y, z\in \mathbb{R}:(x+y)z=xz+yz$$
-\begin{enumerate}
-\setcounter{enumi}{2}
-	\item Отношения порядка. Для $\mathbb{R}$ определено отношение ``$\le $ ''.
+	\subsubsection*{Аксиомы порядка}
+	Для $\mathbb{R}$ определено отношение ``$\le $ ''.
 		\begin{enumerate}
 			\item $\forall x\in \mathbb{R}:x\le x$;
 			\item $\forall x, y\in \mathbb{R}:(x\le y \land y\le x)\implies x=y$;
-				
-				\ldots
+			\item
 		\end{enumerate}
-\end{enumerate}
 	
 \end{definition}
 
