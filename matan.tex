@@ -177,7 +177,7 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 \begin{definition}
 	Множество $\mathbb{R}$ называется множеством действительных чисел, если элементы этого множества удовлетворяют следующему комплексу условий:
 %\begin{enumerate}
-	\subsubsection*{Аксиомы сложения}
+	\subsubsection*{(I) Аксиомы сложения}
 	На $\mathbb{R}$ определена операция сложения  ``$+$'', то есть задано отображение, которое каждой упорядоченной паре $(x, y)\in \mathbb{R}^2$ ставит в соответствие элемент из $\mathbb{R}$, называемый суммой $x+y$ и удовлетворяющий следующим аксиомам:
 		\begin{enumerate}
 			\item $\exists 0\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:x+0=0+x=x$;
@@ -185,7 +185,7 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 			\item Ассоциативность. $\forall x, y, z\in \mathbb{R}:(x+y)+z=x+(y+z)$;
 			\item Коммутативность. $\forall x, y\in \mathbb{R}:x+y=y+x$.
 		\end{enumerate}
-	\subsubsection*{Аксиомы умножения}
+	\subsubsection*{(II) Аксиомы умножения}
 	На $\mathbb{R}$ определена операция умножения ``$\cdot$'', то есть $\forall(x, y)\in\mathbb{R}^2$ ставится в соответствие элемент $(x\cdot y)\in \mathbb{R}$.
 		\begin{enumerate}
 			\item $\exists $ нейтральный элемент $1\in \mathbb{R}$, такой, что $\forall x\in \mathbb{R}:1\cdot x=x\cdot 1=x$;
@@ -194,23 +194,64 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 			\item Коммутативность. $\forall x, y\in \mathbb{R}\backslash\{0\}:x\cdot y=y\cdot x$.
 		\end{enumerate}
 %\end{enumerate}
-	\subsubsection*{Связь сложения и умножения}
+	\subsubsection*{(I, II) Связь операций сложения и умножения}
 	Операция умножения дистрибутивна по отношению к операции сложения.
 		$$\forall x, y, z\in \mathbb{R}:(x+y)z=xz+yz$$
-	\subsubsection*{Аксиомы порядка}
-	Для $\mathbb{R}$ определено отношение ``$\le $ ''.
+	\subsubsection*{(III) Аксиомы порядка}
+	Для $\mathbb{R}$ определено отношение ``$\le $''.
 		\begin{enumerate}
 			\item $\forall x\in \mathbb{R}:x\le x$;
 			\item $\forall x, y\in \mathbb{R}:(x\le y \land y\le x)\implies x=y$;
-			\item
+			\item Транзитивность. Если $x \le y$ и $y \le z$, то $x\le z$;
+			\item $\forall x, y \in \mathbb{R} (x \le y)$ и $(y \le x)$.
 		\end{enumerate}
+	\subsubsection*{(I, III) Связь сложения с неравенством}
+	Если $x \le  y$, то $\forall z \in  \mathbb{R} : x + z \le  y + z$.
+	\subsubsection*{(II, III) Связь умножения с неравенством}
+	Если $0 \le  x$ и $0 \le y$, то $0\le x \cdot y$.
+	\subsubsection*{(IV) Аксиома полноты $\mathbb{R}$}
+	Для любых ненулевых подмножеств $X$ и $Y$ множества $\mathbb{R}$, таких, что $\forall x\in X, \ \forall y\in Y : x \le y$, существует $c \in \mathbb{R}$, такое, что $(\forall x\in \mathbb{R}$ и $\forall y \in \mathbb{R}) : x \le  c \le  y$.
+
 	
 \end{definition}
 
-\subsection{Геометрическая интерпретация $\mathbb{R}$}
+\subsection{Интерпретации $\mathbb{R}$}
+\subsubsection*{Геометрическая}
+Между прямой и $\mathbb{R}$ существует взаимно-однозначное соответствие, т.е. отображение из $\mathbb{R}$ на прямую биективно. Для задания этого отображения определяется
+\begin{enumerate}
+	\item начальное положение, которому соответствует $0\in \mathbb{R}$,
+	\item положительное направление,
+	\item масштаб, то есть положение $1\in \mathbb{R}$.
+\end{enumerate}
+$Ox$ --- числовая прямая. Каждое действительное число можно найти на числовой оси и для каждой точки числовой оси существует действительное число.
+\begin{center}
+	\begin{tikzpicture}
+		  \draw[->] (0,0) -- (8,0) node[anchor=north] {$x$};
+		  \draw[shift={(3,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+		  \draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (1) {$1$};
+	\end{tikzpicture}
+\end{center}
+\subsubsection*{Десятичная форма записи чисел из $\mathbb{R}$ }
+\[
+a \in \mathbb{R} \iff a = a_0, a_1, \ldots, a_n : a_0 \in \mathbb{Z}, a_k \in \{0, 1, \ldots, 9\} 
+.\] 
+Если $a\in \mathbb{Q}$, то в десятичной форме записи $a = a_0, a_1, \ldots, a_n$ представляется конечной или бесконечной периодической дробью.
 \subsection{Числовые промежутки}
-\subsection{Бесконечные числовые промежутки}
-
+Возьмем числа $a, b \in \mathbb{R}$, такие, что $a < b$.
+\begin{itemize}
+	\item $(a; b) = \{c\in \mathbb{R} : a < c < b\} $ --- интервал;
+	\item $[a; b] = \{c \in  \mathbb{R} : a \le c \le b\} $ --- отрезок;
+	\item $(a; b] = \{c \in  \mathbb{R}: a < c \le b\} $ --- полуинтервал;
+	\item $[a; b) = \{c \in  \mathbb{R}: a \le  c < b\} $ --- полуинтервал.
+\end{itemize}
+\subsection{Бесконечные числовые промежутки (лучи)}
+Возьмем $a\in \mathbb{R}$.
+\begin{itemize}
+	\item $(a; +\infty) = \{c \in \mathbb{R} : c > a\} $ --- открытый луч;
+	\item $[a; +\infty) = \{c \in \mathbb{R} : c \ge a\} $ --- замкнутый луч;
+	\item $(-\infty; a) = \{c\in \mathbb{R}:c<a\} $ --- открытый луч;
+	\item $(-\infty; a] = \{c \in \mathbb{R}; c \le a\} $ --- замкнутый луч.
+\end{itemize}
 
 
 \subsection{Окрестности точки}
@@ -235,15 +276,24 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 \end{definition}
 \begin{definition}
 	$\varepsilon$-окрестностью бесконечности называют множество $(-\infty; -\varepsilon)\cup (\varepsilon; +\infty)$.
-
-	Примечание: $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 \end{definition}
+\begin{remark}
+$U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
+\end{remark}
 
 \subsection{Принцип вложенных отрезков (Коши-Кантора)}
 \begin{definition}
-	Пусть $\{x_n\}_{n=1}^{\infty}$ --- последовательность некоторых множеств. Если $\forall n\in \mathbb{N}:X_n\supset X_{n+1}$, то эта последовательность называется последовательностью вложенных отрезков.
+	Пусть $\{X_n\}_{n=1}^{\infty}$ --- последовательность некоторых множеств. Если $\forall n\in \mathbb{N}:X_n\supset X_{n+1}$, то эта последовательность называется последовательностью вложенных отрезков.
 \end{definition}
-
+\begin{theorem}[принцип Коши-Кантора]
+	Во всякой последовательности $\{I_n\}_{n=1}^{\infty}, \ I_n = [a_n, b_n]$ вложенных отрезков найдется точка $c \in \mathbb{R}$, принадлежащая всем этим отрезкам. Или, что то же,
+	\[
+	\forall \{I_n\}_{n=1}^{\infty}, \ I_n = [a_n, b_n] \quad \exists c\in \mathbb{R} : (\forall n\in \mathbb{N} : c \in I_n)
+	.\] 
+\begin{proof}
+	
+\end{proof}
+\end{theorem}
 \subsection{Ограниченные и неограниченные числовые множества}
 \subsection{Точные грани числового множества}
 \subsection{Принцип Архимеда}
