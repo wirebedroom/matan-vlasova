@@ -164,7 +164,8 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 \begin{enumerate}
 	\item Проверим верность для $n = 1$. Неравенство $1 + x \ge  1 + x$ верно.
 	\item Пусть $(1+x)^{n} \ge  1 + nx$ для некоторого $n \in \mathbb{N}$.
-	\item \begin{multline}
+	\item Используя верность для $n$, докажем верность для $n+1$:
+		\begin{multline}
 		(1+x)^{n+1} = (1+x)^{n}(1+x) \ge (1+nx)(1+x) = \\
 		= 1 + nx + x + nx^2 \ge 1 + nx + 1 \implies (1+x)^{n+1} \ge  1 + (n+1)x. 	
 		\end{multline}
@@ -255,11 +256,10 @@ a \in \mathbb{R} \iff a = a_0, a_1, \ldots, a_n : a_0 \in \mathbb{Z}, a_k \in \{
 
 
 \subsection{Окрестности точки}
+Пусть $\varepsilon$ --- некоторое положительное число.
 \begin{definition}
 	Окрестностью точки $a \in \mathbb{R}$ называется любой интервал, содержащий точку $a$ и обозначается $U(a)$.
 \end{definition}
-
-Пусть $\varepsilon$ --- некоторое положительное число.
 \begin{definition}
 	$\varepsilon$-окрестностью точки $a\in \mathbb{R}$ называется интервал $(a-\varepsilon;a+\varepsilon)$ и обозначается $U_\varepsilon(a)$.
 	\[
@@ -290,8 +290,42 @@ $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 	\[
 	\forall \{I_n\}_{n=1}^{\infty}, \ I_n = [a_n, b_n] \quad \exists c\in \mathbb{R} : (\forall n\in \mathbb{N} : c \in I_n)
 	.\] 
+
+	Если, кроме того, известно, что для любого $\varepsilon > 0$ в последовательности можно найти отрезок $I_k$, длина которого $|I_k| < \varepsilon$, то $c$ --- единственная общая точка всех отрезков.
 \begin{proof}
-	
+	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности имеет место $a_m \le b_n$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. Докажем ``от противного''. Предположим, что $\exists n, m \in  \mathbb{N} : a_n > b_m$	
+\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (0,0) -- (12,0);
+		\draw (1,0) -- ++(0,1) -- ++(4,0) -- ++(0,-1);
+		\draw (1,0) node[anchor=north] (am) {$a_m$};
+		\draw (5,0) node[anchor=north] (bm) {$b_m$};
+		\draw (7,0) -- ++(0,1) -- ++(4,0) -- ++(0,-1);
+		\draw (7,0) node[anchor=north] (an) {$a_n$};
+		\draw (11,0) node[anchor=north] (bn) {$b_n$};
+		\draw (3,1.6) node[anchor=north] (Im) {$I_m$};
+		\draw (9,1.6) node[anchor=north] (In) {$I_n$};
+	\end{tikzpicture}
+\end{center}
+$a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что противоречит условию $\forall n, m \in  \mathbb{N} : a_n \le b_m$.
+
+Пусть $A = \{a_n, n \in  \mathbb{N}\}$, $B = \{b_m, m \in \mathbb{N}\}$, $A, B \neq \varnothing, A \subset \mathbb{R}, B \subset \mathbb{R}$. По аксиоме полноты IV $\forall n, m \in \mathbb{N} : a_n \le b_m$ существует $c\in \mathbb{R} : \forall n, m \in  \mathbb{N} : a_n \le  c \le  b_m$. Следовательно, $c\in [a_n; b_n] = I_n$, т.е. $c$ --- общая точка всех отрезков.
+
+Пусть $\forall \varepsilon > 0$ $\exists n \in  \mathbb{N} : |I_n| = b_n-a_n < \varepsilon$. Докажем ``от противного''. Предположим, что общая точка не является единственной, то есть существуют $c_1, c_2, c_1\neq c_2$, такие, что $c_1 \in  I_n$ и $c_2 \in  I_n$. Пусть для определенности $c_1<c_2$.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (0,0) -- (12,0);
+		\draw (2,0) -- ++(0,2) -- ++(8,0) -- ++(0,-2);
+		\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (an) {$a_n$};
+		\draw[shift={(10,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (bn) {$b_n$};
+		\draw (5,0) -- ++(0,1) -- ++(2,0) -- ++(0,-1);
+		\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (c1) {$c_1$};
+		\draw[shift={(7,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (c2) {$c_2$};
+	\end{tikzpicture}
+\end{center}
+
+Выберем $\varepsilon = \frac{c_2-c_1}{2}$. $\forall n\in \mathbb{N} : a_n \le  c_1 < c_2 \le b_n$, следовательно, $b_n - a_n \ge c_2-c_1$. По условию $\exists n \in  \mathbb{N} : |I_n| = b_n - a_n < \varepsilon = \frac{c_2-c_1}{2}$, но $c_2-c_1 \le b_n  - a_n < \frac{c_2-c_1}{2}$ --- противоречие, следовательно, $c_1=c_2$. Единственность доказана.
 \end{proof}
 \end{theorem}
 \subsection{Ограниченные и неограниченные числовые множества}
