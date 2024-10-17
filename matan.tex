@@ -293,7 +293,7 @@ $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 
 	Если, кроме того, известно, что для любого $\varepsilon > 0$ в последовательности можно найти отрезок $I_k$, длина которого $|I_k| < \varepsilon$, то $c$ --- единственная общая точка всех отрезков.
 \begin{proof}
-	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности имеет место $a_m \le b_n$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. Докажем ``от противного''. Предположим, что $\exists n, m \in  \mathbb{N} : a_n > b_m$	
+	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности имеет место $a_n \le b_m$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. Докажем ``от противного''. Предположим, что $\exists n, m \in  \mathbb{N} : a_n > b_m$	
 \begin{center}
 	\begin{tikzpicture}
 		\draw[->] (0,0) -- (12,0);
@@ -1658,4 +1658,149 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\lim_{x \to \infty} \left(\frac{1}{x} + 1 \right)^{x} = [1^{\infty}] = e
 	.\] 
 \end{theorem}
+\begin{proof}
+Докажем, что предел функции $(1+\frac{1}{x})^{x}$ при $x\to +\infty$ равен $e.$ 
+$\ldots$
+
+Теперь докажем, что предел функции $(1+\frac{1}{x})^{x}$ при $x\to -\infty$ равен $e.$ 
+\ldots
+
+По теореме о связи двустороннего предела с односторонним существует предел функции $(1 + \frac{1}{x})^{x}$ при $x\to \infty$, равный $e$.
+\end{proof}
+\begin{corollary}
+	\begin{multline}
+	\lim_{x \to 0} (1+x)^{\frac{1}{x}} = [1^{\infty}] = \\
+	= |\text{Замена } x = \frac{1}{y}, \ x\to 0 \implies y\to \infty| = \\
+	= \lim_{y \to \infty} \left(1+\frac{1}{y}\right)^{y} = e.
+	\end{multline}
+\end{corollary}
+\begin{corollary}
+\begin{multline}
+	\lim_{x \to 0} \frac{\log_a(1+x)}{x} = \\
+	= \lim_{x \to 0} \frac{1}{x} \log_a(1+x) = \lim_{x \to 0} \log_a(1+x)^{\frac{1}{x}} = \\
+	= \log_a e = \frac{1}{\ln a}.
+\end{multline}	
+\end{corollary}
+\begin{corollary}[Частный случай следствия 2]
+	\[
+	\lim_{x \to 0} \frac{\ln(1+x)}{x} = 1
+	.\] 
+\end{corollary}
+\begin{corollary}
+	\begin{multline}
+		\lim_{x \to 0} \frac{a^{x}-1}{x} = \\
+		= |\text{Замена } y = a^{x} - 1, \ x = \log_a(y+1), \ x\to 0 \implies y\to 0| = \\
+		= \lim_{y \to 0} \frac{y}{\log_a(y+1)} = \lim_{y \to 0} \frac{1}{\frac{\log_a(y+1)}{y}} = \\
+		= \frac{1}{\log_a e} = \ln a.
+	\end{multline}
+\end{corollary}
+\begin{corollary}[Частный случай следствия 4]
+	\[
+	\lim_{x \to 0} \frac{e^{x}-1}{x} = 1
+	.\] 
+\end{corollary}
+\begin{corollary}
+	\begin{multline}
+		\lim_{x \to 0} \frac{(1+x)^{\alpha} - 1}{\alpha x} = \\
+		= \lim_{x \to 0} \frac{e^{\alpha \ln(1+x)} - 1}{\alpha x} = \lim_{x \to 0} \left(\frac{e^{\alpha \ln(1+x)} - 1}{\alpha \ln(1+x)}\right) \cdot \left(\frac{\alpha \ln(1+x)}{\alpha x}\right) = \\
+		= 1.
+	\end{multline}
+\end{corollary}
+\begin{remark}
+	\[
+		\lim_{x \to *} (U(x))^{V(x)} = [1^{\infty}]
+	.\] 	
+	\begin{multline}
+		\lim_{x \to *} (U(x))^{V(x)} = \lim_{x \to *}  e^{\ln(U(x))^{V(x)}} = \lim_{x \to *} e^{V(x)\ln(U(x))} = \\
+		= \lim_{x \to *} e^{V(x)\ln(1 + U(x) - 1)} = \lim_{x \to *} e^{\frac{V(x)\ln(1 + U(x) - 1}{U(x) - 1}\cdot (U(x) - 1)} = \\
+		= \begin{cases}
+			e^{\lim_{x \to *} V(x)(U(x) - 1)}, \text{ если } \lim_{x \to *} V(x)(U(x) - 1) = A\in \mathbb{R}, \\
+			+\infty, \text{ если } \lim_{x \to *} V(x)(U(x) - 1) = +\infty, \\
+			0, \text{ если } \lim_{x \to *} V(x)(U(x)-1) = -\infty.
+		\end{cases}
+	\end{multline}
+\end{remark}
+\begin{exmp}
+	\[	
+		\lim_{x \to \infty} \left(\frac{x^2 + 1}{x^2 + 3}\right)^{x^2} = [1^{\infty}] = e^{\lim_{x \to \infty} x^2 \left(\frac{x^2 + 1}{x^2 + 3} - 1\right)} = e^{\lim_{x \to \infty} \frac{x^2-2}{x^2 + 3} = e^{-2}}
+	.\] 
+\end{exmp}
+
+
+
+\subsection{Сравнение бесконечно малых}
+\begin{definition}
+	Пусть $\alpha(x)$ и $\beta(x)$ --- бесконечно малые при $x\to *$.
+	\begin{enumerate}
+		\item 
+		\item
+		\item $\alpha(x)$ --- бесконечно малая более высокого порядка малости по сравнению с $\beta(x)$ при $x\to *$ тогда и только тогда, когда предел $\frac{\alpha(x)}{\beta(x)}$ при $x\to *$ равен $0$. Обозначается $\alpha(x) = \overline{o}(\beta(x)), \ x \to *$.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Таблица эквивалентных бесконечно малых}
+\begin{enumerate}
+	\item $\sin x \sim x$
+	\item $\tg x \sim x$
+	\item $\arcsin \sim x$
+	\item $\arctg \sim x$
+	\item $1 - \cos x \sim \frac{x^2}{2}$
+	\item $\log_a(1+x) \sim \frac{x}{\ln a}$
+	\item $\ln(1+x) \sim x$
+	\item $a^{x} - 1 \sim \ln a$
+	\item $e^{x} - 1 \sim x$
+	\item $(1+x)^{\alpha} \sim \alpha x$
+\end{enumerate}
+
+\subsection{Свойства эквивалентных бесконечно малых}
+\begin{theorem}
+	Пусть $\alpha_0(x), \alpha_1(x), \ldots, \alpha_n(x)$ --- бесконечно малые при $x\to *$, причем $\forall k = 1, \ldots n : \alpha_k(x) = \overline{o}(\alpha_0(x))$, т.е. $\alpha_0(x)$ --- бесконечно малая самого низкого порядка малости по сравнению с $\alpha_k(x), \ k = 1, \ldots, n$. Тогда $\alpha_0(x) + \sum_{k=1}^{n} \alpha_k(x) \sim \alpha_0(x)$ при $x\to *$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\subsection{$O$-символика}
+
+\subsubsection*{Правила работы с $\overline{o}$}
+
+\subsection{Сравнение бесконечно больших}
+
+\subsection{Свойства эквивалентных бесконечно больших}
+
+\newpage
+\section{Непрерывность}
+\subsection{Непрерывность функции в точке}
+\begin{definition}
+	Пусть функция $f(x)$ определена в некоторой окрестности точки $x_0$. Функцию $f(x)$ называют непрерывной в точке $x_0$ тогда и только тогда, когда существует предел $f(x)$ при $x\to x_0$, равный $f(x_0)$.
+
+	Приведем формально-логическую запись этого определения в формулировке по Коши:
+	\[
+	\forall \varepsilon > 0 \quad \exists \delta=\delta(\varepsilon) \quad \forall  x \in  \mathbb{R} : (|x-x_0| < \delta \implies |f(x) - f(x_0)| < \varepsilon),
+	\] 
+	и в формулировке по Гейне:
+	\[
+	\forall \{x_n\}_{n=1}^{\infty} \subset D(f) : (\lim_{n \to \infty} x_n = x_0 \implies \lim_{n \to \infty} f(x_n) = f(x_0))
+	.\] 
+\end{definition}
+
+\subsection{Приращение аргумента в точке и приращение функции}
+
+\subsection{Точки разрыва}
+\begin{definition}
+	Пусть функция $f(x)$ определена в некоторой проколотой окрестности точки $a$ и в точке $a$ $f(x)$ не является непрерывной. Тогда точку $a$ называют точкой разрыва. В самой точке функция $f(x)$ может быть как определена, так и не определена.
+\end{definition}
+
+\subsection{Классификация точек разрыва}
+
+\subsection{Односторонняя непрерывность}
+Не будем забывать, что если функция определена в окрестности точки, то она определена и в самой точке тоже.
+\begin{definition}
+	Пусть функция $f(x)$ определена в некоторой окрестности $U(a+0)$. Если предел $f(x)$ при $x\to a+0$ равен $f(a)$, то говорят, что $f(x)$ непрерывна в точке $a$ справа.
+
+	Пусть функция $f(x)$ определена в некоторой окрестности $U(a-0)$. Если предел $f(x)$ при $x\to a-0$ равен $f(a)$, то говорят, что $f(x)$ непрерывна в точке $a$ слева.
+
+\end{definition}
+
+\subsection{Свойства функций, непрерывных в точке}
+
 \end{document} % конец документа
