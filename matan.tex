@@ -1791,6 +1791,18 @@ $\Delta x$ --- приращение аргумента в точке $x_0$.
 $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$, отвечающее приращению аргумента $\Delta x$.
 \end{definition}
 
+\begin{theorem}
+	Функция $f(x)$ непрерывна в точке $x_0$ тогда и только тогда, когда $\lim_{\Delta x \to 0} \Delta y = \lim_{\Delta x \to 0} (f(x_0+\Delta x) - f(x_0)) = 0$.
+\end{theorem}
+\begin{proof}
+	\begin{multline}
+		f(x) \text{ непрерывна в точке } x_0 \iff \lim_{x \to x_0} f(x) = f(x_0) \iff \\
+		\iff \lim_{x \to x_0} f(x) - f(x_0) = 0, \\
+		| \text{Замена } \Delta x = x - x_0, \ x = x_0 + \Delta x, \ x \to x_0, \ \Delta x \to 0 | \iff \\
+		\iff \lim_{\Delta x \to 0} (f(x_0 + \Delta x) - f(x_0)) = 0 \iff \lim_{\Delta x \to 0} \Delta y = 0.
+	\end{multline}
+\end{proof}
+
 
 \subsection{Точки разрыва}
 \begin{definition}
@@ -1798,6 +1810,22 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 \end{definition}
 
 \subsection{Классификация точек разрыва}
+\begin{definition}
+	$a$ --- точка устранимого разрыва тогда и только тогда, когда существует предел $f(x)$, равный $b$ при $x \to a$, а $f(x)$ либо не определена в точке $a$, либо $f(a)\neq b$.	
+\end{definition}
+\begin{exmp}
+	\[
+	f(x) = \begin{cases}
+		\frac{\sin x}{x}, \ x \neq 0, \\
+		2, \ x = 0.
+	\end{cases}
+	\lim_{x \to 0} f(x) = \lim_{x \to 0} \frac{\sin x}{x} = 1 \neq f(0) = 2
+	.\] 
+\end{exmp}
+
+\begin{definition}
+	$a$ --- точка неустранимого разрыва I рода тогда и только тогда, когда существует предел $f(x)$, равный $A \in \mathbb{R}$ при $x\to a-0$, и существует предел $f(x)$, равный $B\in \mathbb{R}$ при $x\to a+0$, причем $A\neq B$.	
+\end{definition}
 
 \subsection{Односторонняя непрерывность}
 Не будем забывать, что если функция определена в окрестности точки, то она определена и в самой точке тоже.
