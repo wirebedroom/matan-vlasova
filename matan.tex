@@ -11,12 +11,14 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
 
+
 %% Номера формул
 \mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
 
 %% Шрифты
 \usepackage{euscript}	 % Шрифт Евклид
 \usepackage{mathrsfs} % Красивый матшрифт
+
 %% Акценты
 \usepackage{accents}
 
@@ -59,6 +61,16 @@
 \definecolor{nord15}{RGB}{180,142,173}
 
 \usepackage{textcomp}
+
+%% Ссылки
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
 
 %% TikZ
 \usepackage{tikz}
@@ -1298,7 +1310,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 
 \begin{theorem}[о локальной ограниченности функции, имеющей конечный предел]
-	Пусть $\exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограниченна при $x\to *$.
+	Пусть $\exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограничена при $x\to *$.
 \end{theorem}
 \begin{proof}
 	По определению предела функции по Коши,
@@ -1353,16 +1365,12 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \subsection{Свойства бесконечно малых функций}
 \begin{theorem}
-	Пусть $\alpha(x)$ и  $\beta(x)$ - бесконечно малые при  $x\to *$. Тогда $\alpha(x) + \beta(x)$ --- бесконечно малые при  $x\to *$.
+	Пусть $\alpha(x)$ и  $\beta(x)$ --- бесконечно малые при $x\to *$. Тогда $\alpha(x) + \beta(x)$ --- бесконечно малые при  $x\to *$.
 \end{theorem}
 \begin{proof}
-	$\alpha(x)$ и  $\beta(x)$ бесконечно малые при  $x\to *$ 
-	\[
-		\lim_{x \to *} \alpha(x) \implies \forall \varepsilon> 0 \quad \exists \delta_1=\delta_1(\varepsilon)>0 \quad \forall x\in \accentset {\circ}{U}_{\delta_1}(*) \implies |\alpha(x)| < \frac{\varepsilon}{2}	
-	.\] 
-	\[
-		\lim_{x \to *} \alpha(x) \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\beta(x)| < \frac{\varepsilon}{2}	
-	.\] 
+    Распишем определение по Коши.
+	\[\lim_{x \to *} \alpha(x) = 0 \implies \forall \varepsilon> 0 \quad \exists \delta_1=\delta_1(\varepsilon)>0 \quad \forall x\in \accentset {\circ}{U}_{\delta_1}(*) \implies |\alpha(x)| < \frac{\varepsilon}{2} ,\] 
+	\[\lim_{x \to *} \beta(x)  = 0 \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\beta(x)| < \frac{\varepsilon}{2}	.\] 
 
 	Пусть $\delta = \min \{\delta_1, \delta_2\} $, если $*: a; a + 0; a - 0$ и  $\delta=\max \{\delta_1, \delta_2\} $, если $*: \infty;, +\infty, -\infty$.
 	\[
@@ -1407,42 +1415,39 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \subsection{Арифметические операции с функциями, имеющими пределы}
 
-\begin{theorem}
-	Пусть $\exists \lim_{x \to *} f(x) = A \in  \mathbb{R}, \lim_{x \to *} g(x) = B\in  \mathbb{R}$
+\begin{theorem}[об арифметических операциях с функциями, имеющими пределы]
+	Пусть существуют $\displaystyle \lim_{x \to *} f(x) = A \in  \mathbb{R}$ и $\displaystyle \lim_{x \to *} g(x) = B\in  \mathbb{R}$.
 	Тогда
 	\begin{enumerate}
-		\item $\exists \lim_{x \to *} (f(x) \pm g(x)) = A\pm B$
-		\item $\exists \lim_{x \to *} (f(x) g(x)) = AB$ 
-		\item $B \neq 0 \implies \exists  \lim_{x \to *} \frac{f(x)}{g(x)} = \frac{A}{B}$
+		\item $\displaystyle \exists \lim_{x \to *} (f(x) \pm g(x)) = A\pm B$;
+		\item $\displaystyle \exists \lim_{x \to *} (f(x) g(x)) = AB$;
+		\item Если $B \neq 0$, то $\displaystyle \exists  \lim_{x \to *} \frac{f(x)}{g(x)} = \frac{A}{B}$.
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	$\exists  \lim_{x \to *} f(x) = A; \exists  \lim_{x \to *} g(x) = B \implies$ по теореме о связи функции, ее предела и бесконечно малой $\implies f(x) = A + \alpha(x), g(x) = B + \beta(x)$, где $\alpha(x), \beta(x)$ --- бесконечно малые при $x\to *$.
+    Существуют $\displaystyle \lim_{x \to *} f(x) = A$ и $\displaystyle \lim_{x \to *} g(x) = B$, следовательно, по теореме о связи функции, ее предела и бесконечно малой, $f(x) = A + \alpha(x), \ g(x) = B + \beta(x)$, где $\alpha(x), \ \beta(x)$ --- бесконечно малые при $x\to *$.
 	
-	\begin{enumerate}
-		\item $f(x)\pm g(x) = (A + \alpha(x)) \pm (B+ \beta(x)) = A \pm B +\alpha(x) \pm \beta(x) = A \pm B + \gamma(x)$, где $\gamma(x)$ -- бесконечно малая при  $x \to * \implies$
-		\item $f(x) \cdot  g(x) = (A + \alpha(x))(B+\beta(x))= AB+B\alpha(x)+A\beta(x) + \alpha(x)\beta(x) = AB + \gamma(x) \implies$ по теореме о связи предела функции, ее предела и бесконечно малой $\implies \lim_{x \to *} f(x)g(x) = AB$
-		\item $\frac{f(x)}{g(x)} = \frac{A+\alpha(x)}{B+\beta(x)} = \frac{A}{B} + \frac{A+\alpha(x)}{B + \beta(x)} - AB$
-			\[
-			\gamma(x) = \frac{AB+B\alpha(x)-AB-A\beta(x)}{B(B+\beta(x)} = \frac{B\alpha(x)-A\beta(x)}{B} \cdot \frac{1}{B+\beta(x)}
-			.\] 
-			$\frac{B\alpha(x)-A\beta(x)}{B}$ --- бесконечно малая при $x \to  *$ по свойствам бесконечно малых.
+    Докажем первый пункт. $f(x)\pm g(x) = (A + \alpha(x)) \pm (B+ \beta(x)) = A \pm B +\alpha(x) \pm \beta(x) = A \pm B + \gamma(x)$, где $\gamma(x)$ --- бесконечно малая при  $x \to *$. Следовательно, по теореме о связи функции, ее предела и бесконечно малой, $\displaystyle \lim_{x \to *} (f(x) \pm g(x)) = A \pm B.$
+
+    Докажем второй пункт. $f(x) \cdot  g(x) = (A + \alpha(x))(B+\beta(x))= AB+B\alpha(x)+A\beta(x) + \alpha(x)\beta(x) = AB + \gamma(x)$, где $\gamma(x)$ --- бесконечно малая при $x\to *$. Тогда по теореме о связи предела функции, ее предела и бесконечно малой $\displaystyle \lim_{x \to *} (f(x)\cdot g(x)) = AB$
+
+    Докажем третий пункт. 
+    \[\frac{f(x)}{g(x)} = \frac{A+\alpha(x)}{B+\beta(x)} = \frac{A}{B} + \frac{A+\alpha(x)}{B + \beta(x)} - \frac{A}{B}.\] 
+    Пусть $\displaystyle \gamma(x) = \frac{A+\alpha(x)}{B + \beta(x)} - \frac{A}{B}$. Тогда 
+    \[\gamma(x) = \frac{AB+B\alpha(x)-AB-A\beta(x)}{B(B+\beta(x)} = \frac{B\alpha(x)-A\beta(x)}{B} \cdot \frac{1}{B+\beta(x)}.\] 
+	$\displaystyle \frac{B\alpha(x)-A\beta(x)}{B}$ --- бесконечно малая при $x \to  *$ по свойствам бесконечно малых.
 			
-			Докажем, что $\phi(x)= \frac{1}{B+\beta(x)}$ локально ограниченна при $x \to *$.
-			$\beta(x)$ --- бесокнечно малая при $x \to * \implies \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_\delta(*) \implies |\beta(x)| < \varepsilon$.
-			Выберем $\varepsilon= \frac{|B|}{2}>0$, найдем соответствующее $\delta=\delta(\varepsilon)>0 \implies \forall  x \in  \accentset{\circ}{U}_\delta(*) : |\beta(x)| < \frac{|B|}{2}$ 
-			\[
-			\implies |B+\beta(x)| \ge  |B| - |\beta(x)| > |B| - \frac{|B|}{2} = \frac{|B|}{2} \implies
-			.\] 
-			\[
-			\implies \forall x \in  \accentset{\circ}{U}_\delta(*) : |B + \beta(x)| > \frac{|B|}{2} >0 \implies
-			.\] 
-			\[
-			\frac{1}{B+\beta(x)<\frac{2}{|B|}} \implies 
-			.\]
-			$\implies\phi(x) = \frac{1}{B+\beta(x)}$ локально ограниченна при  $x \to  *$
-			$\gamma(x)$ --- произведение бесконечно малой на локально ограниченную при $x \to  *\implies$ по свойству бесконечно малой является бесконечно малой при $x \to *$.
-	\end{enumerate}
+			Докажем, что $\displaystyle \phi(x)= \frac{1}{B+\beta(x)}$ локально ограничена при $x \to *$. \\
+			$\beta(x)$ --- бесконечно малая при $x \to *$, т.е. для любого $\varepsilon> 0$ найдется дельта, зависящая от $\varepsilon$, такая, что $\forall x \in \accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|\beta(x)| < \varepsilon$.
+			Выберем $\displaystyle \varepsilon= \frac{|B|}{2}>0$, найдем соответствующую $\delta=\delta(\varepsilon)>0$. Получается, $\forall  x \in  \accentset{\circ}{U}_\delta(*)$ верно, что $\displaystyle |\beta(x)| < \frac{|B|}{2}$.
+            Воспользуемся обратным неравенством треугольника $|a+b|\ge |a|-|b|$.
+            \begin{multline}
+                |B+\beta(x)| \ge  |B| - |\beta(x)| > |B| - \frac{|B|}{2} = \frac{|B|}{2} \implies \\
+                \implies \forall x \in  \accentset{\circ}{U}_\delta(*) : |B + \beta(x)| > \frac{|B|}{2} >0 \implies \\
+                \implies \frac{1}{B+\beta(x)} < \frac{2}{|B|} \implies \\
+                \implies\phi(x) = \frac{1}{B+\beta(x)} \text{ локально ограничена при } x \to  *.
+            \end{multline}
+			$\gamma(x)$ --- произведение бесконечно малой на локально ограниченную при $x \to  *$, т.е. бесконечно малая при $x\to *$ по свойству бесконечно малой.
 \end{proof}
 
 \begin{theorem}[о знакопостоянстве функции, имеющей ненулевой предел]
@@ -1566,9 +1571,9 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	$\lim_{x \to 0} f(x) = 0$. $x = 0$ в любой точке $x = \frac{1}{n}$, следовательно, в любой $\accentset{\circ}{U}(0)$ есть точки, где $f(x) = 0$.
 
 	Рассмотрим последовательность $\{x_n\}_{n=1}^{\infty} = \{\frac{1}{n}\}$. 
-	\[
-		\lim_{n \to \infty} x_n = 0 \implies \lim_{n \to \infty} f(x_n) = 0 \implies \lim_{n \to \color{red}0} g(f(x_n)) = \lim_{n \to \color{red}0} g(0) = 5
-	.\] 
+	\[ \lim_{n \to \infty} x_n = 0 \implies \lim_{n \to \infty} f(x_n) = 0 	.\] 
+    Заметим, что $f(x_{n}) = 0 \ \forall n$. Тогда можно записать так:
+    \[ \lim_{n \to 0} g(f(x_n)) = \lim_{n \to 0} g(0) = 5 .\]
 Рассмотрим последовательность $\{\tilde{x_{n}}\}_{n=1}^{\infty} = \{e^{-n}\} $. 
 \[
 	\lim_{n \to \infty} \tilde{x_{n}} = 0, \ e\not\in \mathbb{N} \implies \lim_{n \to \infty} g(f(\tilde{x_{n}})) = \lim_{n \to \infty} g(e^{-n}) = 2
@@ -1577,7 +1582,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \[
 \begin{cases}
 	\lim_{n \to \infty} x_n = \lim_{n \to \infty} \tilde{x_n}, \\
-	\lim_{n \to \color{red}0} g(f(x_{n})) \neq \lim_{n \to \infty} g(f(\tilde{x_{n}})).
+	\lim_{n \to 0} g(f(x_{n})) \neq \lim_{n \to \infty} g(f(\tilde{x_{n}})).
 \end{cases}
 \implies \not\exists \lim_{x \to 0} g(f(x))
 .\] 
@@ -1835,7 +1840,7 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 \end{exmp}
 
 \begin{definition}
-    $a$ --- точка неустранимого разрыва II рода тогда и только тогда, когда хотя бы один из односторонних пределов функции $f(x)$ равен бесконечности, либо предел функции $f(x)$ при $x\to a$ не существует
+    $a$ --- точка неустранимого разрыва II рода тогда и только тогда, когда хотя бы один из односторонних пределов функции $f(x)$ равен бесконечности, либо предел функции $f(x)$ при $x\to a$ не существует.
 \end{definition}
 \begin{exmp}
     \[ y = 2^{\frac{1}{x}}, \ a = 0,\] 
@@ -1877,5 +1882,63 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 \begin{theorem}[локальная ограниченность]
 	Если $f(x)$ непрерывна в точке $a$, то $f(x)$ локально ограничена при $x\to a$.
 \end{theorem}
+\begin{proof}
+    $f(x)$ непрерывна в точке $a$, т.е. существует предел $f(x)$, равный $f(a)$ при $x\to a$. Следовательно, по теореме о локально ограниченной функции, имеющей конечный предел, $f(x)$ локально ограничена при $x\to a$. 
+\end{proof}
 
+\begin{theorem}[об арифметических операциях с непрерывными функциями]
+    Если $f(x)$, $g(x)$ непрерывны в точке $a$, то $f(x)\pm g(x)$, $f(x)\cdot g(x)$, а также $\frac{f(x)}{g(x)}$, если $g(a)\neq 0$, являются непрерывными в точке $a$ функциями.
+\end{theorem}
+\begin{proof}
+    Пусть существуют $\displaystyle \lim_{x \to a} f(x) = f(a)$ и $\displaystyle \lim_{x \to a} g(x) = g(a)$. По теореме об арифметических операциях с функциями, имеющими конечные пределы, $f(x)\pm g(x)$, $f(x)\cdot g(x)$, а также $\frac{f(x)}{g(x)}$, если $g(a)\neq 0$, являются непрерывными в точке $a$ функциями.
+\end{proof}
+
+\begin{theorem}[о пределе под знаком непрерывной функции]
+    Пусть $\displaystyle \lim_{x \to *} f(x) = a$, функция $g(y)$ непрерывна в точке $a$ и в некоторой $\accentset{\circ}{U}(*)$ определена сложная функция $g(f(x))$. Тогда существует
+    \[\lim_{x \to *} g(f(x)) = g(a) = g(\lim_{x \to *} f(x)).\]
+\end{theorem}
+\begin{proof}
+    Теорема верна по теореме о пределе сложной функции. Однажды мы изложим здесь более подробное доказательство.
+\end{proof}
+
+\begin{theorem}[о непрерывности композиции непрерывных функций]
+    Пусть $f(x)$ непрерывна в точке $a$, а $g(y)$ непрерывна в точке $b = f(a)$, и пусть в некоторой $U(a)$ определена $g(f(x))$.
+    Тогда $g(f(x))$ непрерывна в точке $a$.
+\end{theorem}
+
+\subsection{Свойства функций, непрерывных на отрезке}
+\begin{theorem}[о нулях непрерывной на отрезке функции или первая теорема Больцано-Коши]
+    Пусть $f(x)$ непрерывна на $[a; b]$ и $f(a)\cdot f(b) < 0$ (на концах $[a; b]$ принимает значения разных знаков).
+    Тогда существует хотя бы одна точка $c\in [a; b]$, такая, что $f(c) = 0$.
+\end{theorem}
+
+\begin{theorem}[о промежуточных значениях непрерывной на отрезке функции или вторая теорема Больцано-Коши]
+    Пусть $f(x)$ непрерывна на $[a; b], \ f(a) = A, \ f(b) = B$. Тогда для любой $C$, лежащей между $A$ и $B$, найдется $c_0 \in [a; b]$, такая, что $f(c_0) = C$.
+\end{theorem}
+
+\begin{theorem}[об ограниченности непрерывной на отрезке функции или первая теорема Вейерштрасса]
+    Если $f(x)$ непрерывна на отрезке, то она ограничена на этом отрезке. 
+\end{theorem}
+
+\begin{theorem}[о достижении непрерывной на отрезке функцией своих точных граней или вторая теорема Вейерштрасса]
+    Пусть $f(x)$ непрерывна на $[a; b]$. Тогда существуют такие $x_{n}, x_N \in [a; b]$, что
+    \[ f(x_{n}) = m = \inf(f(x)), \ x\in [a; b] = \min f(x) \text{ на } [a; b] ,\] 
+    \[ f(x_{N}) = M = \sup(f(x)), \ x\in [a; b] = \max f(x) \text{ на } [a; b] .\] 
+\end{theorem}
+
+\subsection{Непрерывность монотонных функций}
+\begin{theorem}
+    Пусть $f(x)$ непрерывна на $[a; b]$. Тогда $f(x)$ является инъекцией тогда и только тогда, когда $f(x)$ строго монотонна на $[a; b]$.
+\end{theorem}
+\begin{proof}
+    Докажем необходимость. Пусть $f(x)$ непрерывна на $[a; b]$ и является инъекцией. Будем доказывать ``от противного''. Предположим, что $f(x)$ не является строго монотонной, т.е. существуют такие $x_1, x_2, x_3 \in [a; b]$, что $x_1 < x_2 < x_3$, а значение $f(x_2)$ не лежит между $f(x_1)$ и $f(x_3)$. Всего у нас получится четыре случая.
+
+    Рассмотрим следующий случай: $f(x_1) > f(x_2), \ f(x_1) < f(x_3), \ f(x_2) < f(x_3)$. Тогда на отрезке $[x_2; x_3]$ функция $f(x)$ непрерывна, следовательно, принимает все свои значения из $[f(x_2); f(x_3)]$, но $f(x_2) < f(x_1) < f(x_3)$, следовательно, существует $\widetilde{x} \in [x_2; x_3]$, такой, что $f(\widetilde{x}) = f(x_1)$, что противоречит инъективности $f(x)$ на $[a; b]$. Доказательства остальных случаев аналогичны.
+
+    Докажем достаточность. Если $f(x)$ строго монотонна (возрастает или убывает) на $[a; b]$, то она инъективна.
+\end{proof}
+
+\begin{theorem}[Вейерштрасса о существовании предела монотонной ограниченной функции]
+    Пусть $f(x)$ монотонна и ограничена на $[a; +\infty)$. Тогда существует $\displaystyle \lim_{x \to +\infty} f(x) = A \in \mathbb{R}$.
+\end{theorem}
 \end{document} % конец документа
