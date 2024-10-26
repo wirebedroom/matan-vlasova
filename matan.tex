@@ -494,12 +494,69 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 \end{theorem}
 
 \begin{theorem}[принцип Архимеда]
-    
+    Если фиксировать произвольное число $h>0$, то для любого $x\in \mathbb{R}$ найдется и притом единственное $k\in \mathbb{Z}$,
+    такое, что $(k-1)h \le  x < kh$.
 \end{theorem}
+\begin{proof}
+    $\forall h>0$ и $\forall x \in \mathbb{R}$ множество $\displaystyle Y = \{n \in \mathbb{Z} : \frac{x}{h} < n\}$ непусто,
+    т.к. $\mathbb{Z}$ не ограничено сверху. $Y$ ограничено снизу: $\displaystyle \frac{x}{h}$ --- нижняя грань.
+    Значит, существует $\displaystyle \min Y = k\in \mathbb{Z} : \frac{x}{h} < k$. Тогда $(k-1)\not \in Y$,
+    следовательно, $\displaystyle (k-1) \le \frac{x}{h}$. Воспользовавшись тем, что $h > 0$, получим
+    \[(k-1)\le \frac{x}{h} < k \implies (k-1)h \le x < kh.\] 
+\end{proof}
+\begin{corollary}
+    Для любого положительного числа $\varepsilon$ существует натуральное число $n$ такое,
+    что $\displaystyle \frac{1}{n} < \varepsilon$. Или, что то же,
+    \[\forall \varepsilon > 0 \quad \exists n \in \mathbb{N} : \frac{1}{n} < \varepsilon.\] 
+\end{corollary}
+\begin{corollary}
+    Пусть $x\ge 0$. Если $\displaystyle \forall n \in \mathbb{N} : x < \frac{1}{n}$, то $x=0$.
+\end{corollary}
+\begin{corollary}
+    Для любых чисел $a, b \in \mathbb{R}$ таких, что $a < b$, найдется рациональное число $r\in \mathbb{Q}$ такое,
+    что $a < r < b$. Или, что то же,
+    \[\forall a, b \in \mathbb{R} : a < b \quad \exists r \in \mathbb{Q} : a < r < b.\] 
+\end{corollary}
+\begin{proof}
+    $a < b$, следовательно, $b - a > 0$. Учитывая следствие 1, подберем $n\in \mathbb{N}$ так, что $\displaystyle n\in \mathbb{N} : \frac{1}{n} < b-a$.
+    По принципу Архимеда найдем такое число $m\in \mathbb{Z}$, что 
+    \[(m-1)\frac{1}{n} \le a < m\frac{1}{n}.\]
+    Докажем, что $\displaystyle \frac{m}{n} \in (a; b)$ ``от противного''. Предположим, что $\displaystyle b \le \frac{m}{n}$.
+    Тогда
+    \[\frac{m-1}{n} \le a < b \le \frac{m}{n},\]
+    т.е. $\displaystyle (a; b) \subset \left[\frac{m-1}{n}; \frac{m}{n}\right]$,
+
+	\begin{center}
+		\begin{tikzpicture}
+			% Числовая прямая 
+				\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);        
+			% Точки
+				\filldraw[black] (2,0) circle (0.05) node[anchor=north] (m-1) {$\displaystyle\frac{m-1}{n}$}; 
+				\filldraw[black] (10,0) circle (0.05) node[anchor=north] (mn) {$\displaystyle \frac{m}{n}$}; 
+                \draw (4,0) node[anchor=north] (a) {$a$};
+                \draw (8,0) node[anchor=north] (b) {$b$};
+			% Интервалы 
+				\draw (4,0) to[out=70,in=110] (8,0);
+			% Отрезок
+				\draw (2,0) -- ++(0,2) -- ++(8,0) -- ++(0,-2);
+		\end{tikzpicture}
+	\end{center}
+    следовательно, $\displaystyle b-a \le \frac{1}{n}$, что противоречит выбору $n$.
+    Таким образом, $\displaystyle \frac{m}{n} \in (a; b)$, $\displaystyle \frac{m}{n}\in \mathbb{Q}$.
+
+\end{proof}
+\begin{corollary}
+    Для любого числа $x \in \mathbb{R}$ существует и притом единственное число $k \in \mathbb{Z}$,
+    такое, что $k \le x < k + 1$. Или, что то же,
+    \[\forall x \in \mathbb{R} \quad \exists ! k \in \mathbb{Z} : k \le  x < k + 1.\] 
+    Указанное число $k$ обозначается $[x]$ и называется целой частью числа $x$.
+\end{corollary}
+
+
 \newpage
 \section{Функции или отображения}
 \subsection{Понятие функции}
-\subsection{Ограниченные и неограниченные числовые множества}
+\subsection{Ограниченные и неограниченные числовые функции}
 \subsection{Обратные функции}
 \subsection{Четные и нечетные функции}
 \subsection{Периодические функции}
