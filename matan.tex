@@ -98,7 +98,7 @@
 {\hbox{$\mathsurround=0pt #1$}}{}}
 
 %%% Заголовок
-\author{Власова Елена Александровна}
+\author{Власова Е. А.}
 \title{Лекции по математическому анализу для 1 курса ФН2, 3}
 \date{2024-2025 год.}
 
@@ -110,7 +110,7 @@
 \tableofcontents
 \newpage
 
-\part*{Элементарные функции и их пределы}
+\part*{Модуль 1}
 
 \section{Введение}
 \subsection{Элементы теории множеств}
@@ -304,6 +304,7 @@ $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 	.\] 
 
 	Если, кроме того, известно, что для любого $\varepsilon > 0$ в последовательности можно найти отрезок $I_k$, длина которого $|I_k| < \varepsilon$, то $c$ --- единственная общая точка всех отрезков.
+\end{theorem}
 \begin{proof}
 	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности имеет место $a_n \le b_m$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. Докажем ``от противного''. Предположим, что $\exists n, m \in  \mathbb{N} : a_n > b_m$	
 \begin{center}
@@ -339,18 +340,225 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 
 Выберем $\varepsilon = \frac{c_2-c_1}{2}$. $\forall n\in \mathbb{N} : a_n \le  c_1 < c_2 \le b_n$, следовательно, $b_n - a_n \ge c_2-c_1$. По условию $\exists n \in  \mathbb{N} : |I_n| = b_n - a_n < \varepsilon = \frac{c_2-c_1}{2}$, но $c_2-c_1 \le b_n  - a_n < \frac{c_2-c_1}{2}$ --- противоречие, следовательно, $c_1=c_2$. Единственность доказана.
 \end{proof}
-\end{theorem}
+
+
 \subsection{Ограниченные и неограниченные числовые множества}
+\begin{definition}
+    Множество $X \subset \mathbb{R}$ называется ограниченным сверху, если существует такое число $M \in R$,
+    что $\forall x\in X : x \le M$. В этом случае $M$ называют верхней гранью множества $X$.
+
+    Множество $X \subset \mathbb{R}$ называется ограниченным снизу, если существует такое число $m \in R$,
+    что $\forall x\in X : x\ge m$. В этом случае $m$ называют нижней гранью множества $X$.
+
+    Множество $X\subset \mathbb{R}$ называется ограниченным, если $X$ ограничено сверху и снизу, т.е. существуют такие числа $M, m \in \mathbb{R}$, что $\forall x\in X : m\le x \le M$. Или, что то же, существует такое число $M>0$, что $\forall x\in X : |x|\le M$.
+\end{definition}
+\begin{definition}
+    Множество $X\subset \mathbb{R}$ называется неограниченным, если для любого числа $M>0$ найдется такой $x\in X$, что $|x|>M$.
+\end{definition}
+\begin{definition}
+    Число $M\in \mathbb{R}$ называется максимальным элементом множества $X\subset \mathbb{R}$, если $M\in X$ и 
+    $\forall x\in X : x\le M$.
+
+    Число $m\in \mathbb{R}$ называется минимальным элементом множества $X\subset \mathbb{R}$, если $m\in X$ и 
+    $\forall x\in X : x\ge M$.
+\end{definition}
+
+\begin{theorem}
+    Если числовое множество $X \subset \mathbb{R}$ имеет максимальный (минимальный) элемент, то он единственный.
+\end{theorem}
+\begin{proof}
+    Пусть существует максимальный элемент для $X\subset \mathbb{R}$, т.е. существует такое число $a\in X$, что $\forall x \in X : x \le a$.
+    
+    Будем доказывать ``от противного''. Предположим, что существует такое $b\in X$, что $\forall x\in X : x\le b$, причем $a\neq b$. $a = \max X, \ b\in X$, следовательно, $b \le a$. С другой стороны, $b = \max X, \ a \in X$, следовательно, $a \le b$. Таким образом, $a=b$, что противоречит предположению, а значит, максимальный элемент единственен.
+\end{proof}
+
+    Доказательство единственности минимального элемента мы оставляем в качестве упражнения для читателя.
+
+
 \subsection{Точные грани числового множества}
+\begin{definition}
+    Пусть множество $X\subset \mathbb{R}$ ограничено сверху, тогда минимальный элемент множества всех верхних граней множества
+    $X$ называется точной верхней гранью множества $X$ и обозначается $\sup X$. Или, что то же,
+    \[\sup X = \min \{M\in \mathbb{R} : \forall x\in X : x \le M\}.\] 
+
+    Пусть теперь множество $X\subset \mathbb{R}$ ограничено снизу, тогда максимальный элемент множества всех нижних граней
+    множества $X$ называется точной нижней гранью множества $X$ и обозначается $\inf X$. Или, что то же,
+    \[\inf X = \max \{m\in \mathbb{R} : \forall x\in X : x \ge m\}.\] 
+\end{definition}
+\begin{exmp}
+    Рассмотрим множество $X = [0; 1)$.
+
+    \[\min X = 0,\] 
+    \[\max X = \varnothing,\] 
+    \[\sup X = 1,\] 
+    \[\inf X = 0.\] 
+\end{exmp}
+
+\begin{theorem}[о существовании точных граней числового множества]
+    Если $X$ --- непустое числовое множества, ограниченное сверху (снизу), то для $X$ существует точная верхняя (нижняя)
+    грань, причем единственная.
+\end{theorem}
+\begin{proof}
+   $X\subset \mathbb{R}, \ X \neq \varnothing$. Пусть $X$ ограничено сверху.
+   Пусть $Y = \{y\in \mathbb{R} : \forall x\in X : x\le y\}$. Очевидно, $Y\neq \varnothing$.
+
+   $\forall x\in X, \ \forall y\in Y : x \le y$, тогда по аксиоме полноты найдется такое число $M$, что $x \le M \le y$.
+   $\forall x \in X : x\le M$, следовательно, $M$ --- верхняя грань множества $X$, т.е. $M\in Y$;
+   в то же время $\forall y\in Y : M\le y$, следовательно, $M=\min Y$. Таким образом, $M=\sup X$.
+
+   Поскольку минимальный элемент множества единственен, $M$ --- единственный минимальный элемент $Y$, т.е. точная верхняя грань множества единственна.
+\end{proof}
+
+\begin{theorem}
+    Пусть $X\subset \mathbb{R}$ --- непустое числовое множество. Тогда $M = \sup X$ тогда и только тогда, когда
+    \begin{enumerate}
+        \item $\forall x \in X : x \le M$;
+        \item $\forall \varepsilon>0 \quad \exists x_\varepsilon \in X : x_\varepsilon > M - \varepsilon$.
+    \end{enumerate}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (0,0) -- (12,0);
+            \draw[shift={(8,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (M) {$M$};
+            \draw[shift={(4,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (M-ep) {$M-\varepsilon$};
+            \filldraw[black] (6.7,0) circle (0.04) node[anchor=south] (x_ep) {$x_\varepsilon$};
+        \end{tikzpicture}
+    \end{center}
+\end{theorem}
+\begin{proof}
+    Докажем необходимость. 
+    \begin{multline}
+        M = \sup X \implies \\
+        \implies M \text{ --- минимальный элемент множества } \\
+        \text{всех верхних граней множества } X \implies \\
+        \implies M \text{ --- верхняя грань множества } X \implies \forall x\in X : x \le M.
+    \end{multline}
+
+    Первый пункт доказан. Докажем второй ``от противного''. Предположим, что $\exists \varepsilon>0 \quad 
+    \forall x \in X : x \le M - \varepsilon$. Тогда $M - \varepsilon$ --- верхняя грань множества $X$.
+    Но $M - \varepsilon < M$, что противоречит тому, что $M$ --- минимальный элемент множества всех верхних граней
+    множества $X$. Второй пункт доказан.
+
+    Докажем достаточность.
+    Пусть выполняются следующие условия:
+    \begin{enumerate}
+        \item $\forall x \in X : x \le M$;
+        \item $\forall \varepsilon>0 \quad \exists x_\varepsilon \in X: x_\varepsilon > M - \varepsilon$.
+    \end{enumerate}
+
+    Из первого условия следует, что $M$ --- верхняя грань множества $X$, и $X$ ограничено сверху.
+    Утверждение, что $M=\sup X$ будем доказывать ``от противного''. Предположим, что $M_1 = \sup X$, причем $M_1 < M$.
+    Из второго условия следует, что для $\varepsilon = \frac{M-M_1}{2}$ найдется такой $x_\varepsilon$,
+    что
+    \[x_\varepsilon > M - \varepsilon = M - \frac{M-M_1}{2} = \frac{M + M_1}{2} > \frac{M_1+M_1}{2} = M_1.\]
+
+    Таким образом, $\exists x_\varepsilon > M_1$, что противоречит тому, что $M_1 = \sup X$. А значит, нет верхней грани множества $X$, которая меньше $M$. Следовательно, $M = \sup X$.
+\end{proof}
+
+\begin{theorem}
+    Пусть $X \subset \mathbb{R}$ --- непустое числовое множество. Тогда $m = \inf X$ тогда и только тогда, когда
+    \begin{enumerate}
+        \item $\forall x \in X : x \ge m$;
+        \item $\forall \varepsilon>0 \quad \exists x_\varepsilon \in X : x_\varepsilon < m + \varepsilon$.
+    \end{enumerate}
+\end{theorem}
+    Доказательство оставлено читателю в качестве упражнения.
+
+
 \subsection{Принцип Архимеда}
+\begin{theorem}
+    В любом непустом ограниченном сверху подмножестве $\mathbb{N}$ имеется максимальный элемент.
+\end{theorem}
+\begin{proof}
+    Пусть $X\subset \mathbb{N}$ ограничено сверху и непусто. Тогда существует и единственно число $M = \sup X$,
+    т.е. выполняются два условия:
+    \begin{enumerate}
+        \item $\forall x \in X : x \le M$;
+        \item $\forall \varepsilon>0 \quad \exists x_\varepsilon \in X : x_\varepsilon > M - \varepsilon$.
+    \end{enumerate}
+
+    Положим $\varepsilon = 1$, тогда найдется такое $n_1\in X$, что $\forall x \in X : n_1 > M - 1$. 
+    $\forall x \in X : x \le M \implies n_1 \le M$. Докажем ``от противного'',
+    что $n_1$ --- максимальный элемент множества $X$. Пусть $\exists n > n_1$. Тогда 
+    \[n > n_1 \implies n \ge n_1 + 1 > M - 1 + 1 = M.\] 
+
+    Таким образом, $n > M = \sup X$, следовательно, $n$ не может быть максимальным элементом множества $X$.
+    А значит, $n = \max X$.
+\end{proof}
+
+\begin{theorem}
+    В любом непустом ограниченном сверху (снизу) подмножестве $\mathbb{Z}$ имеется максимальный (минимальный) элемент.
+\end{theorem}
+
+\begin{theorem}
+    Множество $\mathbb{Z}$ не ограничено ни сверху, ни снизу.
+\end{theorem}
+
+\begin{theorem}[принцип Архимеда]
+    Если фиксировать произвольное число $h>0$, то для любого $x\in \mathbb{R}$ найдется и притом единственное $k\in \mathbb{Z}$,
+    такое, что $(k-1)h \le  x < kh$.
+\end{theorem}
+\begin{proof}
+    $\forall h>0$ и $\forall x \in \mathbb{R}$ множество $\displaystyle Y = \{n \in \mathbb{Z} : \frac{x}{h} < n\}$ непусто,
+    т.к. $\mathbb{Z}$ не ограничено сверху. $Y$ ограничено снизу: $\displaystyle \frac{x}{h}$ --- нижняя грань.
+    Значит, существует $\displaystyle \min Y = k\in \mathbb{Z} : \frac{x}{h} < k$. Тогда $(k-1)\not \in Y$,
+    следовательно, $\displaystyle (k-1) \le \frac{x}{h}$. Воспользовавшись тем, что $h > 0$, получим
+    \[(k-1)\le \frac{x}{h} < k \implies (k-1)h \le x < kh.\] 
+\end{proof}
+\begin{corollary}
+    Для любого положительного числа $\varepsilon$ существует натуральное число $n$ такое,
+    что $\displaystyle \frac{1}{n} < \varepsilon$. Или, что то же,
+    \[\forall \varepsilon > 0 \quad \exists n \in \mathbb{N} : \frac{1}{n} < \varepsilon.\] 
+\end{corollary}
+\begin{corollary}
+    Пусть $x\ge 0$. Если $\displaystyle \forall n \in \mathbb{N} : x < \frac{1}{n}$, то $x=0$.
+\end{corollary}
+\begin{corollary}
+    Для любых чисел $a, b \in \mathbb{R}$ таких, что $a < b$, найдется рациональное число $r\in \mathbb{Q}$ такое,
+    что $a < r < b$. Или, что то же,
+    \[\forall a, b \in \mathbb{R} : a < b \quad \exists r \in \mathbb{Q} : a < r < b.\] 
+\end{corollary}
+\begin{proof}
+    $a < b$, следовательно, $b - a > 0$. Учитывая следствие 1, подберем $n\in \mathbb{N}$ так, что $\displaystyle n\in \mathbb{N} : \frac{1}{n} < b-a$.
+    По принципу Архимеда найдем такое число $m\in \mathbb{Z}$, что 
+    \[(m-1)\frac{1}{n} \le a < m\frac{1}{n}.\]
+    Докажем, что $\displaystyle \frac{m}{n} \in (a; b)$ ``от противного''. Предположим, что $\displaystyle b \le \frac{m}{n}$.
+    Тогда
+    \[\frac{m-1}{n} \le a < b \le \frac{m}{n},\]
+    т.е. $\displaystyle (a; b) \subset \left[\frac{m-1}{n}; \frac{m}{n}\right]$,
+
+	\begin{center}
+		\begin{tikzpicture}
+			% Числовая прямая 
+				\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);        
+			% Точки
+				\filldraw[black] (2,0) circle (0.05) node[anchor=north] (m-1) {$\displaystyle\frac{m-1}{n}$}; 
+				\filldraw[black] (10,0) circle (0.05) node[anchor=north] (mn) {$\displaystyle \frac{m}{n}$}; 
+                \draw (4,0) node[anchor=north] (a) {$a$};
+                \draw (8,0) node[anchor=north] (b) {$b$};
+			% Интервалы 
+				\draw (4,0) to[out=70,in=110] (8,0);
+			% Отрезок
+				\draw (2,0) -- ++(0,2) -- ++(8,0) -- ++(0,-2);
+		\end{tikzpicture}
+	\end{center}
+    следовательно, $\displaystyle b-a \le \frac{1}{n}$, что противоречит выбору $n$.
+    Таким образом, $\displaystyle \frac{m}{n} \in (a; b)$, $\displaystyle \frac{m}{n}\in \mathbb{Q}$.
+
+\end{proof}
+\begin{corollary}
+    Для любого числа $x \in \mathbb{R}$ существует и притом единственное число $k \in \mathbb{Z}$,
+    такое, что $k \le x < k + 1$. Или, что то же,
+    \[\forall x \in \mathbb{R} \quad \exists ! k \in \mathbb{Z} : k \le  x < k + 1.\] 
+    Указанное число $k$ обозначается $[x]$ и называется целой частью числа $x$.
+\end{corollary}
 
 
 \newpage
 \section{Функции или отображения}
 \subsection{Понятие функции}
-\subsection{Ограниченные и неограниченные числовые множества}
+\subsection{Ограниченные и неограниченные числовые функции}
 \subsection{Обратные функции}
-\subsection{Чётные и нечётные функции}
+\subsection{Четные и нечетные функции}
 \subsection{Периодические функции}
 \subsection{Сложная функция (композиция)}
 \subsection{Основные элементарные функции}
@@ -360,13 +568,53 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 \newpage
 \section{Числовые последовательности и их пределы}
 
-
-
 \begin{definition}
-	$f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
+    Функция $f : \mathbb{N} \to X$, областью определения которой является множество натуральных чисел,
+    называется последовательностью элементов из множества $X$ и обозначается $\{x_n\}_{n=1}^{\infty}$. Или, что то же,
+    \[\forall n\in \mathbb{N}:f(n) = x_{n} \quad \{x_n\}_{n=1}^{\infty} \subset X.\] 
+
+	Если $X \subset \mathbb{R}$, то $f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, 
+    т.е. $x_n \in \mathbb{R}$.
 \end{definition}
+\begin{exmp}
+    \[\left\{\frac{n+1}{n^2+3}\right\}_{n=1}^{\infty}, \ f(n) = \frac{n+1}{n^2+3}.\]
+    \[x_1 = 0,3;\] 
+    \[x_2 = 0,33;\]
+    \[x_n = 0.\underbrace{33\ldots 3}_n.\]
+\end{exmp}
+\begin{exmp}
+    \[\{x_n\}_{n=1}^{\infty}, \ x_{n} = a + bn.\] 
+    \[a_1 = a + b,\]
+    \[a_2 = a + 2b,\]
+    \[a_n = a + bn.\] 
+\end{exmp}
 
+\subsubsection*{Геометрическая интерпретация числовой последовательности}
+\begin{center}
+    \begin{tikzpicture}
+	    \draw[->] (0,0) -- (12,0) node[anchor=north] {$x$};
+		\draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+		\draw[shift={(7,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (1) {$1$};
+        \filldraw[black] (4.5,0) circle (0.04) node[anchor=south] (x1) {$x_1$};
+        \filldraw[black] (5.6,0) circle (0.04) node[anchor=south] (x2) {$x_2$};
+        \filldraw[black] (2.5,0) circle (0.04) node[anchor=south] (x3) {$x_3$};
+        \filldraw[black] (10,0) circle (0.04) node[anchor=south] (xn) {$x_{n}$};
+    \end{tikzpicture}
+\end{center}
 
+\subsection{Арифметические операции с числовыми последовательностями}
+\begin{enumerate}
+    %\item $\forall k\in \mathbb{R}, \ \forall \{x_n\}_{n=1}^{\infty} \ \ : \ \ k\cdot \{x_n\}_{n=1}^{\infty} =
+    %\{k\cdot x_n\}_{n=1}^{\infty}$
+    \item \[\forall k\in \mathbb{R}, \ \forall \{x_n\}_{n=1}^{\infty} \ : \ k\cdot \{x_n\}_{n=1}^{\infty} =
+    \{k\cdot x_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty} \ : \ \{x_n\}_{n=1}^{\infty} \pm \{y_n\}_{n=1}^{\infty}
+    = \{x_n \pm y_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty} \ : \ \{x_n\}_{n=1}^{\infty} \cdot \{y_n\}_{n=1}^{\infty}
+    = \{x_n \cdot y_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty}, \ \forall n \in \mathbb{N} : y_n \neq 0 \ : \
+        \frac{\{x_n\}_{n=1}^{\infty}}{\{y_n\}_{n=1}^{\infty}} = \left\{\frac{x_n}{y_n}\right\}_{n=1}^{\infty}.\]
+\end{enumerate}
 
 \subsection{Ограниченные и неограниченные числовые последовательности}
 
