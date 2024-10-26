@@ -360,13 +360,51 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 \newpage
 \section{Числовые последовательности и их пределы}
 
-
-
 \begin{definition}
-	$f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, т.е. $\{x_n\}_{n=1}^\infty$, $x_n \in \mathbb{R}$.
+    Функция $f : \mathbb{N} \to X$, областью определения которой является множество натуральных чисел, называется последовательностью элементов из множества $X$ и обозначается $\{x_n\}_{n=1}^{\infty}$. Приведем формально-логическую запись этого определения:
+    \[\forall n\in \mathbb{N}:f(n) = x_{n} \quad \{x_n\}_{n=1}^{\infty} \subset X.\] 
+
+	Если $X \subset \mathbb{R}$, то $f:\mathbb{N}\rightarrow \mathbb{R}$ --- числовая последовательность, т.е. $x_n \in \mathbb{R}$.
 \end{definition}
+\begin{exmp}
+    \[\left\{\frac{n+1}{n^2+3}\right\}_{n=1}^{\infty}, \ f(n) = \frac{n+1}{n^2+3}.\]
+    \[x_1 = 0,3;\] 
+    \[x_2 = 0,33;\]
+    \[x_n = 0.\underbrace{33\ldots 3}_n.\]
+\end{exmp}
+\begin{exmp}
+    \[\{x_n\}_{n=1}^{\infty}, \ x_{n} = a + bn.\] 
+    \[a_1 = a + b,\]
+    \[a_2 = a + 2b,\]
+    \[a_n = a + bn.\] 
+\end{exmp}
 
+\subsubsection*{Геометрическая интерпретация числовой последовательности}
+\begin{center}
+    \begin{tikzpicture}
+	    \draw[->] (0,0) -- (12,0) node[anchor=north] {$x$};
+		\draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+		\draw[shift={(7,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (1) {$1$};
+        \filldraw[black] (4.5,0) circle (0.04) node[anchor=south] (x1) {$x_1$};
+        \filldraw[black] (5.6,0) circle (0.04) node[anchor=south] (x2) {$x_2$};
+        \filldraw[black] (2.5,0) circle (0.04) node[anchor=south] (x3) {$x_3$};
+        \filldraw[black] (10,0) circle (0.04) node[anchor=south] (xn) {$x_{n}$};
+    \end{tikzpicture}
+\end{center}
 
+\subsection{Арифметические операции с числовыми последовательностями}
+\begin{enumerate}
+    %\item $\forall k\in \mathbb{R}, \ \forall \{x_n\}_{n=1}^{\infty} \ \ : \ \ k\cdot \{x_n\}_{n=1}^{\infty} =
+    %\{k\cdot x_n\}_{n=1}^{\infty}$
+    \item \[\forall k\in \mathbb{R}, \ \forall \{x_n\}_{n=1}^{\infty} \ : \ k\cdot \{x_n\}_{n=1}^{\infty} =
+    \{k\cdot x_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty} \ : \ \{x_n\}_{n=1}^{\infty} \pm \{y_n\}_{n=1}^{\infty}
+    = \{x_n \pm y_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty} \ : \ \{x_n\}_{n=1}^{\infty} \cdot \{y_n\}_{n=1}^{\infty}
+    = \{x_n \cdot y_n\}_{n=1}^{\infty},\] 
+    \item \[\forall \{x_n\}_{n=1}^{\infty}, \ \{y_n\}_{n=1}^{\infty}, \ \forall n \in \mathbb{N} : y_n \neq 0 \ : \
+        \frac{\{x_n\}_{n=1}^{\infty}}{\{y_n\}_{n=1}^{\infty}} = \left\{\frac{x_n}{y_n}\right\}_{n=1}^{\infty}.\]
+\end{enumerate}
 
 \subsection{Ограниченные и неограниченные числовые последовательности}
 
