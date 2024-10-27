@@ -276,25 +276,87 @@ a \in \mathbb{R} \iff a = a_0, a_1, \ldots, a_n : a_0 \in \mathbb{Z}, a_k \in \{
 \subsection{Окрестности точки}
 Пусть $\varepsilon$ --- некоторое положительное число.
 \begin{definition}
-	Окрестностью точки $a \in \mathbb{R}$ называется любой интервал, содержащий точку $a$ и обозначается $U(a)$.
+	Окрестностью точки $a \in \mathbb{R}$ называется любой интервал, содержащий точку $a$. Будем обозначать его так: $U(a)$.
 \end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        % Числовая прямая 
+            \draw[->] (0,0) -- (12,0);        
+            \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+        % Интервалы 
+            \draw (4,0) to[out=70,in=110] (8,0);
+            \draw (7,1.25) node (Ua) {$U(a)$};
+    \end{tikzpicture}
+\end{center}
+
 \begin{definition}
 	$\varepsilon$-окрестностью точки $a\in \mathbb{R}$ называется интервал $(a-\varepsilon;a+\varepsilon)$ и обозначается $U_\varepsilon(a)$.
 	\[
 	c\in U_\varepsilon(a) \iff |a-c| < \varepsilon
 	.\] 
 \end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        % Числовая прямая 
+            \draw[->] (0,0) -- (12,0);        
+            \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
+        % Точки
+            \draw (4,0) node[anchor=north] (a) {$a-\varepsilon$};
+            \draw (8,0) node[anchor=north] (b) {$a+\varepsilon$};
+        % Интервалы 
+            \draw (4,0) to[out=70,in=110] (8,0);
+            \draw (7,1.25) node (Ua) {$U_\varepsilon(a)$};
+    \end{tikzpicture}
+\end{center}
 
 \begin{definition}
 	Проколотой $\varepsilon$-окрестностью точки $a\in \mathbb{R}$ называется множество $(a-\varepsilon;a)\cup (a; a+\varepsilon) = U_\varepsilon(a)\ \backslash \{a\}$ и обозначается $\accentset{\circ}{U}_\varepsilon(a)$.
 \end{definition}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[->] (0,0) -- (12,0);	
+		% Точки
+		\draw (2,0) node[anchor=north] (a-ep) {$a-\varepsilon$};
+		\draw (10,0) node[anchor=north] (a+ep){$a+\varepsilon$};
+		% Интервалы
+		\draw (2,0) to[out=70,in=110] (6,0);
+		\draw (6,0) to[out=70,in=110] (10,0);
+        % Выколотая точка
+        \draw[black, fill=white] (6,0) circle (0.07) node[anchor=north] (a) {$a$};
+        \draw (7,1.4) node (Ua) {$\accentset{\circ}{U}_\varepsilon(a)$};
+	\end{tikzpicture}
+\end{center}
 
 \begin{definition}
 	Окрестностью бесконечности называют любое множество вида $(-\infty; a)\cup (b; +\infty).$
 \end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (12,0);
+        \draw (0,1.7) to[out=0,in=110] (4,0);
+        \draw (8,0) to[out=70,in=180] (12,1.7);
+        \draw[black, fill=white] (4,0) circle (0.07) node[anchor=north] (a) {$a$};
+        \draw[black, fill=white] (8,0) circle (0.07) node[anchor=north] (b) {$b$};
+        \draw (8,1.25) node (Ua) {$U(\infty)$};
+        \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+    \end{tikzpicture}
+\end{center}
+
 \begin{definition}
 	$\varepsilon$-окрестностью бесконечности называют множество $(-\infty; -\varepsilon)\cup (\varepsilon; +\infty)$.
 \end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (12,0);
+        \draw (0,1.7) to[out=0,in=110] (4,0);
+        \draw (8,0) to[out=70,in=180] (12,1.7);
+        \draw[black, fill=white] (4,0) circle (0.07) node[anchor=north] (-varepsilon) {$-\varepsilon$};
+        \draw[black, fill=white] (8,0) circle (0.07) node[anchor=north] (varepsilon) {$\varepsilon$};
+        \draw (8,1.25) node (Ua) {$U_\varepsilon(\infty)$};
+        \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+    \end{tikzpicture}
+\end{center}
+
 \begin{remark}
 $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 \end{remark}
@@ -344,7 +406,10 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 	\end{tikzpicture}
 \end{center}
 
-Выберем $\varepsilon = \frac{c_2-c_1}{2}$. $\forall n\in \mathbb{N} : a_n \le  c_1 < c_2 \le b_n$, следовательно, $b_n - a_n \ge c_2-c_1$. По условию $\exists n \in  \mathbb{N} : |I_n| = b_n - a_n < \varepsilon = \frac{c_2-c_1}{2}$, но $c_2-c_1 \le b_n  - a_n < \frac{c_2-c_1}{2}$ --- противоречие, следовательно, $c_1=c_2$. Единственность доказана.
+Выберем $\displaystyle \varepsilon = \frac{c_2-c_1}{2}$. $\forall n\in \mathbb{N} : a_n \le  c_1 < c_2 \le b_n$,
+следовательно, $b_n - a_n \ge c_2-c_1$. По условию $\displaystyle \exists n \in  \mathbb{N} : |I_n| = b_n - a_n < \varepsilon 
+= \frac{c_2-c_1}{2}$, но $\displaystyle c_2-c_1 \le b_n  - a_n < \frac{c_2-c_1}{2}$ --- противоречие, следовательно,
+$c_1=c_2$. Единственность доказана.
 \end{proof}
 
 
@@ -434,8 +499,7 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 \begin{proof}
     Докажем необходимость. 
     \begin{multline}
-        M = \sup X \implies \\
-        \implies M \text{ --- минимальный элемент множества } \\
+        M = \sup X \implies M \text{ --- минимальный элемент множества } \\
         \text{всех верхних граней множества } X \implies \\
         \implies M \text{ --- верхняя грань множества } X \implies \forall x\in X : x \le M.
     \end{multline}
@@ -1058,33 +1122,109 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 
 \subsection{Предел числовой последовательности}
 \begin{definition}
-	Число $a\in\mathbb{R}$ называется пределом числовой последовательности, если $\forall \varepsilon>0$ существует такой номер $n$, зависящий от $\varepsilon$, что $\forall$ натурального числа $N>n$ верно неравенство $|x_n - a| < \varepsilon$.
-	$$\lim_{n\to\infty} x_n = a$$
+	Число $a\in\mathbb{R}$ называется пределом числовой последовательности, если $\forall \varepsilon>0$ существует
+    такой номер $N$, зависящий от $\varepsilon$, что при всех $n>N$ имеем $|x_n - a| < \varepsilon$. Или, что то же,
+    \[\lim_{n \to \infty} x_n = a \iff \forall \varepsilon>0 \quad \exists N = N(\varepsilon)\in \mathbb{N} \quad \forall n > n
+    : |x_n-a| < \varepsilon.\] 
 \end{definition}
-\noindent Пример:
-\[
-\lim_{n \to \infty} \frac{1}{n} = 0 \iff \forall \varepsilon>0 \exists N=N(\varepsilon) \in \mathbb{N} \quad \forall n>N : \frac{1}{n} < \varepsilon
-.\] 
-$\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $N(\varepsilon) = [\frac{1}{\varepsilon}]$. Тогда $\forall n>[\frac{1}{\varepsilon}] : \frac{1}{n} < \varepsilon.$
+\begin{exmp}
+    \[ \lim_{n \to \infty} \frac{1}{n} = 0 \iff \forall \varepsilon>0 \exists N=N(\varepsilon) \in \mathbb{N} \quad 
+    \forall n>N : \frac{1}{n} < \varepsilon .\] 
+    $\displaystyle \frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$.
+    Возьмем $\displaystyle N(\varepsilon) = \left[\frac{1}{\varepsilon}\right]$. 
+    Тогда $\displaystyle \forall n>\left[\frac{1}{\varepsilon}\right]$ имеем $\displaystyle \frac{1}{n} < \varepsilon.$
+\end{exmp}
 
 
 \begin{definition}
-	Если $\{x_n\}_{n=1}^{\infty}$ имеет конечный предел $a$, то эта последовательность называется сходящейся, в противном случае --- расходящейся.
+	Если $\{x_n\}_{n=1}^{\infty}$ имеет конечный предел $a$, то эта последовательность называется сходящейся,
+    в противном случае --- расходящейся.
 \end{definition}
 
 \begin{definition}
-	Если $\lim_{n \to \infty} x_n = 0$, то последовательность $\{x_n\}_{n=1}^{\infty}$ называется бесконечно малой (б.м.).
+	Если $\lim_{n \to \infty} x_n = 0$, то последовательность $\{x_n\}_{n=1}^{\infty}$ называется бесконечно малой.
 \end{definition}
+
+
+
 \subsection{Бесконечные пределы}
+\begin{definition}
+    \[\lim_{n \to \infty} x_n = \infty \iff \forall \varepsilon>0 \quad \exists N = N(\varepsilon) \in \mathbb{N} \quad
+    \forall n > N : |x_n| > \varepsilon,\]
+    т.е., начиная с некоторого номера, $x_n \in U_\varepsilon(\infty) = (-\infty; \varepsilon)\cup (\varepsilon; +\infty)$.
+\end{definition}
+В этом случае на отрезке $[-\varepsilon; \varepsilon]$ последовательность $\{x_n\}_{n=1}^{\infty}$ содержит не более конечного
+числа элементов.
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (12,0);
+        \draw (0,1.7) to[out=0,in=110] (4,0);
+        \draw (8,0) to[out=70,in=180] (12,1.7);
+        \draw[black, fill=white] (4,0) circle (0.07) node[anchor=north] (-varepsilon) {$-\varepsilon$};
+        \draw[black, fill=white] (8,0) circle (0.07) node[anchor=north] (varepsilon) {$\varepsilon$};
+        \filldraw[black] (2.5,0) circle (0.05) node[anchor=south] (x_n) {$x_n$};
+        \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (0) {$0$};
+        \draw (8,1.25) node (Ua) {$U_\varepsilon(\infty)$};
+    \end{tikzpicture}
+\end{center}
 
+\begin{definition}
+    Если $\lim_{n \to \infty} x_n = \infty$, то последовательность $\{x_n\}_{n=1}^{\infty}$ называется бесконечно большой.
+\end{definition}
+\begin{exmp}
+    \[\lim_{n \to \infty} (-1)^{n}n = \infty.\] 
+\end{exmp}
 
+\begin{definition}
+    \[\lim_{n \to \infty} x_n = +\infty \iff \forall \varepsilon>0 \quad \exists N=N(\varepsilon) \in \mathbb{N} \quad
+    \forall n> N : x_n > \varepsilon,\] 
+    т.е., начиная с некоторого номера, $x_n \in U_\varepsilon(+\infty)$.
+\end{definition}
+
+\begin{definition}
+    \[\lim_{n \to \infty} x_n = -\infty \iff \forall \varepsilon>0 \quad \exists N=N(\varepsilon) \in \mathbb{N} \quad
+    \forall n> N : x_n < \varepsilon,\] 
+    т.е., начиная с некоторого номера, $x_n \in U_\varepsilon(-\infty)$.
+\end{definition}
+
+\begin{exmp}
+    Докажем, что $\displaystyle \frac{3}{2}$ --- предел последовательности 
+    $\displaystyle \left\{\frac{3n-2}{2n+1}\right\}_{n=1}^{\infty}$.
+    \begin{multline}
+        \lim_{n \to \infty} \left\{\frac{3n-2}{2n+1}\right\}_{n=1}^{\infty} = \frac{3}{2} \iff \\
+        \iff \forall \varepsilon>0 \quad \exists N=N(\varepsilon)\in \mathbb{N} \quad \forall n>N : \left|\frac{3n-2}{2n+1} 
+        - \frac{3}{2}\right| < \varepsilon.
+    \end{multline}
+    Выразим $n$ из полученного неравенства.
+    \begin{multline}
+        \left|\frac{3n-2}{2n+1} - \frac{3}{2}\right| < \varepsilon \iff \left|\frac{6n-4-6n-3}{2(2n+1)}\right| < \varepsilon 
+        \iff \\ \iff \left|-\frac{7}{4n+2}\right| <\varepsilon \overset{n>0}{\iff} \frac{7}{4n+2} < \varepsilon \iff 
+        \frac{4n+2}{7} < \frac{1}{\varepsilon} \iff \\
+        \iff n > \frac{7}{4\varepsilon} - \frac{1}{2},
+    \end{multline}
+    тогда $\displaystyle N(\varepsilon) = \left[\frac{7}{4\varepsilon} - \frac{1}{2}\right]$.
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|p{1cm}| p{1cm} | p{1cm} | p{1cm} |}
+            \hline
+            $\varepsilon$ & $0,1$ & $0,01$ & $0,001$ \\
+            \hline
+            $N(\varepsilon)$ & $17$ & $174$ & $1749$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{exmp}
 
 \subsection{Свойства сходящихся последовательностей}
 \begin{theorem}[о единственности предела]
 	Любая сходящаяся последовательность имеет только один предел.	
 \end{theorem}
 \begin{proof}
-	``От противного''. Пусть $\{x_n\}_{n=1}^{\infty}$ --- сходящаяся последовательность. Предположим, что $\exists \lim_{n \to \infty} x_{n} = a$ и $\exists \lim_{n \to \infty} x_{n} = b$, причем $a\neq b$. Пусть для определенности $a<b$.
+	``От противного''. Пусть $\{x_n\}_{n=1}^{\infty}$ --- сходящаяся последовательность. Предположим, что 
+    $\displaystyle \exists \lim_{n \to \infty} x_{n} = a$ и $\displaystyle \exists \lim_{n \to \infty} x_{n} = b$,
+    причем $a\neq b$.
+    Пусть для определенности $a<b$.
 	\[
 	\lim_{n \to \infty} x_{n} = a \iff \forall \varepsilon>0 \quad \exists N_1=N_1(\varepsilon)\in \mathbb{N} : \forall n>N_1 : |x_{n}-a|<\varepsilon
 	,\] 
@@ -1119,7 +1259,7 @@ $\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $
 		\draw[->] (6.8,1.4) to (8.4,0.5);
 	\end{tikzpicture}
 \end{center}
-Выберем $\varepsilon = \frac{b-a}{4} > 0$. Найдем $N_1(\varepsilon), N_2(\varepsilon), N=\max\{N_1, N_2\}$, тогда
+Выберем $\displaystyle\varepsilon = \frac{b-a}{4} > 0$. Найдем $N_1(\varepsilon), N_2(\varepsilon), N=\max\{N_1, N_2\}$, тогда
 \[
 	\forall n>N \quad |x_{n}-a| < \frac{b-a}{4}, \quad |x_{n}-b| < \frac{b-a}{4}
 .\] 
@@ -1177,7 +1317,8 @@ $\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $
 \end{remark}
 
 \begin{theorem}[об арифметических операциях со сходящимися последовательностями]
-	Пусть $\exists \lim_{n \to \infty} x_n = a \in \mathbb{R}, \exists \lim_{n \to \infty} y_n = b \in \mathbb{R}$. Тогда 
+	Пусть $\displaystyle \exists \lim_{n \to \infty} x_n = a \in \mathbb{R}, 
+    \exists \lim_{n \to \infty} y_n = b \in \mathbb{R}$. Тогда 
 	\[
 	\exists \lim_{n \to \infty} (x_n \pm y_n) = a \pm b;
 	\]  
@@ -1204,7 +1345,8 @@ $\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $
 Для монотонных числовых последовательностей ограниченность является достаточным условием для сходимости.
 \begin{theorem}[Вейерштрасса о сходимости монотонных числовых последовательностей]
 	Если последовательность не убывает и ограничена сверху, то она является сходящейся.
-	Если последовательность не возрастает и ограничена снизу, то она является сходящейся. В общем, любая монотонная последовательность сходится.
+	Если последовательность не возрастает и ограничена снизу, то она является сходящейся. 
+    В общем, любая монотонная ограниченная последовательность сходится.
 \end{theorem}
 \begin{proof}
 	Пусть $\{x_n\}_{n=1}^{\infty}$ не убывает и ограничена сверху $\implies$ \\
@@ -1223,16 +1365,12 @@ $\frac{1}{n} < \varepsilon \implies n > \frac{1}{\varepsilon}$. Возьмем $
 		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
 		% Числовая прямая
 		\filldraw[black] (4.5,0) circle (0.05) node[anchor=south]{$x_N$}; %node[yshift=-1.4mm]
+        \draw[shift={(6,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
 		% Точки
-		%\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a) {$a$};
-		\draw (6,0) node[anchor=north] (a) {$a$};
 		\draw (2,0) node[anchor=north] (a-ep) {$a-\varepsilon$};
 		\draw (10,0) node[anchor=north] (a+ep){$a+\varepsilon$};
-		%\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-ep) {$a-\varepsilon$};
-		%\draw[shift={(8,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+ep){$a+\varepsilon$};
 		% Интервалы
-		\draw (2,0) to[out=70,in=110] (6,0);
-		\draw (6,0) to[out=70,in=110] (10,0);
+		\draw (2,0) to[out=70,in=110] (10,0);
 	\end{tikzpicture}
 \end{center}
 $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательность, то есть 
@@ -1492,7 +1630,8 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	Точка $a\in \mathbb{R}$ является предельной для $\{x_n\}_{n=1}^{\infty}$ тогда и только тогда, когда $\exists \{x_{n_k}\}_{k=1}^{\infty} : \lim_{k \to \infty} x_{n_k} = a$.
 \end{theorem}
 \begin{proof}
-	Докажем необходимость. Пусть $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$. Выберем $\{\varepsilon_n\}_{n=1}^{\infty}, \varepsilon_n = \frac{1}{n}>0$.
+	Докажем необходимость. Пусть $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$. 
+    Выберем $\displaystyle\{\varepsilon_n\}_{n=1}^{\infty}, \varepsilon_n = \frac{1}{n}>0$.
 
 	Для $n=1 \ \ U_{\varepsilon_{1}=1}(a)$ содержит $\infty$ много элементов $\implies \exists x_{n_1}\in U_{\varepsilon_1}(a)$, т.е. $|x_{n_1}-a| < 1$.
 
