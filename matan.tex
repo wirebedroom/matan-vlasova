@@ -36,6 +36,7 @@
    \oldquote}
   {\par\nobreak\smallskip\hfill(\quoteauthor)%
    \endoldquote\addvspace{\bigskipamount}}
+
 % Теоремы
 \newtheorem{definition}{Определение}[section]
 \newtheorem{theorem}{Теорема}[section]
@@ -45,20 +46,22 @@
 \newtheorem*{remark}{Замечание}
 \theoremstyle{definition}
 \newtheorem{exmp}{Пример}[section]
+\newtheorem{exercise}{Упражнение}
 %\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
 %\theoremstyle{named}
 %\newtheorem*{namedtheorem}{Theorem}
 
 %% Colors
+%\usepackage[dvipsnames]{xcolor}
 \usepackage{xcolor}
-\definecolor{nord8}{RGB}{136,192,208}
-\definecolor{nord9}{RGB}{129,161,193}
-\definecolor{nord10}{RGB}{94,129,172}
-\definecolor{nord11}{RGB}{191,97,106}
-\definecolor{nord12}{RGB}{208,135,112}
-\definecolor{nord13}{RGB}{235,203,139}
-\definecolor{nord14}{RGB}{163,190,140}
-\definecolor{nord15}{RGB}{180,142,173}
+%\definecolor{nord8}{RGB}{136,192,208}
+%\definecolor{nord9}{RGB}{129,161,193}
+%\definecolor{nord10}{RGB}{94,129,172}
+%\definecolor{nord11}{RGB}{191,97,106}
+%\definecolor{nord12}{RGB}{208,135,112}
+%\definecolor{nord13}{RGB}{235,203,139}
+%\definecolor{nord14}{RGB}{163,190,140}
+%\definecolor{nord15}{RGB}{180,142,173}
 
 \usepackage{textcomp}
 
@@ -69,7 +72,7 @@
     citecolor=black,
     filecolor=black,
     linkcolor=black,
-    urlcolor=black
+    urlcolor=blue
 }
 
 %% TikZ
@@ -77,6 +80,8 @@
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.geometric,positioning}
 \usepackage{pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{math}
 %\usetikzlibrary{patterns.meta}
 
 % figure support
@@ -145,7 +150,8 @@
 \end{enumerate}
 \subsection{Кванторные операции}
 
-Высказывание, содержащее переменную, называется предикатом и обозначается $P(x)$. Отрицание $P(x)$ обозначается $\overline{P}(x)$.
+Высказывание, содержащее переменную, называется предикатом и обозначается $P(x)$.
+Отрицание $P(x)$ обозначается $\overline{P}(x)$.
 
 \begin{itemize}
 	\item $\forall $ --- квантор общности. $\forall x \in X : P(x)$ --- ``для любого элемента $x$ из множества $X$ выполняется высказывание $P(x)$''.
@@ -372,8 +378,9 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
     Будем доказывать ``от противного''. Предположим, что существует такое $b\in X$, что $\forall x\in X : x\le b$, причем $a\neq b$. $a = \max X, \ b\in X$, следовательно, $b \le a$. С другой стороны, $b = \max X, \ a \in X$, следовательно, $a \le b$. Таким образом, $a=b$, что противоречит предположению, а значит, максимальный элемент единственен.
 \end{proof}
 
-    Доказательство единственности минимального элемента мы оставляем в качестве упражнения для читателя.
-
+\begin{exercise}
+   Доказать теорему 2.2 для минимального элемента. 
+\end{exercise}
 
 \subsection{Точные грани числового множества}
 \begin{definition}
@@ -461,8 +468,10 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
         \item $\forall \varepsilon>0 \quad \exists x_\varepsilon \in X : x_\varepsilon < m + \varepsilon$.
     \end{enumerate}
 \end{theorem}
-    Доказательство оставлено читателю в качестве упражнения.
 
+\begin{exercise}
+    Доказать теорему 2.5.
+\end{exercise}
 
 \subsection{Принцип Архимеда}
 \begin{theorem}
@@ -555,15 +564,431 @@ $a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что против
 
 \newpage
 \section{Функции или отображения}
-\subsection{Понятие функции}
+\begin{definition}
+    
+Пусть $X$ и $Y$ --- какие-то множества.
+
+Если $\forall x\in X$ поставлен в соответствие элемент $y\in Y$, то говорят, что задана функция $f : X \to Y$,
+переводящая множество $X$ во множество $Y$.
+
+В этом случае множество $D_f = X$ называется областью определения $f$,
+а множество $E_f = \{y\in Y : (\exists x \in X : f(x) = y)\} $ называется множеством значений $f$.
+
+Значение $f(x) \in Y$, которое функция принимает на элементе $x\in X$, называют образом элемента $x$. С другой стороны,
+если для $y\in E_f$ выполнено $y=f(x)$, то $x$ называют прообразом элемента $y$ при отображении $f$.
+
+    Пусть $A \subset X$. Тогда множество
+    \[f(A) = \{y\in Y : (\exists x\in A : f(x) = y)\} .\] 
+    называется образом множества $A$ при отображении $f$.
+
+    Пусть $B \subset E_f$. Тогда множество
+    \[f^{-1}(B) = \{x \in X : f(x) \in B\} .\] 
+    называется прообразом множества $B$ при отображении $f$.
+\end{definition}
+
+\begin{definition}
+    Если $X\subset \mathbb{R}, \ Y \subset \mathbb{R}$, то $f : X \to Y$ называется числовой функцией одного
+    действительного аргумента.
+\end{definition}
+
+\begin{definition}
+    Функцию $f : X \to Y$ называют инъекцией, если $\forall x_1, x_2 \in X : (x_1\neq x_2
+    \implies f(x_1)\neq f(x_2))$, т.е. различные элементы имеют различные образы.
+\end{definition}
+
+\begin{center}
+    \begin{tikzpicture}
+        % Эллипсы
+        \draw (0cm,-0.00cm) ellipse ({1cm} and {2cm});
+        \draw (5cm,-0.00cm) ellipse ({1cm} and {2.33cm});
+        % X
+        \draw (0,-2.2) node[anchor=north] (X) {$\color{red} X$};
+            \filldraw[red] (0,1)  circle (0.1) node (x_1) {};
+            \filldraw[red] (0,0)  circle (0.1) node (x_2) {};
+            \filldraw[red] (0,-1) circle (0.1) node (x_3) {};
+        % Y
+        \draw (5,-2.5) node[anchor=north] (Y) {$\color{blue} Y$};
+            \filldraw[blue] (5,1.5)  circle (0.1) node (y_1) {};
+            \filldraw[blue] (5,0.5)  circle (0.1) node (y_2) {};
+            \filldraw[blue] (5,-0.5) circle (0.1) node (y_3) {};
+            \filldraw[blue] (5,-1.5) circle (0.1) node (y_4) {};
+        % Стрелки
+        \draw[-Latex, thick] (x_1) to (y_1);
+        \draw[-Latex, thick] (x_2) to (y_3);
+        \draw[-Latex, thick] (x_3) to (y_4);
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Функцию $f : X \to Y$ называют сюръекцией, если $E_f = Y$, т.е. $\forall y\in Y \ \exists x \in X : f(x) = y$.
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        % Эллипсы
+        \draw (0cm,-0.00cm) ellipse ({1cm} and {2.33cm});
+        \draw (5cm,-0.00cm) ellipse ({1cm} and {2cm});
+        % X
+        \draw (0,-2.5) node[anchor=north] (X) {$\color{red} X$};
+            \filldraw[red] (0,1.5)  circle (0.1) node (x_1) {};
+            \filldraw[red] (0,0.5)  circle (0.1) node (x_2) {};
+            \filldraw[red] (0,-0.5) circle (0.1) node (x_3) {};
+            \filldraw[red] (0,-1.5) circle (0.1) node (x_4) {};
+        % Y
+        \draw (5,-2.2) node[anchor=north] (Y) {$\color{blue} Y$};
+            \filldraw[blue] (5,1)  circle (0.1) node (y_1) {};
+            \filldraw[blue] (5,0)  circle (0.1) node (y_2) {};
+            \filldraw[blue] (5,-1) circle (0.1) node (y_3) {};
+        % Стрелки
+        \draw[-Latex, thick] (x_1) to (y_1);
+        \draw[-Latex, thick] (x_2) to (y_2);
+        \draw[-Latex, thick] (x_3) to (y_3);
+        \draw[-Latex, thick] (x_4) to (y_3);
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Функцию $f : X \to Y$ называют биекцией или взаимно-однозначным отображением, если $f$ является и инъекцией, и сюръекцией. 
+\end{definition}
+\begin{center}
+    \begin{tikzpicture}
+        % Эллипсы
+        \draw (0cm,-0.00cm) ellipse ({1cm} and {2cm});
+        \draw (5cm,-0.00cm) ellipse ({1cm} and {2cm});
+        % X
+        \draw (0,-2.2) node[anchor=north] (X) {$\color{red} X$};
+            \filldraw[red] (0,1)  circle (0.1) node (x_1) {};
+            \filldraw[red] (0,0)  circle (0.1) node (x_2) {};
+            \filldraw[red] (0,-1) circle (0.1) node (x_3) {};
+        % Y
+        \draw (5,-2.2) node[anchor=north] (Y) {$\color{blue} Y$};
+            \filldraw[blue] (5,1)  circle (0.1) node (y_1) {};
+            \filldraw[blue] (5,0)  circle (0.1) node (y_2) {};
+            \filldraw[blue] (5,-1) circle (0.1) node (y_3) {};
+        % Стрелки
+        \draw[-Latex, thick] (x_1) to (y_1);
+        \draw[-Latex, thick] (x_2) to (y_3);
+        \draw[-Latex, thick] (x_3) to (y_2);
+    \end{tikzpicture}
+\end{center}
+
+\begin{definition}
+    Если существует биекция $f : X \to \mathbb{N}$, то множество $X$ называют счетным и обозначают $X \sim \mathbb{N}$.
+\end{definition}
+\begin{exercise}
+    Доказать, что $\mathbb{Q}$ --- счетное множество.
+\end{exercise}
+
+\begin{definition}
+    Пусть $f : X \to Y$. Графиком $f$ называется множество Г$_f$ всех упорядоченных пар $x, y$, где $x\in X, \ y=f(x)$.
+    Или, что то же,
+    \[\text{Г}_f = \{(x, y) : x\in X, \ y = f(x)\} .\] 
+\end{definition}
+
+\subsection*{Геометрическая интерпретация графика функции}
+График функции принято изображать в декартовой системе координат.
+\begin{center}
+    \begin{tikzpicture}[smooth, domain=-2:4]
+        %\draw[very thin,color=gray] (-6,-6) grid (6,6);
+        \draw[->] (-6,0) -- (6,0) node[right] {$x$};
+        \draw[->] (0,-5) -- (0,5) node[above] {$y$};
+        \draw[shift={(1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (1) {$1$};
+        \draw (-0.25,-3pt) node[anchor=north] (0) {$0$};
+        \draw[red, thick] plot (\x,{1-2*sin(\x r)}) node[right] {$y = f(x)$}; 
+    \end{tikzpicture}
+\end{center}
+
 \subsection{Ограниченные и неограниченные числовые функции}
+\begin{definition}
+    Функцию $f : X\subset \mathbb{R} \to \mathbb{R}$ называют ограниченной сверху тогда и только тогда, когда
+    множество значений функции $E_f$ ограничено сверху, т.е. найдется такое число $M \in \mathbb{R}$,
+    что $\forall x \in X : f(x) \le M$.
+
+    Функцию $f : X\subset \mathbb{R} \to \mathbb{R}$ называют ограниченной снизу тогда и только тогда, когда
+    множество значений функции $E_f$ ограничено снизу, т.е. найдется такое число $m \in \mathbb{R}$,
+    что $\forall x \in X : f(x) \ge m$.
+
+    Функцию $f : X\subset \mathbb{R} \to \mathbb{R}$ называют ограниченной тогда и только тогда, когда
+    $f$ ограничена и сверху, и снизу, т.е. найдется такое число $M \in \mathbb{R}$,
+    что $\forall x \in X : |f(x)| \ge M$.
+
+    Функцию $f : X\subset \mathbb{R} \to \mathbb{R}$ называют неограниченной тогда и только тогда, когда
+    для любого числа $M \in \mathbb{R}$, найдется такой $x \in X$, что $|f(x)| > M$.
+\end{definition}
+\begin{exmp}
+    Рассмотрим функцию $y = x^2$. Ее множество значений $E_f = [0; +\infty]$ ограничено снизу,
+    следовательно, функция $y$ ограничена снизу.
+\end{exmp}
+
+\begin{definition}
+    Функция $f : X \subset \mathbb{R} \to  \mathbb{R}$ называется
+    \begin{enumerate}
+        \item возрастающей, если $\forall x_1, x_2 : (x_1 < x_2 \implies f(x_1) < f(x_2))$.
+        \item убывающей, если $\forall x_1, x_2 : (x_1 < x_2 \implies f(x_1) > f(x_2))$.
+        \item неубывающей, если $\forall x_1, x_2 : (x_1 < x_2 \implies f(x_1) \le  f(x_2))$.
+        \item невозрастающей, если $\forall x_1, x_2 : (x_1 < x_2 \implies f(x_1) \ge f(x_2))$.
+    \end{enumerate}
+    Все перечисленные функции называются монотонными. Первые две называются строго монотонными.
+\end{definition}
+\begin{exmp}
+    Рассмотрим функцию $y = x^2$. На своей области определения $D_f = \mathbb{R}$ она не является монотонной.
+    Однако она является возрастающей на участке $[0; +\infty)\subset D_f$ и убывающей на участке $(-\infty; 0]\subset D_f$.
+\end{exmp}
+\begin{exmp}
+    Рассмотрим функцию $y = C$, где $C$ --- константа. Эта функция является монотонной.
+\end{exmp}
+\begin{exmp}
+    Рассмотрим функцию $y = \sgn x = \begin{cases} 1, x >0, \\ 0, x = 0, \\ -1, x < 0.  \end{cases}$. \\
+    Она является неубывающей на всей своей области определения.
+    \begin{center}
+        \begin{tikzpicture}[smooth, domain=-4:4]
+            \draw[->] (-6,0) -- (6,0) node[right] {$x$};
+            \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+            \foreach \i in {1,...,5} 
+            \draw[shift={(\i,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$\i$};
+            \foreach \j in {-5,...,-1} 
+            \draw[shift={(\j,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$\j$};
+            \draw (-0.25,-3pt) node[anchor=north] (0) {$0$};
+            \draw[red, very thick] (-4,-1) -- (0,-1);
+            \draw[red, very thick] (0,1) -- (4,1) node[right] {$y=\sgn x$};
+            \draw[black, fill=white] (0,-1) circle (0.07) node[anchor=north] {};
+            \draw[black, fill=white] (0,1) circle (0.07) node[anchor=north] {};
+            \filldraw[red] (0,0) circle (0.07) node[anchor=south] {};
+        \end{tikzpicture}
+    \end{center}
+\end{exmp}
+
+\begin{lemma}
+    Если $f : X \subset \mathbb{R} \to Y \subset \mathbb{R}$, $E_f = Y$, и $f$ --- строго монотонная,
+    то $f$ --- биекция множества $X$ на множество $Y$.
+\end{lemma}
+
 \subsection{Обратные функции}
+\begin{definition}
+    Пусть $f : X \to Y$ --- биекция. Если $\forall y\in Y$ поставлен в соответствие тот единственный $x \in X$,
+    для которого $y = f(x)$, то полученное отображение множества $Y$ на множество $X$ называется обратной функцией
+    к $f$ и обозначается $f^{-1}$.
+    \[D_{f^{-1}} = Y, \quad E_{f^{-1}} = X,\] 
+    \[\text{Г}_{f^{-1}} = \{(x, y) : y\in Y, \ x \in f^{-1}(y)\} .\]
+\end{definition}
+\noindent Заметим, что Г$_{f^{-1}}$ симметричен Г$_f$ относительно прямой $y=x$.
+\begin{exmp}
+    Рассмотрим функцию $y = \sin x$ на отрезке $\displaystyle \left[\frac{-\pi}{2} ;
+    \frac{\pi}{2}\right]$. Представим ее как $\displaystyle f : \left[\frac{-\pi}{2} ;
+    \frac{\pi}{2}\right] \to [-1; 1]$. Тогда $\displaystyle D_f = \left[\frac{-\pi}{2} ; \frac{\pi}{2}\right]$, 
+    $E_f = [-1; 1]$.
+
+    \noindent Рассмотрим теперь функцию $y = \arcsin x$. $D_f = [-1; 1]$,
+    $\displaystyle E_f = \left[\frac{-\pi}{2} ; \frac{\pi}{2}\right]$.
+    \[\forall x \in [-1; 1] : (y = \arcsin x \iff x = \sin y).\] 
+
+    \begin{center}
+        \begin{tikzpicture}[smooth, domain=-3.14:3.14, samples = 200]
+            \draw[->] (-6,0) -- (6,0) node[right] {$x$};
+            \draw[->] (0,-5) -- (0,5) node[above] {$y$};
+            % пи.
+            \draw[shift={(3.14,0)},color=black]  (0pt,3pt) -- (0pt,-3pt) node[anchor=north]
+                {$\displaystyle \frac{\pi}{2}$};
+            \draw[shift={(-3.14,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north]
+                {$\displaystyle -\frac{\pi}{2}$};
+            \draw[shift={(0,3.14)},color=black]  (-3pt,0pt) -- (3pt,0pt) node[right]
+                {$\displaystyle\frac{\pi}{2}$};
+            \draw[shift={(0,-3.14)},color=black] (-3pt,0pt) -- (3pt,0pt) node[right] 
+                {$\displaystyle-\frac{\pi}{2}$};
+            % единички.
+            \draw[shift={(2,0)},color=black]  (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$1$};
+            \draw[shift={(-2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$-1$};
+            \draw[shift={(0,2)},color=black]  (-3pt,0pt) -- (3pt,0pt) node[right] {$1$};
+            \draw[shift={(0,-2)},color=black] (-3pt,0pt) -- (3pt,0pt) node[right] {$-1$};
+            % синус.
+            \draw (0.25,-3pt) node[anchor=north] (0) {$0$};
+            \draw[red, thick]  plot (\x,{2*sin (\x/2 r)}) node[right] {$y = \sin x$}; 
+            \filldraw[red] (3.14,2) circle (0.07) node[anchor=south] {};
+            \filldraw[red] (-3.14,-2) circle (0.07) node[anchor=south] {};
+            % арксинус.
+            \draw[blue, thick] plot[domain=-2:2] (\x,{asin(\x / 2) / 90*pi}) node[right] {$y = \arcsin x$}; 
+            \filldraw[blue] (2,3.14) circle (0.07) node[anchor=south] {};
+            \filldraw[blue] (-2,-3.14) circle (0.07) node[anchor=south] {};
+            % Прямая y = x.
+            \draw[black, dashed] plot[domain=-3.5:2.8] (\x, \x) {};
+        \end{tikzpicture}
+    \end{center}
+\end{exmp}
+
 \subsection{Четные и нечетные функции}
+\begin{definition}
+    Функцию $f : X\subset \mathbb{R}\to \mathbb{R}$ называют четной тогда и только тогда, когда
+    \begin{enumerate}
+        \item Область определения функции $D_f$ симметрична относительна нуля;
+        \item $\forall x \in X : f(-x) = f(x)$.
+    \end{enumerate}
+\end{definition}
+\noindent Заметим, что в этом случае Г$_f$ симметричен относительно оси $Oy$.
+\begin{exmp}
+    Рассмотрим функцию $y = x^2$. $D_y=\mathbb{R}$, $(-x)^2 = x^2$, следовательно, $y = x^2$ --- четная функция.
+\end{exmp}
+\begin{exmp}
+    Рассмотрим функцию $y=x^2, \ x\in [-1; 5]$. Ее область определения несимметрична,
+    следовательно, данная функция не является четной.
+\end{exmp}
+
+\begin{definition}
+    Функцию $f : X\subset \mathbb{R}\to \mathbb{R}$ называют нечетной тогда и только тогда, когда
+    \begin{enumerate}
+        \item Область определения функции $D_f$ симметрична относительна нуля;
+        \item $\forall x \in X : f(-x) = -f(x)$.
+    \end{enumerate}
+\end{definition}
+\noindent Заметим, что в этом случае Г$_f$ симметричен относительно оси $Ox$.
+\begin{exmp}
+    \[y = \sin x;\] 
+    \[y = x^{2n - 1}, \ n \in \mathbb{N}.\] 
+\end{exmp}
 \subsection{Периодические функции}
+\begin{definition}
+    Число $T$ называется периодом функции $f : X\subset \mathbb{R} \to \mathbb{R}$ тогда и только тогда, когда
+    \begin{enumerate}
+        \item $\forall x \in X : x + T \in X, \ x - T \in X$ ;
+        \item $\forall x \in X : f(x+T) = f(x-T) = f(x)$.
+    \end{enumerate}
+
+    Если $f$ имеет ненулевой период, то она называется периодической.
+
+    Если среди положительных периодов есть наименьший, то он называется основным.
+\end{definition}
+\begin{remark}
+    Если $T$ --- период функции $f$, то $\forall n\in \mathbb{Z}$ и $\forall x \in X \ f(x+nT) = f(x)$.
+\end{remark}
+\begin{exmp}
+    $y = C$ --- периодическая, не имеет основного периода.
+\end{exmp}
+\begin{exmp}
+    Рассмотрим функцию Дирихле: $y = D(x) = \begin{cases}
+        1, x\in \mathbb{Q}, \\
+        0, x \in \mathbb{R} \backslash \mathbb{Q}.
+    \end{cases}$
+    Докажем, что $\forall r \in \mathbb{Q}$ будет ее периодом.
+    \begin{enumerate}
+        \item Если $x\in \mathbb{Q}$, то $x + r \in \mathbb{Q}$, $D(x + r) = 1 = D(x)$.
+        \item Если $x \in \mathbb{R}\backslash \mathbb{Q}$, то $x + r \in \mathbb{R}\backslash \mathbb{Q}$, 
+            $D(x+r) = 0 = D(x)$.
+    \end{enumerate}
+    Следовательно, $T = r$ --- период функции Дирихле. Основного периода у этой функции нет,
+    т.к. $\forall r\in \mathbb{Q}$ найдется $r'\in \mathbb{Q} : r' < r$.
+\end{exmp}
+\begin{exmp}
+    Рассмотрим функцию $y = \sin x, \ x \in \mathbb{R}$. $T= 2\pi$ --- ее основной период.
+\end{exmp}
+
 \subsection{Сложная функция (композиция)}
+\begin{definition}
+    Если отображения $f : X \to Y$ и $g : Y \to Z$ таковы, что одно из них (в нашем случае $g$) определено
+    на множестве значений другого ($f$), т.е. $D_g = E_f$, то можно построить новое отображение
+    \[g \circ f : X \to Z,\] 
+    Значения которого на элементах множества $X$ определяются формулой
+    \[(g \circ f)(x) = g(f(x)).\] 
+
+    Построенное составное отображение $g \circ f$ называют композицией отображения $f$ и отображения $g$.
+\end{definition}
+
+\begin{center}
+    \begin{tikzpicture}
+        % Эллипсы
+        \draw (0cm,-0.00cm) ellipse ({1cm} and {2.33cm});
+        \draw (4cm,-0.00cm) ellipse ({1cm} and {2cm});
+        \draw (8cm,-0.00cm) ellipse ({1cm} and {2cm});
+        % X
+        \draw (0,-2.5) node[anchor=north] (X) {$\color{red} X$};
+            \filldraw[red] (0,1.5)  circle (0.1) node (x_1) {};
+            \filldraw[red] (0,0.5)  circle (0.1) node (x_2) {};
+            \filldraw[red] (0,-0.5) circle (0.1) node (x_3) {};
+            \filldraw[red] (0,-1.5) circle (0.1) node (x_4) {};
+        % Y
+        \draw (4,-2.2) node[anchor=north] (Y) {$\color{blue} Y$};
+            \filldraw[blue] (4,1)  circle (0.1) node (y_1) {};
+            \filldraw[blue] (4,0)  circle (0.1) node (y_2) {};
+            \filldraw[blue] (4,-1) circle (0.1) node (y_3) {};
+        % Z
+        \draw (8,-2.2) node[anchor=north] (Z) {$\color{orange} Z$};
+            \filldraw[orange] (8,1)  circle (0.1) node (z_1) {};
+            \filldraw[orange] (8,0)  circle (0.1) node (z_2) {};
+            \filldraw[orange] (8,-1) circle (0.1) node (z_3) {};
+        % Стрелки
+        \draw[-Latex, thick] (x_1) to (y_1);
+        \draw[-Latex, thick] (x_2) to (y_2);
+        \draw[-Latex, thick] (x_3) to (y_3);
+        \draw[-Latex, thick] (x_4) to (y_3);
+        \draw (2,-2) node (f) {$f$};
+
+        \draw[-Latex, thick] (y_1) to (z_1);
+        \draw[-Latex, thick] (y_2) to (z_2);
+        \draw[-Latex, thick] (y_3) to (z_2);
+        \draw (6,-2) node (g) {$g$};
+    \end{tikzpicture}
+\end{center}
+\begin{exmp}
+    Рассмотрим сложную функцию $z = \sin x^2$. Она является композицией функций $z = g(y) = \sin y$ и $y = f(x) = x^2$.
+    \[ f : \mathbb{R} \to [0; +\infty) = Y,\]
+    \[g : Y \to \mathbb{R}.\] 
+\begin{center}
+    \begin{tikzpicture}[smooth, domain=-5.9:5.5, samples = 1000]
+        \draw[->] (-6,0) -- (6,0) node[right] {$x$};
+        \draw[->] (0,-5) -- (0,5) node[above] {$y$};
+        \draw (-0.25,-3pt) node[anchor=north] (0) {$ 0$};
+        \draw[thick, red] plot[domain=-2.5:2.5] (\x, {(\x)^2}) node[right] {$y = x^2$};
+        \draw[thick, blue] plot (\x, {sin((\x)^2 r)}) node[right] {$z = \sin x^2$};
+        % пи.
+        \draw[shift={(3.14/2,0)},color=black]  (0pt,3pt) -- (0pt,-3pt) node[anchor=north]
+            {$\displaystyle \frac{\pi}{2}$};
+        \draw[shift={(0,3.14/2)},color=black]  (-3pt,0pt) -- (3pt,0pt) node[right]
+            {$\displaystyle\frac{\pi}{2}$};
+        % единички.
+        \draw[shift={(1,0)},color=black]  (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$1$};
+        \draw[shift={(-1,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] {$-1$};
+        \draw[shift={(0,1)},color=black]  (-3pt,0pt) -- (3pt,0pt) node[right] {$1$};
+        \draw[shift={(0,-1)},color=black] (-3pt,0pt) -- (3pt,0pt) node[right] {$-1$};
+    \end{tikzpicture}
+\end{center}
+\end{exmp}
+
+\newpage
 \subsection{Основные элементарные функции}
+\begin{definition}
+    Следующие функции называются основными элементарными функциями.
+    \begin{enumerate}
+        \item Постоянная. 
+            \[y = C;\]
+        \item Степенная. 
+            \[y = x^{n}, \ n\in \mathbb{N}.\]
 
+            Рассмотрим частный случай $y = \sqrt[n]{x}$. 
+            Пусть $k\in \mathbb{Z}$. Если $n=2k$, то $D= [0; +\infty)$, если же $n = 2k -1$, то $D = \mathbb{R}$.
+        \item Многочлен степени $n$. 
+            \[P(x) = a_0x^{n} + a_1x^{n-1}+\ldots+a_n,\]
+            где $a_k \in \mathbb{R}, \ k = 0,\ldots,n, \ a_0 \neq 0$;
+        \item Рациональная. 
+            \[P(x) = \frac{P_n(x)}{Q_m(x)},\]
+            где $P_n(x), Q_m(x)$ --- многочлены степеней $n$ и $m$;
+        \item Тригонометрические и их обратные.
+            \[y = \sin x \quad \quad y = \arcsin x,\] 
+            \[y = \cos x \quad \quad y = \arccos x,\] 
+            \[y = \tg x  \quad \quad y = \arctg x,\] 
+            \[y = \ctg x \quad \quad y = \arcctg x;\] 
+        \item Показательная и логарифм. Пусть $a\in \mathbb{R} : (a > 0, \ a \neq 1)$.
+            \[y = a^{x},\] 
+            $D = \mathbb{R}, \ E = (0;+\infty)$;
+            \[y = \log_a x,\] 
+            $D = (0; +\infty), \ E = \mathbb{R}$;
+            \[y = x^{\alpha} = e^{\alpha\ln x},\] 
+            где $x > 0, \ \alpha \in \mathbb{R}$.
+    \end{enumerate}
+\end{definition}
 
+\begin{definition}
+    Числовую функцию $f : X\subset \mathbb{R} \to \mathbb{R}$ называют элементарной тогда и только тогда,
+    когда эта функция может быть получена из основных элементарных функций путем применения к ним арифметических
+    операций сложения, вычитания, умножения, деления и композиций, взятых конечное число раз.
+\end{definition}
+\begin{exmp}
+    \[y = \frac{\log_3 (\tg(\arcsin x - 3x^{4}))}{2^{x^2-1} + \sqrt[4]{\arctg x^2 + 3}}.\] 
+\end{exmp}
 
 \newpage
 \section{Числовые последовательности и их пределы}
@@ -2189,4 +2614,10 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 \begin{theorem}[Вейерштрасса о существовании предела монотонной ограниченной функции]
     Пусть $f(x)$ монотонна и ограничена на $[a; +\infty)$. Тогда существует $\displaystyle \lim_{x \to +\infty} f(x) = A \in \mathbb{R}$.
 \end{theorem}
+
+
+
+\newpage
+Документ подготовил Мамзелев В.С.
+Ссылка на github-репозиторий с исходным кодом: \url{https://github.com/wirebedroom/matan-vlasova}.
 \end{document} % конец документа
