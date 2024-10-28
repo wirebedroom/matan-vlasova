@@ -43,7 +43,7 @@
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{lemma}{Утверждение}[section]
 \theoremstyle{remark}
-\newtheorem*{remark}{Замечание}
+\newtheorem{remark}{Замечание}[theorem]
 \theoremstyle{definition}
 \newtheorem{exmp}{Пример}[section]
 \newtheorem{exercise}{Упражнение}
@@ -82,6 +82,7 @@
 \usepackage{pgfplots}
 \usetikzlibrary{calc}
 \usetikzlibrary{math}
+\usetikzlibrary{patterns}
 %\usetikzlibrary{patterns.meta}
 
 % figure support
@@ -1956,9 +1957,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\end{tikzpicture}
 	\end{center}
 
-	\[
-	x \in \accentset{\circ}{U}_\delta(\infty)
-	\] 
+	\[ x \in \accentset{\circ}{U}_\delta(\infty) \] 
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
@@ -1968,9 +1967,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw[black, fill=white] (7,0) circle (0.07) node[anchor=north] (d) {$\delta$};
 		\end{tikzpicture}
 	\end{center}
-	\[
-	x \in \accentset{\circ}{U}_\delta(+\infty)
-	\] 
+	\[ x \in \accentset{\circ}{U}_\delta(+\infty) \] 
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
@@ -1978,9 +1975,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			\draw[black, fill=white] (7,0) circle (0.07) node[anchor=north] (d) {$\delta$};
 		\end{tikzpicture}
 	\end{center}
-	\[
-	x \in \accentset{\circ}{U}_\delta(-\infty)
-	\] 
+	\[ x \in \accentset{\circ}{U}_\delta(-\infty) \] 
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
@@ -1991,8 +1986,8 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 	\begin{multline}
 	\lim_{x \to a} f(x) = b \iff \\
-	\iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}: 0< |x-a| < \delta \implies \\
-	\implies |f(x)-b|<\varepsilon.
+	\iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \mathbb{R}:
+    0< |x-a| < \delta \implies \\ \implies |f(x)-b|<\varepsilon.
 	\end{multline}
 
 	\begin{center}
@@ -2008,12 +2003,10 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		  \draw[dashed] (3.5,2.45) -- (0,2.45) node[left] {$b$};
 		  \draw[black, fill=white] (3.5,0) circle (0.07) node[anchor=north] (a) {$a$};
 
-		  %\draw[shift={(5,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a+d) {$a+\delta$};
 		  \draw[dashed] (5,0) -- (5,5);
 		  \draw[dashed] (5,5) -- (0,5) node[left] {$b+\varepsilon$};;
 		  \draw[black, fill=white] (5,0) circle (0.07) node[anchor=north] (a+d) {$a+\delta$};
 
-		  %\draw[shift={(2,0)},color=black] (0pt,3pt) -- (0pt,-3pt) node[anchor=north] (a-d) {$a-\delta$};
 		  \draw[dashed] (2,0) -- (2,0.82);
 		  \draw[dashed] (2,0.82) -- (0,0.82) node[left] {$b-\varepsilon$};
 		  \draw[black, fill=white] (2,0) circle (0.07) node[anchor=north] (a-d) {$a-\delta$};
@@ -2034,7 +2027,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 		\implies |f(x) - b|< \varepsilon.
 	\end{multline}
 	\begin{exmp}
-		$\lim_{x \to +\infty} \arctg{x} = \frac{\pi}{2}$.
+		$\displaystyle\lim_{x \to +\infty} \arctg{x} = \frac{\pi}{2}$.
 	\end{exmp}
 
 	\begin{multline}
@@ -2043,26 +2036,25 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	\implies |f(x) - b| < \varepsilon.
 	\end{multline}
 	\begin{exmp}
-		$\lim_{x \to -\infty} \arctg{x} = - \frac{\pi}{2}$.
+		$\displaystyle \lim_{x \to -\infty} \arctg{x} = - \frac{\pi}{2}$.
 	\end{exmp}
 %\\[12pt]
-
-	Если $* = a; \ \infty$, то $\lim_{x \to *} f(x)$ называется двусторонним пределом.
-	Если $* = a+0; \ a-0;\ +\infty;\ -\infty$, то $\lim_{x \to *} f(x)$ называется односторонним пределом.
-	Если $** = b$ (конечное число), то $\lim_{x \to *} f(x) = b$ называют конечным пределом.
-	Если $** = \infty;\ +\infty;\ -\infty$, то $\lim_{x \to *} f(x)$ называют бесконечным.
+\begin{itemize}
+    \item Если $* = a; \ \infty$, то $\displaystyle \lim_{x \to *} f(x)$ называется двусторонним пределом.
+    \item Если $* = a+0; \ a-0;\ +\infty;\ -\infty$, то $\displaystyle \lim_{x \to *} f(x)$ называется односторонним пределом.
+    \item Если $** = b$ (конечное число), то $\displaystyle \lim_{x \to *} f(x) = b$ называют конечным пределом.
+    \item Если $** = \infty;\ +\infty;\ -\infty$, то $\displaystyle \lim_{x \to *} f(x)$ называют бесконечным.
+\end{itemize}
 
 \begin{theorem}[о связи двустороннего предела с односторонними]
-	\[
-		\exists \lim_{x \to a} f(x) = b \iff \exists \lim_{x \to a+0} f(x) = b \text{ и } \exists \lim_{x \to a-0} f(x) = b
-	.\]
+	\[ \exists \lim_{x \to a} f(x) = b \iff \exists \lim_{x \to a+0} f(x) = b \text{ и } \exists \lim_{x \to a-0} f(x) = b .\]
 \end{theorem}
 \begin{proof}
 	Докажем необходимость. Распишем определение двустороннего предела по Коши.
 	\begin{multline}
 		\exists  \lim_{x \to a} f(x) = b \implies \\
-		\implies \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} : 0 < |x-a| < \delta \implies \\
-		\implies |f(x) - b| < \varepsilon.
+		\implies \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \mathbb{R} 
+        : 0 < |x-a| < \delta \implies \\ \implies |f(x) - b| < \varepsilon.
 	\end{multline}	
 	Рассмотрим неравенство $0 < |x-a| < \delta$.
 	\begin{multline}
@@ -2093,12 +2085,12 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	.\]
 \end{proof}
 
-\begin{remark}[1]
+\begin{remark}
 		\[
 		\lim_{x \to a} f(x) = \infty \iff \lim_{x \to a+0} f(x) = \infty, \lim_{x \to a-0} f(x) = \infty
 		.\] 
 \end{remark}
-\begin{remark}[2]
+\begin{remark}
 	\[
 		\lim_{x \to \infty} f(x) = \infty \iff \lim_{x \to +\infty} f(x) = b \ (\infty), \lim_{x \to -\infty} f(x) = b \ (\infty)
 	.\] 
@@ -2117,17 +2109,15 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{theorem}
 
 \begin{exmp}
-	$\lim_{x \to 0} \sin{\frac{1}{x}}$ не определен.
+	$\displaystyle \lim_{x \to 0} \sin{\frac{1}{x}}$ не определен.
 \end{exmp}
 
 \begin{exmp}
-	\[
-		x_n = \frac{1}{\pi n} \quad \lim_{n \to \infty} x_n = 0 \quad \lim_{n \to \infty} \sin{x_n} = \lim_{n \to \infty} \sin{\pi n} = 0
-	.\] 
-	\[
-		y_n = \frac{1}{\frac{\pi}{2} + 2\pi n} \quad \lim_{n \to \infty} y_n = 0 \quad \lim_{n \to \infty} \sin{y_n} = \lim_{n \to \infty} \sin{\frac{\pi}{2} + 2\pi n} = 1
-	.\] 
-	$0 \neq 1 \implies \lim_{x \to 0} f(x)$ не существует.
+	\[ x_n = \frac{1}{\pi n} \quad \lim_{n \to \infty} x_n = 0 \quad \lim_{n \to \infty} \sin{x_n} 
+    = \lim_{n \to \infty} \sin{\pi n} = 0 .\] 
+	\[ y_n = \frac{1}{\frac{\pi}{2} + 2\pi n} \quad \lim_{n \to \infty} y_n = 0 \quad \lim_{n \to \infty} \sin{y_n} =
+    \lim_{n \to \infty} \sin{\frac{\pi}{2} + 2\pi n} = 1 .\] 
+	$\displaystyle 0 \neq 1 \implies \lim_{x \to 0} f(x)$ не существует.
 \end{exmp}
 
 
@@ -2144,12 +2134,15 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \begin{definition}
 	Функция $f(x)$ называется локально ограниченной при  $x \to *$ (в точке $*$ или в окрестности $*$ ), если существуют такие $\accentset{\circ}{U}(*)$ и $M>0$, что $f(x)$ определена в  $\accentset{\circ}{U}(*) $ и $\forall x\in \accentset{\circ}{U}(*) : |f(x)| \le  M$. \\
-Замечание: Если функция $f$ локально ограничена при $x \to *$, то в точке $*$ такая функция может быть как определена, так и не определена.
 \end{definition}
+\begin{remark}
+    Если функция $f(x)$ локально ограничена при $x \to *$, то в точке $*$ такая функция может быть как определена,
+    так и не определена.
+\end{remark}
 
 
 \begin{theorem}[о локальной ограниченности функции, имеющей конечный предел]
-	Пусть $\exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограничена при $x\to *$.
+	Пусть $\displaystyle \exists \lim_{x \to *} f(x) = b \in \mathbb{R}$. Тогда $f(x)$ локально ограничена при $x\to *$.
 \end{theorem}
 \begin{proof}
 	По определению предела функции по Коши,
@@ -2158,7 +2151,8 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	\iff \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset{\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon \implies \\
 	\implies \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| = |f(x) -b + b| \le  |f(x) -b| + |b| < \varepsilon + |b| = M.
 	\end{multline}
-	Выберем любой $\varepsilon>0$, например, $\varepsilon=1$. Для соответствующей ему $\delta>0$ будет верно, что $\forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| < 1 + |b| = M$, а значит, $f(x)$ локально ограниченна при $x \to *$.
+
+	Выберем любой $\varepsilon>0$, например, $\varepsilon=1$. Для соответствующей ему $\delta>0$ будет верно, что $\forall x\in \accentset{\circ}{U}_\delta(*) : |f(x)| < 1 + |b| = M$, а значит, $f(x)$ локально ограничена при $x \to *$.
 \end{proof}
 
 \subsection{Бесконечно малые функции}
@@ -2168,14 +2162,13 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
   	  \lim_{x \to *} \alpha(x) = 0 \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in  \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon
   	.\] 
   \end{definition}
-  \noindent Пример: Рассмотрим функцию $y = 2^{\frac{1}{x}}$. Если $x\to 0+0$, то
-  \[
-    \lim_{x \to 0+0} 2^{\frac{1}{x}} = [2^{+\infty}] = +\infty
-  .\]
+
+  \begin{exmp}
+  Рассмотрим функцию $y = 2^{\frac{1}{x}}$. Если $x\to 0+0$, то
+  \[ \lim_{x \to 0+0} 2^{\frac{1}{x}} = [2^{+\infty}] = +\infty .\]
   Если же $x\to 0-0$, то
-  \[
-    \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{ бесконечно малая при } x \to 0-0
-  .\]
+  \[ \lim_{x \to 0-0} 2^{\frac{1}{x}} = [2^{-\infty}] = 0 \implies f(x) \text{ бесконечно малая при } x \to 0-0 .\]
+  \end{exmp}
   
   \begin{theorem}[о связи функции, ее предела и бесконечно малой]
   \begin{multline}
@@ -2189,11 +2182,12 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
       \exists \lim_{x \to *} f(x) = b \iff \\
       \iff \forall \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) \quad \forall x\in \accentset{\circ}{U}_\delta(*) : |f(x) - b| < \varepsilon.
     \end{multline}
-    Положим $\alpha(x)=f(x)-b$, тогда $\forall x\in \accentset{\circ}{U}_\delta(*) : |\alpha(x)|<\varepsilon \implies$ \\
-    $\implies \lim_{x \to *} \alpha(x) = 0 \implies \alpha(x)$ --- бесконечно малая при $x\to * \implies \\
-    \implies f(x) = b + \alpha(x)$ при $x\to *$.
+    Рассмотрим функцию $\alpha(x)=f(x)-b$, тогда $\forall x\in \accentset{\circ}{U}_\delta(*) : |\alpha(x)|<\varepsilon
+    \implies$ \\ $\displaystyle \implies \lim_{x \to *} \alpha(x) = 0 \implies \alpha(x)$ --- бесконечно малая при 
+    $x\to * \implies \\ \implies f(x) = b + \alpha(x)$ при $x\to *$, где $\alpha (x)$--- бесконечно малая при $x\to *$.
     
-    Докажем достаточность. Пусть $f(x) = b + \alpha(x)$,  $\alpha(x)$ --- бесконечно малая при  $x \to  * \implies$, тогда $\alpha(x) = f(x) - b \to  0 \text{ при } x\to *$. По определению бесконечно малой,
+    Докажем достаточность. Пусть $f(x) = b + \alpha(x)$,  $\alpha(x)$ --- бесконечно малая при  $x \to  * $,
+    тогда $\alpha(x) = f(x) - b \to  0 \text{ при } x\to *$. По определению бесконечно малой,
     \begin{multline}
       \lim_{x \to *} \alpha(x) = 0 \iff \\
       \iff \forall  \varepsilon>0 \quad \exists \delta=\delta(\varepsilon) > 0 \quad \forall x \in \accentset{\circ}{U}_\delta(*) \implies |\alpha(x)| < \varepsilon \implies \\
@@ -2204,48 +2198,120 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 \subsection{Свойства бесконечно малых функций}
 \begin{theorem}
-	Пусть $\alpha(x)$ и  $\beta(x)$ --- бесконечно малые при $x\to *$. Тогда $\alpha(x) + \beta(x)$ --- бесконечно малые при  $x\to *$.
+	Пусть $\alpha(x)$ и  $\beta(x)$ --- бесконечно малые при $x\to *$. 
+    Тогда $\alpha(x) + \beta(x)$ --- бесконечно малая при  $x\to *$.
 \end{theorem}
 \begin{proof}
     Распишем определение по Коши.
 	\[\lim_{x \to *} \alpha(x) = 0 \implies \forall \varepsilon> 0 \quad \exists \delta_1=\delta_1(\varepsilon)>0 \quad \forall x\in \accentset {\circ}{U}_{\delta_1}(*) \implies |\alpha(x)| < \frac{\varepsilon}{2} ,\] 
 	\[\lim_{x \to *} \beta(x)  = 0 \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\beta(x)| < \frac{\varepsilon}{2}	.\] 
 
-	Пусть $\delta = \min \{\delta_1, \delta_2\} $, если $*: a; a + 0; a - 0$ и  $\delta=\max \{\delta_1, \delta_2\} $, если $*: \infty;, +\infty, -\infty$.
-	\[
-		\implies \accentset{\circ}{U}_\delta(*) = \accentset{\circ}{U}_{\delta_1}(*) \cap \accentset{\circ}{U}_{\delta_2}(*) \implies
-	.\] 
-	\[
-	\implies \forall 
-	.\] 
-	
+	Пусть $\delta = \min \{\delta_1, \delta_2\} $, если $*: a, a + 0, a - 0$,
+    \begin{center}
+        \begin{tikzpicture}
+            % Числовая прямая
+            \draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);	
+            % Точки
+            \draw (6,0) node[anchor=north] (a)   {$a$};
+            \draw (1,0) node[anchor=north] (a-d) {$a-\delta_2$};
+            \draw (11,0) node[anchor=north] (a+d) {$a+\delta_2$};
+            \draw (3.8334,0) node[anchor=north] (a-d) {$a-\delta_1$};
+            \draw (8.1666,0) node[anchor=north] (a+d) {$a+\delta_1$};
+            \draw (9.5,0) node[anchor=north, yshift=2.1cm] (Uo_1) {$\accentset{\circ}{U}_{\delta_2}(a)$};
+            \draw (8.1,0) node[anchor=north, yshift=1.25cm] (Uo_2) {$\accentset{\circ}{U}_{\delta_1}(a)$};
+            % Интервалы
+            \draw(1,0) to[out=80,in=100] (6,0);
+            \draw (6,0) to[out=80,in=100] (11,0);
+            %\draw[pattern=north east lines, pattern color=black] (3.8334,0) to[out=70,in=110] (6,0);
+            %\draw[pattern=north east lines, pattern color=black] (6,0) to[out=70,in=110] (8.1666,0);
+            \draw[thick, red] (3.8334,0) to[out=70,in=110] (6,0);
+            \draw[thick, red] (6,0) to[out=70,in=110] (8.1666,0);
+        \end{tikzpicture}
+    \end{center}
+    и пусть $\delta=\max \{\delta_1, \delta_2\} $, если $*: \infty, +\infty, -\infty$.
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (0,0) -- (12,0);
+            \draw (0,1.7) to[out=0,in=110] (4,0);
+            \draw (8,0) to[out=70,in=180] (12,1.7);
+
+            \draw (0.2,2.5) to[out=-30,in=110] (2.7,0);
+            \draw (9.3,0) to[out=70,in=210] (11.8,2.5);
+            
+            \draw[thick, red] (0,1.7) to[out=0,in=174] (1.55,1.625);
+            \draw[thick, red] (1.55,1.625) to[out=-40,in=110] (2.7,0);
+
+            \draw[thick, red] (9.3,0) to[out=70,in=220] (10.45,1.625);
+            \draw[thick, red] (10.45,1.625) to[out=10,in=0] (12,1.7);
+
+            %\draw[pattern=north east lines, pattern color=black] (0,1.7) to[out=0,in=110] (2.7,0);
+            %\draw[pattern=north east lines, pattern color=black] (9.3,0) to[out=70,in=110] (12,1.7);
+
+            \draw[black, fill=white] (2.7,0) circle (0.07) node[anchor=north] (-d) {$-\delta_2$};
+            \draw[black, fill=white] (9.3,0) circle (0.07) node[anchor=north] (d) {$\delta_2$};
+            \draw[black, fill=white] (4,0) circle (0.07) node[anchor=north] (a) {$-\delta_1$};
+            \draw[black, fill=white] (8,0) circle (0.07) node[anchor=north] (b) {$\delta_1$};
+        \end{tikzpicture}
+    \end{center}
+
+	Следовательно, $\accentset{\circ}{U}_\delta(*) = \accentset{\circ}{U}_{\delta_1}(*) \cap \accentset{\circ}{U}_{\delta_2}(*)$,
+    а значит $\forall x \in \accentset{\circ}{U}_\delta(*)$ имеем $\displaystyle \alpha(x) < \frac{\varepsilon}{2}$ и
+    $\displaystyle \beta(x) < \frac{\varepsilon}{2}$. Воспользовавшись формулой модуля суммы, получим
+    \[|\alpha(x) + \beta(x)| \le |\alpha(x)| + |\beta(x)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.\] 
+
+    Получили, по сути, определение предела по Коши: взяли $\forall \varepsilon>0$, нашли такую $\delta(\varepsilon)$, что
+    $\forall x\in \accentset{\circ}{U}_\delta(*)$ выполняется $|\alpha(x) + \beta(x)| < \varepsilon$. Следовательно,
+    \[\lim_{x \to *} (\alpha(x) + \beta(x)) = 0,\] 
+    а значит, $\alpha(x) + \beta(x)$ --- бесконечно малая при $x\to *$.
 \end{proof}
 
 \begin{corollary}
-Сумма конечного числа бесконечно малой при $x\to *$ есть бесконечно малая при $x \to  *$.
+Сумма конечного числа бесконечно малых при $x\to *$ есть бесконечно малая при $x \to  *$.
 \end{corollary}
 
-\begin{theorem}[произведение бесконечно малой на ограниченнную]
-	Пусть $\alpha$ - бесконечно малая при $x \to *$, $f(x)$ локально ограниченна при  $x\to *$. Тогда $\alpha(x)\cdot f(x)$ есть бесконечно малая при $x\to *$.
-\end{theorem}
-	\begin{proof}
-		$f(x)$ --- локально ограниченна при $x\to * \implies \exists \accentset{\circ}{U}_{\delta_1}(*) \quad \exists M>0 \quad \forall x \in  \accentset{\circ}{U}_{\delta_1}(*) : |f(x)| < M;$
-		$\alpha(x)$ --- бесконечно малая при $x \to  * \implies \forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_{\delta_2}(*) \implies |\alpha(x)| < \frac{\varepsilon}{M} \implies$
-		$\implies \accentset{\circ}{U}_\delta=\accentset{\circ}{U}_{\delta_1}(*)\cap \accentset{\circ}{U}_{\delta_2}(*)$
+\begin{theorem}[произведение бесконечно малой на ограниченнную]\
 
-	\end{proof}
-\[
-	\lim_{x \to 0} x \sin{\frac{1}{x}} = 
-.\] 
-\[
-	\lim_{x \to 0} x^2 \arctan{\frac{1}{x^{100}}} = 0
-.\] 
-
-\begin{theorem}[о произведении двух бесконечно малых]
-	Пусть $\alpha(x)$, $\beta(x)$ --- бесконечно малые при $x \to *$. Тогда $\alpha(x)\beta(x)$ --- бесконечно малая при $x \to *$
+	\noindent Пусть $\alpha$ - бесконечно малая при $x \to *$, $f(x)$ локально ограничена при  $x\to *$.
+    Тогда $\alpha(x)\cdot f(x)$ есть бесконечно малая при $x\to *$.
 \end{theorem}
 \begin{proof}
-	$\beta(x)$ --- бесконечно малая при $x \to  * \implies \lim_{x \to *} \beta(x) = 0 \implies $ по теореме о локальной ограниченной функции, имеющей конечный предел $\implies \beta(x)$ локально ограниченна при $x\to * \implies \alpha(x)\cdot \beta(x)$ --- произведение бесконечно малой на локально ограниченную при $x\to * \implies$ по теореме 2 $\alpha\cdot \beta$ --- бесконечно малые при.
+    $f(x)$ --- локально ограничена при $x\to *$, т.е. существуют такие $\accentset{\circ}{U}_{\delta_1}(*)$ и $M>0$,
+    что $\forall x \in \accentset{\circ}{U}_{\delta_1}(*) : |f(x)| < M$.
+
+    $\alpha(x)$ --- бесконечно малая при $x \to  *$, т.е.
+    \[\forall \varepsilon> 0 \quad \exists \delta_2=\delta_2(\varepsilon)>0 \quad \forall x\in \accentset    
+    {\circ}{U}_{\delta_2}(*) \implies |\alpha(x)| < \frac{\varepsilon}{M}.\] 
+
+    Выберем $\delta$ так, что $\accentset{\circ}{U}_\delta=\accentset{\circ}{U}_{\delta_1}(*)\cap 
+    \accentset{\circ}{U}_{\delta_2}(*)$.  Пусть 
+    \begin{itemize}
+        \item $\delta = \min \{\delta_1, \delta_2\} $, если $*: a, a + 0, a - 0$;
+        \item $\delta=\max \{\delta_1, \delta_2\} $, если $*: \infty, +\infty, -\infty$.
+    \end{itemize}
+    Тогда $\forall x\in \accentset{\circ}{U}_\delta(*)$ имеем $|f(x)|<M$ и $\displaystyle |\alpha(x)| < \frac{\varepsilon}{M}$.
+    Следовательно,
+    \[|\alpha(x)\cdot f(x)| = |\alpha(x)| \cdot |f(x)| < \frac{\varepsilon}{M} \cdot M = \varepsilon,\] 
+    т.е. $\displaystyle \lim_{x \to *} \alpha(x)\cdot f(x) = 0$, а значит, $\alpha(x) \cdot f(x)$ 
+    --- бесконечно малая при $x\to *$.
+
+    
+    
+\end{proof}
+\begin{exmp}
+    \[ \lim_{x \to 0} x \sin{\frac{1}{x}} = 0 ,\] 
+    \[ \lim_{x \to 0} x^2 \arctan{\frac{1}{x^{100}}} = 0 .\] 
+\end{exmp}
+
+\begin{theorem}[о произведении двух бесконечно малых]
+	Если $\alpha(x)$, $\beta(x)$ --- бесконечно малые при $x \to *$, то $\alpha(x)\cdot \beta(x)$ 
+    --- бесконечно малая при $x \to *$.
+\end{theorem}
+\begin{proof}
+	$\beta(x)$ --- бесконечно малая при $x \to  *$, т.е. $\displaystyle  \lim_{x \to *} \beta(x) = 0$.
+    Тогда по теореме о локальной ограниченности функции, имеющей конечный предел, $\beta(x)$ локально ограничена при $x\to *$.
+    Следовательно, $\alpha(x)\cdot \beta(x)$ --- произведение бесконечно малой на локально ограниченную при $x\to *$,
+    тогда по теореме о произведении бесконечно малой на локально ограниченную $\alpha\cdot \beta$ 
+    --- бесконечно малая при $x \to *$.
 \end{proof}
 
 \begin{corollary}
@@ -2290,24 +2356,36 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{proof}
 
 \begin{theorem}[о знакопостоянстве функции, имеющей ненулевой предел]
-	Пусть $\exists  \lim_{x \to *} f(x) = b \neq 0$. Тогда $\exists \accentset{\circ}{U}_\delta(*) \quad \forall x \in \accentset{\circ}{U}_\delta(*) : |f(x)| > \frac{|b|}{2}$ 
-	Кроме того, если $b>0$, то  $\forall x \in \accentset{\circ}{U}_\delta(*) : f(x) > \frac{b}{2} \implies f(x) > 0$, т.е. имеет тот же знак, что и предел;
-	если $b<0$, то $\forall x \in  \accentset{\circ}{U}_\delta(*) : f(x) < \frac{b}{2} \implies f(x) <0$, т.е. имеет тот же знак, что и предел.
+	Пусть $\displaystyle \exists  \lim_{x \to *} f(x) = b\in \mathbb{R}, \ b \neq 0$. 
+    Тогда $\displaystyle \exists \accentset{\circ}{U}_\delta(*)
+    \quad \forall x \in \accentset{\circ}{U}_\delta(*) : |f(x)| > \frac{|b|}{2}$.
+
+	Кроме того, если $b>0$, то  $\displaystyle \forall x \in \accentset{\circ}{U}_\delta(*) : f(x) > \frac{b}{2}$,
+    т.е. $f(x)$ имеет тот же знак, что и предел;
+	если же $b<0$, то $\displaystyle \forall x \in  \accentset{\circ}{U}_\delta(*) : f(x) < \frac{b}{2}$,
+    т.е. $f(x)$ имеет тот же знак, что и предел.
 \end{theorem}
 
 \begin{proof}
-	\[
-	\forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in \accentset    {\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon
-	.\] 
-	Или $b - \varepsilon < f(x) < b + \varepsilon$.
-	Выберем $\varepsilon = \frac{|b|}{2} > 0$, найдем соответствующий $\delta = \delta(\varepsilon) > 0 \implies$
-	\[
-	\forall x \in  \accentset{\circ}{U}_\delta(*) : |f(x)| = |b + f(x) - b| \ge  |b| - |f(x) - b| > |b| - \frac{|b|}{2}
-	.\] 
-	\[
-	\implies |f(x)| > \frac{|b|}{2}
-	.\] 
-Пусть $b > 0$, тогда $\varepsilon = \frac{|b|}{2} = \frac{b}{2} > 0 \implies \forall x \in  \accentset{\circ}{U}_\delta(*) \quad f(x) > b - \varepsilon = b - \frac{b}{2} = \frac{b}{2} > 0$
+    \begin{multline}
+        \lim_{x \to *} f(x) = b \neq 0 \implies \\
+        \implies \forall \varepsilon> 0 \quad \exists \delta=\delta(\varepsilon)>0 \quad \forall x\in 
+        \accentset{\circ}{U}_\delta(*) \implies |f(x) - b| < \varepsilon.
+    \end{multline}	
+
+	Выберем $\displaystyle \varepsilon = \frac{|b|}{2} > 0$, найдем соответствующую $\delta = \delta(\varepsilon) > 0$,
+    тогда 
+    \[\forall x \in \accentset{\circ}{U}_\delta(*) : |f(x) - b| < \frac{|b|}{2},\] 
+    т.е. $\displaystyle -\frac{|b|}{2} < f(x) - b < \frac{|b|}{2}$. Тогда
+	\[ \forall x \in  \accentset{\circ}{U}_\delta(*) : |f(x)| = |b + f(x) - b| \ge  |b| - |f(x) - b| > |b| - \frac{|b|}{2}
+    =\frac{|b|}{2},\] 
+    т.е. $\displaystyle |f(x)| > \frac{|b|}{2}$.
+
+    Пусть $b > 0$. Тогда $\displaystyle b - \frac{|b|}{2} < f(x) < b + \frac{|b|}{2}$, следовательно,
+    \[\forall x\in \accentset{\circ}{U}_\delta(*) : f(x) > b - \frac{|b|}{2} = b - \frac{b}{2} = \frac{b}{2} > 0.\] 
+
+    Пусть теперь $b < 0$. Тогда $\displaystyle b - \frac{|b|}{2} < f(x) < b + \frac{|b|}{2}$, следовательно,
+    \[\forall x\in \accentset{\circ}{U}_\delta(*) : f(x) < b + \frac{|b|}{2} = b - \frac{b}{2} = \frac{b}{2} < 0.\] 
 \end{proof}
 
 \begin{theorem}[о предельном переходе в неравенстве]
@@ -2447,17 +2525,44 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	\end{enumerate}		
 \end{theorem}
 \begin{proof}\
-	\begin{enumerate}
-		\item $f(x)$ --- бесконечно большая при $x \to *$, тогда для любого $\varepsilon_1$ >0 найдется $\delta=\delta(\varepsilon)>0$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\varepsilon_1$.
-                Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}$ и $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})$. Тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\frac{1}{\varepsilon}$, или, что то же, $\frac{1}{|f(x)|} < \varepsilon$. Положим $\alpha(x) = \frac{1}{f(x)}$, тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ верно, что $|\alpha(x)| < \varepsilon$, из чего следует, что предел $\alpha(x)$ при $x\to *$ равен нулю. Таким образом, $\alpha(x)$ --- бесконечно малая при $x\to *$.
-	\item Пусть $\alpha(x)$ --- бесконечно малая при $x\to *$ и для любого $x$ из $\accentset{\circ}{U}(*)$ верно, что $\alpha(x)\neq 0$. Предел $\alpha(x)$ при $x\to *$ равен нулю, т.е. для любого $\varepsilon_1>0$ найдется $\delta>0$, зависящая от $\varepsilon$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)\subset \accentset{\circ}{U}(*)$ выполняется неравенство $|\alpha(x)|<\varepsilon_1$. Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}>0$ и соответствующую $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})>0$. %todo: закончить.
-	\end{enumerate}	
+    Докажем первый пункт. $f(x)$ --- бесконечно большая при $x \to *$, тогда для любого $\varepsilon_1$ >0 
+    найдется $\delta=\delta(\varepsilon)>0$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)$
+    выполняется неравенство $|f(x)|>\varepsilon_1$.
+
+    Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}$ и 
+    $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})$. 
+    Тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\frac{1}{\varepsilon}$,
+    или, что то же, $\frac{1}{|f(x)|} < \varepsilon$. Положим $\alpha(x) = \frac{1}{f(x)}$,
+    тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ верно, что $|\alpha(x)| < \varepsilon$,
+    из чего следует, что предел $\alpha(x)$ при $x\to *$ равен нулю.
+    Таким образом, $\alpha(x)$ --- бесконечно малая при $x\to *$.
+    \\[12pt]
+	Докажем второй пункт.
+    Пусть $\alpha(x)$ --- бесконечно малая при $x\to *$ и для любого $x$ из $\accentset{\circ}{U}(*)$ верно,
+    что $\alpha(x)\neq 0$. 
+    %Предел $\alpha(x)$ при $x\to *$ равен нулю, т.е. для любого $\varepsilon_1>0$ найдется
+    %$\delta>0$, зависящая от $\varepsilon$, такая, что для любого $x$ из 
+    %$\accentset{\circ}{U}_\delta(*)\subset \accentset{\circ}{U}(*)$ выполняется неравенство $|\alpha(x)|<\varepsilon_1$.
+    \[\lim_{x \to *} \alpha(x) = 0 \implies\forall \varepsilon_1>0 \quad \exists \delta=\delta(\varepsilon)>0 \quad
+    \forall x\in \accentset{\circ}{U}_\delta(*) : |\alpha(x)| < \varepsilon_1.\] 
+    Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}>0$ и соответствующую 
+    $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})>0$. Поскольку $\forall x\in \accentset{\circ}{U}_\delta(*)$
+    имеем $\alpha(x)\neq 0$ и $\displaystyle |\alpha(x)| < \frac{1}{\varepsilon}$, дробь можно перевернуть:
+    \[\frac{1}{\alpha(x)} < \varepsilon.\] 
+
+    Если $\displaystyle f(x) = \frac{1}{\alpha(x)}$, то $|f(x)|>\varepsilon$. Получается,  $\forall \varepsilon$ мы нашли
+    $\delta(\varepsilon)$ такую, что $\forall x\in \accentset{\circ}{U}_\delta(*)$ выполняется $|f(x)|>\varepsilon$,
+    следовательно,
+    \[\lim_{x \to *} f(x) = \infty,\] 
+    т.е. $\displaystyle \frac{1}{\alpha(x)}$ --- бесконечно большая при $x\to *$.
 \end{proof}
 
 \begin{remark}
-	Рассмотрим функцию $y=x\sin \frac{1}{x}$ при $x\to 0$. $\sin \frac{1}{x}$ --- ограниченная, $x$ --- бесконечная малая, следовательно, $y = \alpha(x)$ --- бесконечно малая.
+	Рассмотрим функцию $\displaystyle y=x\sin \frac{1}{x}$ при $x\to 0$. $\displaystyle \sin \frac{1}{x}$ --- ограниченная,
+    $x$ --- бесконечная малая, следовательно, $y = \alpha(x)$ --- бесконечно малая.
 	
-	Теперь рассмотрим функцию $f(x) = \frac{1}{x \sin x}$. В любой $\accentset{\circ}{U}(0)$ есть хотя бы один $x$, следовательно, $\alpha(x)$ равна нулю, а значит, $f(x)$ не существует.
+	Теперь рассмотрим функцию $\displaystyle f(x) = \frac{1}{x \sin x}$. В любой $\accentset{\circ}{U}(0)$
+    есть хотя бы один $x$, следовательно, $\alpha(x)$ равна нулю, а значит, $f(x)$ не существует.
 \end{remark}
 
 
@@ -2576,9 +2681,17 @@ $\ldots$
 \begin{definition}
 	Пусть $\alpha(x)$ и $\beta(x)$ --- бесконечно малые при $x\to *$.
 	\begin{enumerate}
-		\item 
-		\item
-		\item $\alpha(x)$ --- бесконечно малая более высокого порядка малости по сравнению с $\beta(x)$ при $x\to *$ тогда и только тогда, когда предел $\frac{\alpha(x)}{\beta(x)}$ при $x\to *$ равен $0$. Обозначается $\alpha(x) = \overline{o}(\beta(x)), \ x \to *$.
+		\item $\alpha(x)$ и $\beta(x)$ --- бесконечно малые одного порядка малости тогда и только тогда, когда
+            $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{\beta(x)} = C\neq 0\neq \infty$.
+        \item $\alpha(x)$ и $\beta(x)$ --- эквивалентные бесконечно малые при $x\to *$ тогда и только тогда, когда
+            $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{\beta(x)} = 1$. Обозначается $\alpha(x) \sim \beta(x)$ при
+            $x\to *$.
+		\item $\alpha(x)$ --- бесконечно малая более высокого порядка малости по сравнению с $\beta(x)$ при $x\to *$ 
+            тогда и только тогда, когда $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{\beta(x)} = 0$.
+            Обозначается $\alpha(x) = \overline{o}(\beta(x)), \ x \to *$.
+        \item $\alpha(x)$ имеет порядок $n$ по сравенению с $\beta(x)$ при $x\to *$ тогда и только тогда, когда
+            $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{(\beta(x))^{n}} = C \neq 0 \neq \infty$.
+            Если $n<0$, то одна из сравниваемых функций --- бесконечно большая.
 	\end{enumerate}
 \end{definition}
 
@@ -2598,7 +2711,10 @@ $\ldots$
 
 \subsection{Свойства эквивалентных бесконечно малых}
 \begin{theorem}
-	Пусть $\alpha_0(x), \alpha_1(x), \ldots, \alpha_n(x)$ --- бесконечно малые при $x\to *$, причем $\forall k = 1, \ldots n : \alpha_k(x) = \overline{o}(\alpha_0(x))$, т.е. $\alpha_0(x)$ --- бесконечно малая самого низкого порядка малости по сравнению с $\alpha_k(x), \ k = 1, \ldots, n$. Тогда $\alpha_0(x) + \sum_{k=1}^{n} \alpha_k(x) \sim \alpha_0(x)$ при $x\to *$.
+	Пусть $\alpha_0(x), \alpha_1(x), \ldots, \alpha_n(x)$ --- бесконечно малые при $x\to *$, причем $\forall k = 1,
+    \ldots n : \alpha_k(x) = \overline{o}(\alpha_0(x))$, т.е. $\alpha_0(x)$ --- 
+    бесконечно малая самого низкого порядка малости по сравнению с $\alpha_k(x), \ k = 1, \ldots, n$.
+    Тогда $\alpha_0(x) + \sum_{k=1}^{n} \alpha_k(x) \sim \alpha_0(x)$ при $x\to *$.
 \end{theorem}
 \begin{proof}
 \end{proof}
