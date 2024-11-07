@@ -186,7 +186,7 @@ R = \exists x \in X : P(x), \quad \overline{R} = \forall x \in X : \overline{P}(
 	\item Используя верность для $n$, докажем верность для $n+1$:
 		\begin{multline}
 		(1+x)^{n+1} = (1+x)^{n}(1+x) \ge (1+nx)(1+x) = \\
-		= 1 + nx + x + nx^2 \ge 1 + nx + 1 \implies (1+x)^{n+1} \ge  1 + (n+1)x. 	
+		= 1 + nx + x + nx^2 \ge 1 + nx + x \implies (1+x)^{n+1} \ge  1 + (n+1)x. 	
 		\end{multline}
 \end{enumerate}
 
@@ -375,7 +375,9 @@ $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 	Если, кроме того, известно, что для любого $\varepsilon > 0$ в последовательности можно найти отрезок $I_k$, длина которого $|I_k| < \varepsilon$, то $c$ --- единственная общая точка всех отрезков.
 \end{theorem}
 \begin{proof}
-	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности имеет место $a_n \le b_m$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. Докажем ``от противного''. Предположим, что $\exists n, m \in  \mathbb{N} : a_n > b_m$	
+	Заметим сначала, что для любых двух отрезков $I_m = [a_m; b_m]$,  $I_n = [a_n, b_n]$ нашей последовательности 
+    имеет место $a_n \le b_m$, т.е. $\forall n, m \in  \mathbb{N} : a_n \le b_m$. 
+    Действительно, если предположить, что $\exists n, m \in  \mathbb{N} : a_n > b_m$,
 \begin{center}
 	\begin{tikzpicture}
 		\draw[->] (0,0) -- (12,0);
@@ -389,11 +391,18 @@ $U_\varepsilon(\infty)=\accentset{\circ}{U}_\varepsilon(\infty).$
 		\draw (9,1.6) node[anchor=north] (In) {$I_n$};
 	\end{tikzpicture}
 \end{center}
-$a_m < b_m < a_n < b_n \implies I_n \cap I_m = \varnothing$, что противоречит условию $\forall n, m \in  \mathbb{N} : a_n \le b_m$.
+    то мы получим $a_m < b_m < a_n < b_n$, т.е. $I_n \cap I_m = \varnothing$, что противоречит тому, что один из отрезков
+    (имеющий больший номер) должен содержаться в другом.
 
-Пусть $A = \{a_n, n \in  \mathbb{N}\}$, $B = \{b_m, m \in \mathbb{N}\}$, $A, B \neq \varnothing, A \subset \mathbb{R}, B \subset \mathbb{R}$. По аксиоме полноты IV $\forall n, m \in \mathbb{N} : a_n \le b_m$ существует $c\in \mathbb{R} : \forall n, m \in  \mathbb{N} : a_n \le  c \le  b_m$. Следовательно, $c\in [a_n; b_n] = I_n$, т.е. $c$ --- общая точка всех отрезков.
+    Пусть теперь $A = \{a_n, n \in  \mathbb{N}\}$, $B = \{b_m, m \in \mathbb{N}\}$, $A, B \neq \varnothing,
+    \ A \subset \mathbb{R}, \ B \subset \mathbb{R}$.
+    По аксиоме полноты IV $\forall n, m \in \mathbb{N} : a_n \le b_m$ существует $c\in \mathbb{R} 
+    : \forall n, m \in  \mathbb{N} : a_n \le  c \le  b_m$.
+    Следовательно, $c\in [a_n; b_n] = I_n$, т.е. $c$ --- общая точка всех отрезков.
 
-Пусть $\forall \varepsilon > 0$ $\exists n \in  \mathbb{N} : |I_n| = b_n-a_n < \varepsilon$. Докажем ``от противного''. Предположим, что общая точка не является единственной, то есть существуют $c_1, c_2, c_1\neq c_2$, такие, что $c_1 \in  I_n$ и $c_2 \in  I_n$. Пусть для определенности $c_1<c_2$.
+    Пусть $\forall \varepsilon > 0$ $\exists n \in  \mathbb{N} : |I_n| = b_n-a_n < \varepsilon$.
+    Докажем ``от противного''. Предположим, что общая точка не является единственной,
+    то есть существуют $c_1, c_2, c_1\neq c_2$ такие, что $c_1 \in  I_n$ и $c_2 \in  I_n$. Пусть для определенности $c_1<c_2$.
 
 \begin{center}
 	\begin{tikzpicture}
@@ -1309,7 +1318,8 @@ $c_1=c_2$. Единственность доказана.
 	.\] 
 	Пусть $M_0=1+|a| \implies \forall n>N : x_{n} < M_0$. 
 	
-	\noindent Пусть $M=\max\{|x_1|, |x_2|, \ldots, |x_{n}|, M_0\}$, тогда $\forall n\in \mathbb{N} : x_{n}\le M\implies \{x_n\}_{n=1}^{\infty}$ является ограниченной.
+	\noindent Пусть $M=\max\{|x_1|, |x_2|, \ldots, |x_{n}|, M_0\}$,
+    тогда $\forall n\in \mathbb{N} : |x_{n}|\le M\implies \{x_n\}_{n=1}^{\infty}$ является ограниченной.
 \end{proof}
 
 \begin{remark}
@@ -1396,12 +1406,15 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \begin{proof}
 	$x_{n}=(1+\frac{1}{n})^{n}, n\in \mathbb{N}$. Рассмотрим последовательность  $\{y_n\}_{n=1}^{\infty}, y_{n} = (1+\frac{1}{n})^{n+1}$. Докажем,  что $\{y_n\}_{n=1}^{\infty}$ ограничена снизу. Т.к. $\forall n\in \mathbb{N} : (1+\frac{1}{n})^{n+1}>0 \implies \{y_n\}_{n=1}^{\infty}$ ограничена снизу. Теперь докажем, что $\{y_{n}\}_{n=1}^{\infty}$ убывает.
 	\begin{multline}
-		\forall n\ge 2 \quad \frac{y_{n-1}}{y_{n}} = \frac{(1+\frac{1}{n-1})^{n}}{(1+\frac{1}{n})^{n+1}} = \frac{(1+\frac{1}{n-1})}{(1+\frac{1}{n})^{n}(1+\frac{1}{n})}=\left(\frac{\frac{n}{n-1}}{\frac{n+1}{n}}\right)^{n} \cdot \frac{n}{n+1} = \\
+		\forall n\ge 2 \quad \frac{y_{n-1}}{y_{n}} = \frac{(1+\frac{1}{n-1})^{n}}{(1+\frac{1}{n})^{n+1}} =
+        \frac{(1+\frac{1}{n-1})^{n}}{(1+\frac{1}{n})^{n}(1+\frac{1}{n})}=
+        \left(\frac{\frac{n}{n-1}}{\frac{n+1}{n}}\right)^{n} \cdot \frac{n}{n+1} = \\
 		= \left(\frac{n^2}{n^2-1}\right)^{n} \cdot \frac{n}{n+1} = \left(1 + \frac{1}{n^2-1}\right)^{n} \cdot \frac{n}{n+1}.
 	\end{multline}
 	Воспользуемся неравенством $\forall n\in \mathbb{N} : (1+x)^{n} \ge 1+nx, x\ge 0$, известным как неравенство Бернулли.
 	\begin{multline}
-		\left(1 + \frac{1}{n^2-1}\right)^{n} \cdot \frac{n}{n+1} \ge \left(1+ \frac{n}{n^2-1}\right) \cdot  \frac{n}{n+1} > \left(1 + \frac{n}{n^2}\right) \cdot \frac{n}{n+1} = \\
+		\left(1 + \frac{1}{n^2-1}\right)^{n} \cdot \frac{n}{n+1} \ge \left(1+ \frac{n}{n^2-1}\right) \cdot  \frac{n}{n+1} >
+        \left(1 + \frac{n}{n^2}\right) \cdot \frac{n}{n+1} = \\
 		= \frac{n+1}{n} \cdot \frac{n}{n+1} = 1.
 	\end{multline}
 	Таким образом, $\forall n\ge 2 \quad \frac{y_{n-1}}{y_{n}} > 1 \implies y_{n-1} > y_{n} \implies \{y_n\}_{n=1}^{\infty}$ убывает. $\{y_n\}_{n=1}^{\infty}$ убывает и ограничена снизу $\implies$ по теореме Вейерштрасса $\exists \lim_{n \to \infty} y_n = e \in \mathbb{R}$. Вернемся к $x_n $:
@@ -1683,13 +1696,19 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{proof}
 
 \begin{theorem}
-	Если $\exists \lim_{n \to \infty} x_n = a$, то $a$ является предельной точкой для $\{x_n\}_{n=1}^{\infty}$, причем единственной.
+	Если $\displaystyle \exists \lim_{n \to \infty} x_n = a$, то $a$ является предельной точкой для $\{x_n\}_{n=1}^{\infty}$,
+    причем единственной.
 \end{theorem}
 
 \begin{proof}
-	$a$ --- предельная, если $\lim_{n \to \infty} x_n = a$ (по теореме 1).
+	$a$ --- предельная, если $\displaystyle \lim_{n \to \infty} x_n = a$ (по теореме 1).
 
-Докажем единственность предельной точки для $\{x_n\}_{n=1}^{\infty}$ ``от противного''. Пусть $\exists b\neq a$, $b$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$, тогда $|b-a|\ge \delta>0$. Т.к. $a=\lim_{n \to \infty} x_n$, любая $\varepsilon$-окрестность точки содержит бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$, а именно все, начиная с номера $N(\varepsilon) + 1$, т.е. $\forall n>n(\varepsilon)$. Вне $U_\varepsilon(a)$ может содержаться не более конечного числа элементов $\{x_n\}_{n=1}^{\infty}$ (возможно $x_n$ с номерами $1, 2, \ldots, N(\varepsilon)$).
+Докажем единственность предельной точки для $\{x_n\}_{n=1}^{\infty}$ ``от противного''. 
+Пусть $\exists b\neq a$, $b$ --- предельная точка $\{x_n\}_{n=1}^{\infty}$, тогда $|b-a|\ge \delta>0$. 
+Т.к. $\displaystyle a=\lim_{n \to \infty} x_n$, любая $\varepsilon$-окрестность точки содержит бесконечно много элементов
+$\{x_n\}_{n=1}^{\infty}$, а именно все, начиная с номера $N(\varepsilon) + 1$, т.е. $\forall n>n(\varepsilon)$.
+Вне $U_\varepsilon(a)$ может содержаться не более конечного числа элементов $\{x_n\}_{n=1}^{\infty}$
+(возможно $x_n$ с номерами $1, 2, \ldots, N(\varepsilon)$).
 
 Выберем $\varepsilon=\frac{\delta}{4} > 0$. Тогда $\forall n>N(\varepsilon) : x_n \in  U_\varepsilon(a)$. 
 
@@ -1719,23 +1738,35 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 
 	Первый: $X$ --- бесконечное числовое множество. Тогда $X$ по принципу Больцано-Вейерштрасса имеет хотя бы одну предельную точку $a$, т.е. в любую $U(a)$ попадает бесконечно много элементов множества $X$, а значит, и бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$. Следовательно, $a$ --- предельная точка последовательности $\{x_n\}_{n=1}^{\infty}$.
 
-	Второй: $X$ --- конечное числовое множество. Тогда хотя бы один элемент последовательности $\{x_n\}_{n=1}^{\infty}$ повторяется бесконечно много раз, т.е. $\exists$ подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty}$ (постоянная $\forall k\in \mathbb{N}$), $x_{n_k} = a\in  X \implies$ a --- предельная точка $\{x_n\}_{n=1}^{\infty}, \lim_{k \to \infty} x_{n_k} = a$.
+	Второй: $X$ --- конечное числовое множество. Тогда хотя бы один элемент последовательности $\{x_n\}_{n=1}^{\infty}$ 
+    повторяется бесконечно много раз, т.е. $\exists$ подпоследовательность $\{x_{n_k}\}_{k=1}^{\infty}$ 
+    (постоянная $\forall k\in \mathbb{N}$), $x_{n_k} = a\in  X \implies$ 
+    a --- предельная точка $\displaystyle \{x_n\}_{n=1}^{\infty}, \ \lim_{k \to \infty} x_{n_k} = a$.
 \end{proof}
 
 \begin{theorem}[критерий сходимости числовой последовательности]
-	Для того, чтобы точка $a\in \mathbb{R}$ была пределом $\{x_n\}_{n=1}^{\infty}$, необходимо и достаточно, чтобы $\{x_n\}_{n=1}^{\infty}$ была ограниченной и имела единственную предельную точку.
+	Для того, чтобы точка $a\in \mathbb{R}$ была пределом $\{x_n\}_{n=1}^{\infty}$, необходимо и достаточно,
+    чтобы $\{x_n\}_{n=1}^{\infty}$ была ограниченной и имела единственную предельную точку.
 \end{theorem}
 \begin{proof}
 	Докажем необходимость.
-	$\exists \lim_{n \to \infty} x_n = a \in \mathbb{R} \implies$ $\{x_n\}_{n=1}^{\infty}$ ограничена (по свойству сходящейся последовательности), а значит, $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку (по теореме 2).
+	$\displaystyle \exists \lim_{n \to \infty} x_n = a \in \mathbb{R} \implies$ $\{x_n\}_{n=1}^{\infty}$ ограничена 
+    (по свойству сходящейся последовательности), а значит,
+    $\{x_n\}_{n=1}^{\infty}$ имеет единственную предельную точку (по теореме 8).
 	
-	Докажем достаточность. Пусть $a$ --- единственная предельная точка ограниченной последовательности $\{x_n\}_{n=1}^{\infty}$. Докажем, что $\lim_{n \to \infty} x_n = a$.
+	Докажем достаточность. Пусть $a$ --- единственная предельная точка ограниченной последовательности $\{x_n\}_{n=1}^{\infty}$.
+    Докажем, что $\displaystyle \lim_{n \to \infty} x_n = a$.
 
 	Будем доказывать ``от противного''. Предположим, что $\{x_n\}_{n=1}^{\infty}$ не имеет предела. Тогда
-	\[
-	\forall b\in \mathbb{R} \quad \exists \varepsilon>0 \quad N\in \mathbb{N} \quad \exists n>N : |x_n - b| \ge \varepsilon
-	,\] 
-	а значит, вне $U_\varepsilon(a)$ лежит бесконечное множество элементов $\{x_n\}_{n=1}^{\infty}$. Тогда существует $\{x_{n_k}\}_{k=1}^{\infty} : |x_{n_k} - a| \ge \varepsilon$, т.е. $x_{n_k}\not\in U_\varepsilon(a)$. Следовательно, $\{x_{n_k}\}_{k=1}^{\infty}$ --- ограниченная последовательность, лежащая вне $U_\varepsilon(a)$. У этой последовательности есть предельная точка $b$ (по теореме 3). $U_\varepsilon(a)$ не содержит ни одного элемента $\{x_{n_k}\}_{k=1}^{\infty} \implies b\neq a$, что противоречит условию. Тогда $\lim_{n \to \infty} x_n = a$.
+	\[ \forall b\in \mathbb{R} \quad \exists \varepsilon>0 \quad \forall N\in \mathbb{N} \quad \exists n>N :
+    |x_n - b| \ge \varepsilon ,\] 
+	а значит, вне $U_\varepsilon(a)$ лежит бесконечное множество элементов $\{x_n\}_{n=1}^{\infty}$.
+    Тогда существует $\{x_{n_k}\}_{k=1}^{\infty} : |x_{n_k} - a| \ge \varepsilon$, т.е.
+    $x_{n_k}\not\in U_\varepsilon(a)$. Следовательно, $\{x_{n_k}\}_{k=1}^{\infty}$ --- ограниченная последовательность,
+    лежащая вне $U_\varepsilon(a)$. У этой последовательности есть предельная точка $b$ (по теореме 9).
+    $U_\varepsilon(a)$ не содержит ни одного элемента $\{x_{n_k}\}_{k=1}^{\infty}$, а значит, $b\neq a$,
+    что противоречит тому, что $a$ --- единственная предельная точка $\{x_n\}_{n=1}^{\infty}$.
+    Тогда $\displaystyle \lim_{n \to \infty} x_n = a$.
 \end{proof}
 
 
@@ -1784,12 +1815,18 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{theorem}
 \begin{proof}
 	Докажем необходимость.
-	По условию $\{x_n\}_{n=1}^{\infty}$ сходится $\implies \exists \lim_{n \to \infty} x_n = a \in  \mathbb{R}$. По числу $\varepsilon>0$ найдем номер $N$ так, чтобы при $n > N$ иметь $|x_n-a| < \frac{\varepsilon}{2}$. Если теперь $m>N$ и $n>N$, то $|x_{m} - x_{n}| < |x_{m}-a| + |x_{n}-a| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$ и, таким образом, проверено, что сходящаяся последовательность фундаментальна.
+	По условию $\{x_n\}_{n=1}^{\infty}$ сходится $\implies$ $\displaystyle \exists \lim_{n \to \infty} x_n = a \in  \mathbb{R}$. 
+    По числу $\varepsilon>0$ найдем номер $N$ так, чтобы при $n > N$ иметь $|x_n-a| < \frac{\varepsilon}{2}$.
+    Если теперь $m>N$ и $n>N$, то $|x_{m} - x_{n}| < |x_{m}-a| + |x_{n}-a| < \frac{\varepsilon}{2} 
+    + \frac{\varepsilon}{2} = \varepsilon$ и, таким образом, проверено, что сходящаяся последовательность фундаментальна.
 
 	Докажем достаточность.
 	По условию $\{x_n\}_{n=1}^{\infty}$ фундаментальна, следовательно, ограничена, а значит, у нее есть хотя бы одна предельная точка. Докажем, что эта предельная точка единственна ``от противного''. Предположим, что существует две предельные точки $b$ и $b_1$, $b\neq b_1$ последовательности $\{x_n\}_{n=1}^{\infty}$. По определению предельной точки для любого числа $\varepsilon>0$ окрестности $U_\varepsilon(b)$ и $U_\varepsilon(b_1)$ содержат бесконечно много членов последовательности $\{x_n\}_{n=1}^{\infty}$.
 
-	Выберем удобный для дальнейших рассуждений $\varepsilon$. $b_1\neq b$, следовательно, $\varepsilon=\frac{|b_1-b|}{6}>0$. Для выбранного $\varepsilon$ найдем соответствующий номер $N=N(\varepsilon)$. По определению фундаментальной последовательности для этого номера выполняется, что $\forall n, m > N : |x_{n}-x_{m}| < \frac{|b_1-b|}{6}$. 
+	Выберем удобный для дальнейших рассуждений $\varepsilon$. $b_1\neq b$, следовательно, 
+    $\displaystyle \varepsilon=\frac{|b_1-b|}{6}>0$. Для выбранного $\varepsilon$ найдем соответствующий номер 
+    $N=N(\varepsilon)$. По определению фундаментальной последовательности для этого номера выполняется 
+    $\displaystyle \forall n, m > N : |x_{n}-x_{m}| < \frac{|b_1-b|}{6}$. 
 \begin{center}
 	\begin{tikzpicture}
 		\draw[-{Classical TikZ Rightarrow[length=1mm]}] (0,0) -- (12,0);
@@ -1808,9 +1845,8 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{center}
 
 	Т.к. в $U_\varepsilon(b)$ и $U_\varepsilon(b_1)$ попадает бесконечно много элементов $\{x_n\}_{n=1}^{\infty}$,
-\[
-	\exists  n_1>N : x_{n_1} \in  U_\varepsilon(b) \text{ \ и \ } \exists m_1>N : x_{m_1} \in U_\varepsilon(b_1)
-.\] 
+\[ \exists  n_1>N : x_{n_1} \in  U_\varepsilon(b) \text{ \ и \ } \exists m_1>N : x_{m_1} \in U_\varepsilon(b_1) .\] 
+
 А значит, выполняется следующее неравенство:
 \begin{multline}
 	0 < |b-b_1| = |b-x_{n_1} + x_{n_1} - x_{m_1} + x_{m_1} - b_1| \le \\
@@ -1822,7 +1858,8 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 \end{proof}
 
 \begin{exmp}
-	$\{x_n\}_{n=1}^{\infty}$, $x_{n} = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n}$. Существует ли $\lim_{n \to \infty} x_n$?
+	$\{x_n\}_{n=1}^{\infty}$, $x_{n} = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n}$.
+    Существует ли $\displaystyle \lim_{n \to \infty} x_n$?
 	Возьмем $m = 2n > n \quad \forall n \in  \mathbb{N}$.
 	\begin{multline}
 		|x_{n} - x_{2n}| = |x_{2n} - x_{n}| = |1 + \frac{1}{2} + \ldots + \frac{1}{2n} - 1 - \frac{1}{2} -\ldots - \frac{1}{n}| = \\
@@ -1838,7 +1875,7 @@ $\{x_n\}_{n=1}^{\infty}$ --- неубывающая последовательн
 	\[
 		\exists  \{x_{n_k}\}_{k=1}^{\infty} : \lim_{k \to \infty} x_{n_k} = b
 	.\] 
-	Причем, если частичный предел есть конечное число, то это число является предельной точкой $\{x_n\}_{n=1}^{\infty}$. \\
+	Причем если частичный предел есть конечное число, то это число является предельной точкой $\{x_n\}_{n=1}^{\infty}$. \\
 	Наибольший частичный предел (может быть $\pm\infty)$ называют верхним пределом числовой последовательности и обозначают $\overline{\lim_{n \to \infty} x_n}$. \\
 	Наименьший частичный предел (может быть $\pm\infty)$ называют нижним пределом числовой последовательности и обозначают $\underline{\lim_{n \to \infty} x_n}$.
 \end{definition}
@@ -2099,7 +2136,8 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \begin{definition}[Определение предела по Гейне]
 	Пусть $f(x)$ определена в некоторой $\accentset{\circ}{U}(*)$.
 	\[
-	\lim_{x \to *} f(x) = ** \iff \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) : \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x) = **,
+	\lim_{x \to *} f(x) = ** \iff \forall \{x_n\}_{n=1}^{\infty} \subset \accentset{\circ}{U}(*) :
+    \lim_{n \to \infty} x_n = * \implies \lim_{n \to \infty} f(x_n) = **,
 	\]
 где $x_n \neq * \ \forall n\in \mathbb{N}$.
 \end{definition}
@@ -2269,7 +2307,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 Сумма конечного числа бесконечно малых при $x\to *$ есть бесконечно малая при $x \to  *$.
 \end{corollary}
 
-\begin{theorem}[произведение бесконечно малой на ограниченнную]\
+\begin{theorem}[произведение бесконечно малой на ограниченную]\
 
 	\noindent Пусть $\alpha$ - бесконечно малая при $x \to *$, $f(x)$ локально ограничена при  $x\to *$.
     Тогда $\alpha(x)\cdot f(x)$ есть бесконечно малая при $x\to *$.
@@ -2291,11 +2329,8 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
     Тогда $\forall x\in \accentset{\circ}{U}_\delta(*)$ имеем $|f(x)|<M$ и $\displaystyle |\alpha(x)| < \frac{\varepsilon}{M}$.
     Следовательно,
     \[|\alpha(x)\cdot f(x)| = |\alpha(x)| \cdot |f(x)| < \frac{\varepsilon}{M} \cdot M = \varepsilon,\] 
-    т.е. $\displaystyle \lim_{x \to *} \alpha(x)\cdot f(x) = 0$, а значит, $\alpha(x) \cdot f(x)$ 
+    т.е. $\displaystyle \lim_{x \to *} (\alpha(x)\cdot f(x)) = 0$, а значит, $\alpha(x) \cdot f(x)$ 
     --- бесконечно малая при $x\to *$.
-
-    
-    
 \end{proof}
 \begin{exmp}
     \[ \lim_{x \to 0} x \sin{\frac{1}{x}} = 0 ,\] 
@@ -2334,12 +2369,12 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	
     Докажем первый пункт. $f(x)\pm g(x) = (A + \alpha(x)) \pm (B+ \beta(x)) = A \pm B +\alpha(x) \pm \beta(x) = A \pm B + \gamma(x)$, где $\gamma(x)$ --- бесконечно малая при  $x \to *$. Следовательно, по теореме о связи функции, ее предела и бесконечно малой, $\displaystyle \lim_{x \to *} (f(x) \pm g(x)) = A \pm B.$
 
-    Докажем второй пункт. $f(x) \cdot  g(x) = (A + \alpha(x))(B+\beta(x))= AB+B\alpha(x)+A\beta(x) + \alpha(x)\beta(x) = AB + \gamma(x)$, где $\gamma(x)$ --- бесконечно малая при $x\to *$. Тогда по теореме о связи предела функции, ее предела и бесконечно малой $\displaystyle \lim_{x \to *} (f(x)\cdot g(x)) = AB$
+    Докажем второй пункт. $f(x) \cdot  g(x) = (A + \alpha(x))(B+\beta(x))= AB+B\alpha(x)+A\beta(x) + \alpha(x)\beta(x) = AB + \gamma(x)$, где $\gamma(x)$ --- бесконечно малая при $x\to *$. Тогда по теореме о связи функции, ее предела и бесконечно малой $\displaystyle \lim_{x \to *} (f(x)\cdot g(x)) = AB$
 
     Докажем третий пункт. 
     \[\frac{f(x)}{g(x)} = \frac{A+\alpha(x)}{B+\beta(x)} = \frac{A}{B} + \frac{A+\alpha(x)}{B + \beta(x)} - \frac{A}{B}.\] 
     Пусть $\displaystyle \gamma(x) = \frac{A+\alpha(x)}{B + \beta(x)} - \frac{A}{B}$. Тогда 
-    \[\gamma(x) = \frac{AB+B\alpha(x)-AB-A\beta(x)}{B(B+\beta(x)} = \frac{B\alpha(x)-A\beta(x)}{B} \cdot \frac{1}{B+\beta(x)}.\] 
+    \[\gamma(x) = \frac{AB+B\alpha(x)-AB-A\beta(x)}{B(B+\beta(x))} = \frac{B\alpha(x)-A\beta(x)}{B} \cdot \frac{1}{B+\beta(x)}.\] 
 	$\displaystyle \frac{B\alpha(x)-A\beta(x)}{B}$ --- бесконечно малая при $x \to  *$ по свойствам бесконечно малых.
 			
 			Докажем, что $\displaystyle \phi(x)= \frac{1}{B+\beta(x)}$ локально ограничена при $x \to *$. \\
@@ -2389,7 +2424,9 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{proof}
 
 \begin{theorem}[о предельном переходе в неравенстве]
-	Если существуют два предела $\lim_{x \to *} f(x) = b_1$, $\lim_{x \to *} g(x) = b_2$ и проколотая окрестность $\accentset{\circ}{U}(*)$, такая, что для любого $x$ из этой окрестности выполняется неравенство $f(x) \le g(x)$, то $b_1\le b_2$.
+	Если существуют два предела $\lim_{x \to *} f(x) = b_1$, $\lim_{x \to *} g(x) = b_2$ и проколотая окрестность 
+    $\accentset{\circ}{U}(*)$ такая, что для любого $x$ из этой окрестности выполняется неравенство $f(x) \le g(x)$,
+    то $b_1\le b_2$.
 \end{theorem}
 \begin{proof}
 	Пусть существуют $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$. Т.к. пределы конечны, по теореме об арифметических операциях с функциями, имеющими пределы, для разности $\phi(x) = g(x) - f(x)$ существует предел $\lim_{x \to *} \phi(x) = b_2-b_1$.
@@ -2398,11 +2435,16 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 \end{proof}
 
 \begin{remark}
-	Если существует $\accentset{\circ}{U}(*)$, такая, что $\forall x \in  \accentset{\circ}{U}(*)$ верно неравенство $f(x) < g(x)$, то для пределов $\lim_{x \to *} f(x) = b_1$ и $\lim_{x \to *} g(x) = b_2$ выполняется $b_1\le b_2$.
+	Если существует $\accentset{\circ}{U}(*)$ такая, что $\forall x \in  \accentset{\circ}{U}(*)$ верно неравенство 
+    $f(x) < g(x)$, то для пределов $\displaystyle \lim_{x \to *} f(x) = b_1$ и $\displaystyle \lim_{x \to *} g(x) = b_2$
+    выполняется $b_1\le b_2$.
 \end{remark}
 
 \begin{theorem}[о пределе промежуточной функции или лемма о двух милиционерах]
-	Если слева и справа от правонарушителя находится по милиционеру, каждый из которых держит его и идет в отделение милиции, то правонарушитель тоже придет в отделение милиции. Или, говоря простым языком, если существует $\lim_{x \to *} f(x) = b$, $\lim_{x \to *} g(x) = b$ и $\accentset{\circ}{U}(*)$, такая, что $\forall x\in \accentset{\circ}{U}(*)$ выполняется неравенство $f(x) \le \phi(x) \le g(x)$, то существует $\lim_{x \to *} \phi(x) = b$.
+	Если слева и справа от правонарушителя находится по милиционеру, каждый из которых держит его и идет в отделение милиции,
+    то правонарушитель тоже придет в отделение милиции. Или, говоря простым языком, если существует $\lim_{x \to *} f(x) = b$,
+    $\lim_{x \to *} g(x) = b$ и $\accentset{\circ}{U}(*)$ такая, что $\forall x\in \accentset{\circ}{U}(*)$ 
+    выполняется неравенство $f(x) \le \phi(x) \le g(x)$, то существует $\lim_{x \to *} \phi(x) = b$.
 \end{theorem}
 \begin{proof}
 	Пусть существуют $\lim_{x \to *} f(x) = b$ и $\lim_{x \to *} g(x) = b$. Распишем эти пределы по определению Коши:
@@ -2417,14 +2459,16 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 
 	Пусть $\delta>0$ таково, что $\accentset{\circ}{U}_\delta(*) \subset \accentset{\circ}{U}(*)\cap \accentset{\circ}{U}_{\delta_1}(*) \cap \accentset{\circ}{U}_{\delta_2}(*)$. Тогда $\forall x \in \accentset{\circ}{U}_\delta(*)$ выполняются неравенства
 	$f(x) \le \phi(x) \le g(x)$, $b-\varepsilon < f(x)$ и $g(x) < b + \varepsilon$.
-	Записав их вместе, получим, что
+	Записав их вместе, получим
 	\[
 	b - \varepsilon < f(x) \le \phi(x) \le g(x) < b + \varepsilon \implies \exists \lim_{x \to *} \phi(x) = b
 	.\] 
 \end{proof}
 
 \begin{theorem}[о пределе сложной функции]
-	Если существуют пределы $\lim_{x \to *} f(x) = A$ и $\lim_{y \to A} g(y) = B$, в некоторой окрестности $\accentset{\circ}{U}(*)$ $f(x)\neq A$, и в этой окрестности определена сложная функция $g(f(x))$, то существует $\lim_{x \to *} g(f(x)) = B$.
+	Если существуют пределы $\displaystyle \lim_{x \to *} f(x) = A$ и $\displaystyle \lim_{y \to A} g(y) = B$,
+    в некоторой окрестности $\accentset{\circ}{U}(*)$ $f(x)\neq A$, и в этой окрестности определена сложная функция $g(f(x))$,
+    то существует $\lim_{x \to *} g(f(x)) = B$.
 \end{theorem}
 Обратим внимание на то, как осуществляется замена:
 \[
@@ -2443,10 +2487,16 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 			 \implies \forall \{y_n\}_{n=1}^{\infty}, y_{n}\neq A : (\lim_{n \to \infty} y_n = A \implies \lim_{n \to \infty} g(y_{n}) = B). \tag{$\Delta\Delta$} 
 	\end{equation}
 
-	Выберем любую $\{x_n\}_{n=1}^{\infty} : x_{n} \in  \accentset{\circ}{U}(*)$, тогда по \eqref{Delta} из того, что $\lim_{n \to \infty} x_n = *$, следует, что $\lim_{n \to \infty} f(x_{n}) = A$. Обозначим $y_{n}=f(x_{n})$, по условию теоремы $y_{n}\neq A$, причем $\lim_{n \to \infty} y_{n} = \lim_{n \to \infty} f(x_{n}) = A$. Тогда по \eqref{DeltaDelta} существует $\lim_{n \to \infty} g(y_{n}) = \lim_{n \to \infty} g(f(x_{n})) = B$. Следовательно, по определению предела по Гейне, существует $\lim_{x \to *} g(f(x)) = B$.
+	Выберем любую $\{x_n\}_{n=1}^{\infty} : x_{n} \in  \accentset{\circ}{U}(*)$, тогда по \eqref{Delta} из того, 
+    что $\lim_{n \to \infty} x_n = *$, следует, что $\lim_{n \to \infty} f(x_{n}) = A$. 
+    Обозначим $y_{n}=f(x_{n})$, по условию теоремы $y_{n}\neq A$, причем 
+    $\lim_{n \to \infty} y_{n} = \lim_{n \to \infty} f(x_{n}) = A$. 
+    Тогда по \eqref{DeltaDelta} существует $\lim_{n \to \infty} g(y_{n}) = \lim_{n \to \infty} g(f(x_{n})) = B$.
+    Следовательно, по определению предела по Гейне существует $\lim_{x \to *} g(f(x)) = B$.
 \end{proof}
 \begin{remark}
-	Условие $f(x)\neq A$ в окрестности $\accentset{\circ}{U}(*)$ является существенным. Если это условие отсутствует, то теорема может не выполниться.
+	Условие $f(x)\neq A$ в окрестности $\accentset{\circ}{U}(*)$ является существенным.
+    Если это условие отсутствует, то теорема может не выполниться.
 \end{remark}
 \begin{exmp}
 	\[
@@ -2515,28 +2565,34 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
 	.\] 
 \end{definition}
 \begin{exmp}
-	Рассмотрим функцию $y=\frac{1}{x}$. $\lim_{x \to 0} y = \infty$, следовательно, $y$ --- бесконечно большая при $x\to 0$.
+	Рассмотрим функцию $y=\frac{1}{x}$. $\displaystyle \lim_{x \to 0} y = \infty$, следовательно,
+    $y$ --- бесконечно большая при $x\to 0$.
 \end{exmp}
 
 \begin{theorem}[о связи бесконечно большой с бесконечно малой]\ 
 	\begin{enumerate}
-		\item Если $f(x)$ --- бесконечно большая при $x\to *$, то $\frac{1}{f(x)}$ является бесконечно малой при $x\to *$.
-		\item Если $\alpha(x)$ --- бесконечно малая при $x \to *$ и существует такая проколотая окрестность $\accentset{\circ}{U}(*)$, что $\forall x \in  \accentset{\circ}{U}(*) : \alpha(x) \neq 0$, то $\frac{1}{\alpha(x)}$ является бесконечно большой при $x\to *$.
+		\item Если $f(x)$ --- бесконечно большая при $x\to *$, то $\displaystyle \frac{1}{f(x)}$ 
+            является бесконечно малой при $x\to *$.
+		\item Если $\alpha(x)$ --- бесконечно малая при $x \to *$ и существует такая проколотая окрестность 
+            $\accentset{\circ}{U}(*)$, что $\forall x \in  \accentset{\circ}{U}(*) : \alpha(x) \neq 0$, 
+            то $\displaystyle \frac{1}{\alpha(x)}$ является бесконечно большой при $x\to *$.
 	\end{enumerate}		
 \end{theorem}
 \begin{proof}\
-    Докажем первый пункт. $f(x)$ --- бесконечно большая при $x \to *$, тогда для любого $\varepsilon_1$ >0 
-    найдется $\delta=\delta(\varepsilon)>0$, такая, что для любого $x$ из $\accentset{\circ}{U}_\delta(*)$
+    Докажем первый пункт. $f(x)$ --- бесконечно большая при $x \to *$, тогда $\forall \varepsilon_1 > 0 \ \exists 
+    \delta=\delta(\varepsilon)>0$ такая, что $\forall x \in \accentset{\circ}{U}_\delta(*)$
     выполняется неравенство $|f(x)|>\varepsilon_1$.
 
-    Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}$ и 
+    Выберем любой $\varepsilon>0$, найдем $\displaystyle \varepsilon_1=\frac{1}{\varepsilon}$ и 
     $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})$. 
-    Тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ выполняется неравенство $|f(x)|>\frac{1}{\varepsilon}$,
-    или, что то же, $\frac{1}{|f(x)|} < \varepsilon$. Положим $\alpha(x) = \frac{1}{f(x)}$,
+    Тогда для любого $x$ из $\displaystyle \accentset{\circ}{U}_\delta(*)$ выполняется 
+    $\displaystyle |f(x)|>\frac{1}{\varepsilon}$,
+    или, что то же, $\displaystyle \frac{1}{|f(x)|} < \varepsilon$. Положим $\displaystyle \alpha(x) = \frac{1}{f(x)}$,
     тогда для любого $x$ из $\accentset{\circ}{U}_\delta(*)$ верно, что $|\alpha(x)| < \varepsilon$,
-    из чего следует, что предел $\alpha(x)$ при $x\to *$ равен нулю.
+    из чего следует, что $\displaystyle \lim_{x \to *} \alpha(x) = 0$.
     Таким образом, $\alpha(x)$ --- бесконечно малая при $x\to *$.
     \\[12pt]
+
 	Докажем второй пункт.
     Пусть $\alpha(x)$ --- бесконечно малая при $x\to *$ и для любого $x$ из $\accentset{\circ}{U}(*)$ верно,
     что $\alpha(x)\neq 0$. 
@@ -2548,7 +2604,7 @@ $** : \quad b; \quad \infty; \quad +\infty; \quad -\infty$
     Выберем любой $\varepsilon>0$, найдем $\varepsilon_1=\frac{1}{\varepsilon}>0$ и соответствующую 
     $\delta=\delta(\varepsilon_1)=\delta(\frac{1}{\varepsilon})>0$. Поскольку $\forall x\in \accentset{\circ}{U}_\delta(*)$
     имеем $\alpha(x)\neq 0$ и $\displaystyle |\alpha(x)| < \frac{1}{\varepsilon}$, дробь можно перевернуть:
-    \[\frac{1}{\alpha(x)} < \varepsilon.\] 
+    \[\frac{1}{\alpha(x)} > \varepsilon.\] 
 
     Если $\displaystyle f(x) = \frac{1}{\alpha(x)}$, то $|f(x)|>\varepsilon$. Получается,  $\forall \varepsilon$ мы нашли
     $\delta(\varepsilon)$ такую, что $\forall x\in \accentset{\circ}{U}_\delta(*)$ выполняется $|f(x)|>\varepsilon$,
@@ -2689,7 +2745,7 @@ $\ldots$
 		\item $\alpha(x)$ --- бесконечно малая более высокого порядка малости по сравнению с $\beta(x)$ при $x\to *$ 
             тогда и только тогда, когда $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{\beta(x)} = 0$.
             Обозначается $\alpha(x) = \overline{o}(\beta(x)), \ x \to *$.
-        \item $\alpha(x)$ имеет порядок $n$ по сравенению с $\beta(x)$ при $x\to *$ тогда и только тогда, когда
+        \item $\alpha(x)$ имеет порядок $n$ по сравнению с $\beta(x)$ при $x\to *$ тогда и только тогда, когда
             $\displaystyle \lim_{x \to *} \frac{\alpha(x)}{(\beta(x))^{n}} = C \neq 0 \neq \infty$.
             Если $n<0$, то одна из сравниваемых функций --- бесконечно большая.
 	\end{enumerate}
@@ -2731,7 +2787,7 @@ $\ldots$
 \section{Непрерывность}
 \subsection{Непрерывность функции в точке}
 \begin{definition}
-	Пусть функция $f(x)$ определена в некоторой окрестности точки $x_0$. Функцию $f(x)$ называют непрерывной в точке $x_0$ тогда и только тогда, когда существует предел $f(x)$ при $x\to x_0$, равный $f(x_0)$.
+	Пусть функция $f(x)$ определена в некоторой окрестности точки $x_0$. Функцию $f(x)$ называют непрерывной в точке $x_0$ тогда и только тогда, когда $\displaystyle \exists \lim_{x \to x_0} f(x) = f(x_0)$.
 
 	Приведем формально-логическую запись этого определения в формулировке по Коши:
 	\[
@@ -2776,7 +2832,7 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 \begin{exmp}
 	\[
 	f(x) = \begin{cases}
-		\frac{\sin x}{x}, \ x \neq 0, \\
+		\displaystyle \frac{\sin x}{x}, \ x \neq 0, \\
 		2, \ x = 0.
 	\end{cases}
 	\lim_{x \to 0} f(x) = \lim_{x \to 0} \frac{\sin x}{x} = 1 \neq f(0) = 2
@@ -2824,7 +2880,9 @@ $\Delta y$ --- приращение функциии $f(x)$ в точке $x_0$,
 	Функция $f(x)$ непрерывна в точке $a$ тогда и только тогда, когда $f(x)$ непрерывна в точке $a$ и слева, и справа.
 \end{theorem}
 \begin{proof}
-	$f(x)$ непрерывна в точке $a$ $\iff$ предел $f(x)$ при $x\to a$ равен $f(a)$ $\iff$ по теореме о связи двустороннего предела с односторонними существуют $\lim_{x \to a-0} f(x) = f(a)$ и $\lim_{x \to a+0} f(x) = f(a)$ $\iff$ $f$ непрерывна в $a$ и слева, и справа.
+	$f(x)$ непрерывна в точке $a$ $\iff$ предел $f(x)$ при $x\to a$ равен $f(a)$ $\iff$ по теореме о связи двустороннего
+    предела с односторонними существуют $\displaystyle \lim_{x \to a-0} f(x) = f(a)$ и 
+    $\displaystyle \lim_{x \to a+0} f(x) = f(a)$ $\iff$ $f$ непрерывна в $a$ и слева, и справа.
 \end{proof}
 
 \begin{theorem}[о знакопостоянстве непрерывной функции]
